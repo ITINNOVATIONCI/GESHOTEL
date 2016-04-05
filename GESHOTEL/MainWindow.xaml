@@ -1,0 +1,112 @@
+﻿<telerik:RadRibbonWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:GESHOTEL" x:Class="GESHOTEL.MainWindow"
+        Title="" Height="350" Width="525" WindowState="Maximized" Loaded="RadRibbonWindow_Loaded_1" Icon="Images/Logo/Template.ico">
+    <Grid x:Name="RootGrid">
+        <Grid x:Name="FirstLayout"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="581*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <telerik:RadRibbonView x:Name="rrvMain" VerticalAlignment="Top" Grid.ColumnSpan="2" Title="" ApplicationName="GESTION HOTEL" BackstageClippingElement="{Binding ElementName=RootGrid}" MinimizeButtonVisibility="Visible" HelpButtonVisibility="Visible" IsApplicationMenuOpen="False">
+
+                <telerik:RadRibbonTab Header="FRONT OFFICE" IsSelected="True" Visibility="Visible">
+                    <telerik:RadRibbonGroup Header="SERVICE CLIENTELE" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="PASSAGE" Click="btnPassage_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="SEJOUR\NUIT" Click="btnSjourNuit_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="RESERVATION" Click="btnReservation_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="LISTE DES RESERVATIONS" Click="btnListeReservation_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="DEPENSES" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="DEPENSE" Click="btnDepense_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="DECAISSEMENT" Click="btnDecaissement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="APPROVISIONNEMENT" Click="btnApprovisionnement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="ROOM SERVICE" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="DISPONIBILITE" Click="btnDisponibilite_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="LISTE DES CHAMBRES" Click="btnListeChambre_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="RECHERCHE" Click="btnRecherche_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="CLOTURE" Click="btnCloture_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="VUE D'ENSEMBLE" Click="btnVueDensemble_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="JOURNAL DE CAISSE" Click="btnJcaisse_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+                <telerik:RadRibbonTab Header="ETAT ET STATISTIQUES" Visibility="Visible">
+                    <telerik:RadRibbonGroup Header="ETAT" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="" Click="btnEtat_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="SATISTIQUES" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="" Click="btnStatistique_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+                <telerik:RadRibbonTab Header="PARAMETRE ET CHAMBRES" Visibility="Visible">
+                    <telerik:RadRibbonGroup Header="CHAMBRES" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="EQUIPEMENT" Click="btnEquipement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="N° DE CHAMBRE" Click="btnNumeroChambre_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="TYPE DE CHAMBRE" Click="btnTypeChambre_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="PRODUIT" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="CATEGORIES" Click="btnCategorie_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="CONDITIONNEMENTS" Click="btnConditionnement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="PRODUITS" Click="btnProduit_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="CLIENT" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="CLIENTS" Click="btnClients_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="IDTYPES" Click="btnIdTypes_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="NATIONALITE" Click="btnNationalite_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content=" PAYS" Click="btnPays_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content=" VILLE" Click="btnVille_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content=" COMMUNE" Click="btnCommune_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content=" QUARTIER" Click="btnQuartier_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+                <telerik:RadRibbonTab Header="PARAMETRE FACTURATION" Visibility="Visible">
+                    <telerik:RadRibbonGroup Header="DEPENSE" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="MODE DE PAIEMENT" Click="btnModePaiement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="RUBRIQUES" Click="btnRubrique_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="SOUS-RUBRIQUES" Click="btnSousRubrique_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup Header="AUTRE" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="HOTEL INFO" Click="btnHotelInfo_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="SERVICES" Click="btnService_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="REGLE DE REDUCTION" Click="btnRegleReduction_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="PROMOTIONS" Click="btnPromotions_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="REDUCTIONS" Click="btnReduction_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="TYPE PRIX" Click="btnTypePrix_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="PRIX CHAMBRE" Click="btnPrixChambre_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="RAISON" Click="btnRaison_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="RAISON TYPE" Click="btnRaisonType_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                           </telerik:RadRibbonTab>
+                <telerik:RadRibbonTab Header="ADMINISTRATION" IsSelected="False" Visibility="Visible">
+                    <telerik:RadRibbonGroup Header="ADMINISTRATION" Tag="" Visibility="Visible">
+                        <telerik:RadRibbonButton Content="COMPTE D'UTILISATEUR" Click="btnUtilisateurs_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+
+            </telerik:RadRibbonView>
+
+            <telerik:RadDocking CloseButtonPosition="InPaneAndGroup"  Grid.Row="1">
+
+                <telerik:RadDocking.DocumentHost>
+                    <telerik:RadSplitContainer>
+                        <telerik:RadPaneGroup x:Name="rpgMainView" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
+                    </telerik:RadSplitContainer>
+                </telerik:RadDocking.DocumentHost>
+
+            </telerik:RadDocking>
+        </Grid>
+
+        <local:LoginControl  x:Name="logControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+        
+    </Grid>
+</telerik:RadRibbonWindow>

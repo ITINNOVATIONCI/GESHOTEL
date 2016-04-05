@@ -1,0 +1,1023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AA9457B-2EB0-41E4-8676-C3B8A1465821}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GESHOTEL</RootNamespace>
+    <AssemblyName>GESHOTEL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Template.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Decoder">
+      <HintPath>..\..\GESCHANGE\GESCHANGE\Lib\Decoder.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\PROJECTS\GESCHANGE\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>D:\PROJECTS\GESCHANGE\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.Core, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Pivot.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFramework60, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.EntityFramework60.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView.Export, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.GridView.Export.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ImageEditor, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.ImageEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Pivot, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.Pivot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.PivotFieldList, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.PivotFieldList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RichTextBoxUI, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.RichTextBoxUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Html, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.Html.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.OpenXml, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Pdf, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Rtf, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.Rtf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Xaml, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.FormatProviders.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Maths, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Maths.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Scheduling.Core, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Scheduling.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.3.930.45\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Reporting, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.Reporting.XpsRendering, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.Wpf, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Models\Amenities.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmenitiesTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BI.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CancelationRules.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cancelations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Categories.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategorieSchedule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Chambres.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Clients.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Communes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comptes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conditionnements.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetailPaiements.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetailTransactions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetatilDepenses.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employees.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EtatOperation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fournisseurs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IDTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MethodePaiements.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nationalités.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationRules.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parametres.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pays.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Permissions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrixChambres.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Produits.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promotions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quartiers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Raisons.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RaisonType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reductions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Registres.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reservations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReservationTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rubriques.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rules.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolidColorBrushHelper.cs" />
+    <Compile Include="Models\Sous_Rubriques.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeMarkers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TranReductions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transactions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypeChambres.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypeEmployees.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypePrix.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utilisateurs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Villes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Administrations\UtilisateursModules\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Administrations\UtilisateursModules\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Administrations\UtilisateursModules\UtlisateurModuleView.xaml.cs">
+      <DependentUpon>UtlisateurModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\HierarchyConverter.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\ItemContainerStyleSelector.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\Types.cs" />
+    <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Clients\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Clients\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Clients\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Clients\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Clients\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Clients\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Clients\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Categories\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Categories\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Categories\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Categories\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Categories\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Categories\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Categories\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Communes\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Communes\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Communes\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Communes\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Communes\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Communes\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Communes\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\IDTypes\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\IDTypes\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\IDTypes\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\MethodePaiements\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\MethodePaiements\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\MethodePaiements\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\MethodePaiements\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\MethodePaiements\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\MethodePaiements\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\MethodePaiements\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Nationalités\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Nationalités\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Nationalités\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Nationalités\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Nationalités\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Nationalités\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Nationalités\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Pays\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Pays\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Pays\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Pays\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Pays\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Pays\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Pays\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Produits\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Produits\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Produits\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Produits\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Produits\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Produits\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Produits\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Quartiers\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Quartiers\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Quartiers\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Quartiers\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Quartiers\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Quartiers\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Quartiers\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Raisons\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Raisons\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Raisons\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Raisons\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Raisons\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Raisons\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Raisons\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\RaisonType\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\RaisonType\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\RaisonType\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\RaisonType\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\RaisonType\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\RaisonType\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\RaisonType\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\ReservationTypes\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\ReservationTypes\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\ReservationTypes\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\ReservationTypes\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\ReservationTypes\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\ReservationTypes\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\ReservationTypes\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Rubriques\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Rubriques\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Rubriques\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Rubriques\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Rubriques\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Rubriques\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Rubriques\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\SousRubriques\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\SousRubriques\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\SousRubriques\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\SousRubriques\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\SousRubriques\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\SousRubriques\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\SousRubriques\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\TypeChambres\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\TypeChambres\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\TypeChambres\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\TypeChambres\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\TypeChambres\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\TypeChambres\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\TypeChambres\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\TypePrix\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\TypePrix\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\TypePrix\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\TypePrix\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\TypePrix\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\TypePrix\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\TypePrix\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Villes\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Villes\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Villes\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Villes\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Villes\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Villes\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Villes\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\AssigneChambre.xaml.cs">
+      <DependentUpon>AssigneChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ClientInsertData.xaml.cs">
+      <DependentUpon>ClientInsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\PassageWin.xaml.cs">
+      <DependentUpon>PassageWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ReservationInsert.xaml.cs">
+      <DependentUpon>ReservationInsert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\TransactionEdit.xaml.cs">
+      <DependentUpon>TransactionEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ClientsViewModel.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\Types.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ViewModel.cs" />
+    <Compile Include="Rapports\Viewers\ListeRapportView.xaml.cs">
+      <DependentUpon>ListeRapportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rapports\Viewers\RapportWindows.xaml.cs">
+      <DependentUpon>RapportWindows.xaml</DependentUpon>
+    </Compile>
+    <Page Include="LoginControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="COMMON\ObservableObject.cs" />
+    <Compile Include="COMMON\PasswordHelper.cs" />
+    <Compile Include="COMMON\PropertySupport.cs" />
+    <Compile Include="COMMON\RelayCommand.cs" />
+    <Compile Include="LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Modules\Administrations\UtilisateursModules\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\Administrations\UtilisateursModules\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\Administrations\UtilisateursModules\UtlisateurModuleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Clients\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Clients\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Categories\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Categories\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Communes\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Communes\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\IDTypes\Conditionnements\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\IDTypes\Conditionnements\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\IDTypes\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\IDTypes\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\MethodePaiements\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\MethodePaiements\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Nationalités\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Nationalités\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Pays\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Pays\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Produits\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Produits\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Quartiers\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Quartiers\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Raisons\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Raisons\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\RaisonType\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\RaisonType\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\ReservationTypes\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\ReservationTypes\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Rubriques\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Rubriques\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\SousRubriques\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\SousRubriques\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\TypeChambres\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\TypeChambres\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\TypePrix\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\TypePrix\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Villes\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Villes\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\AssigneChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ClientInsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\PassageWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ReservationInsert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\TransactionEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Rapports\Viewers\ListeRapportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Rapports\Viewers\RapportWindows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OfficeBlack\System.Windows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OfficeBlack\Telerik.ReportViewer.Wpf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OfficeBlack\Telerik.Windows.Controls.Input.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OfficeBlack\Telerik.Windows.Controls.Navigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OfficeBlack\Telerik.Windows.Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Windows8\System.Windows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Windows8\Telerik.ReportViewer.Wpf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Windows8\Telerik.Windows.Controls.Input.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Windows8\Telerik.Windows.Controls.Navigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Windows8\Telerik.Windows.Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\GlobalData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Rapports\Reports\TransactionClient.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\TransactionFournisseur.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\Balance-Four.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\Balance.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\Benefice.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\ReleveClient.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rapports\Reports\ReleveFournisseur.trdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\Menu\Business-Man.png" />
+    <Resource Include="Images\Menu\Central African-CFA Franc.png" />
+    <Resource Include="Images\Menu\Documents-01.png" />
+    <Resource Include="Images\Menu\Dollar-Coin.png" />
+    <Resource Include="Images\Menu\Euro-Coin.png" />
+    <Resource Include="Images\Menu\Exchange - 02.png" />
+    <Resource Include="Images\Menu\Group-Add.png" />
+    <Resource Include="Images\Menu\Money-Coin.png" />
+    <Resource Include="Images\Menu\Money-Transfer.png" />
+    <Resource Include="Images\Menu\Payments-01-WF.png" />
+    <Resource Include="Images\Menu\Stock-Exchange-06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo\Template.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Apps.png" />
+    <Resource Include="Images\Template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Template.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\CRUD\Add.png" />
+    <Resource Include="Images\CRUD\Edit.png" />
+    <Resource Include="Images\CRUD\Filter-Standard.png" />
+    <Resource Include="Images\CRUD\Minus.png" />
+    <Resource Include="Images\CRUD\Reload.png" />
+    <Resource Include="Images\CRUD\Sort-Ascending-01.png" />
+    <Resource Include="Images\CRUD\Sort-Ascending.png" />
+    <Resource Include="Images\CRUD\Sort-Descending-01.png" />
+    <Resource Include="Images\CRUD\Sort-Descending.png" />
+    <Resource Include="Images\Navigation\Cancel.png" />
+    <Resource Include="Images\Navigation\Submit-01.png" />
+    <Resource Include="Images\Navigation\Submit-02.png" />
+    <Resource Include="Images\Template.ico" />
+    <Resource Include="Images\Menu\Customer.png" />
+    <Resource Include="Images\CRUD\Payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

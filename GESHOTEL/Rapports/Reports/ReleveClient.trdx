@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="19.6000014130274cm" Name="ReleveClient" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="GESHOTEL" SelectCommand="SELECT       *&#xD;&#xA;FROM            dbo.ListeTransactionsClient&#xD;&#xA;WHERE        (TypeTransaction = 'CLIENT') and (idClientS = @Client) AND (CONVERT(DATE, DateTransaction) &gt;= @Debut) AND (CONVERT(DATE, DateTransaction) &lt;= @Fin)&#xD;&#xA;ORDER BY DateTransaction" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@Client">
+          <Value>
+            <String>=Parameters.Client.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@Debut">
+          <Value>
+            <String>=Parameters.Debut.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@Fin">
+          <Value>
+            <String>=Parameters.Fin.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+    <SqlDataSource ConnectionString="GESHOTEL" SelectCommand="SELECT        *&#xD;&#xA;FROM            dbo.Clients&#xD;&#xA;WHERE        (dbo.Clients.Etat = 'ACTIF')" Name="sqlDataSource2" />
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="2.79999979813894cm" Name="pageHeader">
+      <Items>
+        <TextBox Width="6.4cm" Height="0.999999899069471cm" Left="0.700000050465264cm" Top="0.499999949534735cm" Value="RELEVE PAR CLIENT" Name="textBox1">
+          <Style BackgroundColor="238, 236, 225" TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.69999994953474cm" Height="0.500000151395793cm" Left="0.700000050465264cm" Top="2.09999974767368cm" Value="CLIENT :" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.49980038881857cm" Height="0.500000178813934cm" Left="2.40020024616956cm" Top="2.09999974767368cm" Value="= IsNull(Fields.Noms + ' ' + Fields.Prenoms, Fields.Nom)" Name="textBox3">
+          <Style Color="84, 142, 213" TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.99249902388456cm" Height="0.500000178813934cm" Left="10.3000000504653cm" Top="2.09999994953474cm" Value="PERIODE :" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.90730070827956cm" Height="0.500000178813934cm" Left="12.2926989378576cm" Top="2.10000015139579cm" Value="= Parameters.Debut.Value" Format="{0:dd-MM-yyyy}" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.912707052066102cm" Height="0.500000178813934cm" Left="14.2002003471001cm" Top="2.09999994953474cm" Value="AU :" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.33417558670044cm" Height="0.500000178813934cm" Left="15.1131081001291cm" Top="2.09999994953474cm" Value="= Parameters.Fin.Value" Format="{0:dd-MM-yyyy}" Name="textBox7">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <PageFooterSection Height="1.10583343132006cm" Name="pageFooter">
+      <Items>
+        <TextBox Width="7.82770833832274cm" Height="1.00000010093053cm" Left="0.0529166651947631cm" Top="0.0529166651947631cm" Value="=NOW()" Name="currentTimeTextBox" StyleName="PageInfo" />
+        <TextBox Width="11.666357968589cm" Height="1.00000010093053cm" Left="7.93354166871227cm" Top="0.0529166651947631cm" Value="=PageNumber" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right" />
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="0.132291662986908cm" Name="reportHeader" />
+    <ReportFooterSection Height="1.2585487905747cm" Name="reportFooter">
+      <Items>
+        <TextBox Width="2.5739569965295cm" Height="0.758449323538362cm" Left="11.8779269474924cm" Top="0cm" Value="= Sum(Fields.MontantTotal)" Format="{0:N0}" Name="textBox8">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Ridge" Bottom="Ridge" Left="Ridge" Right="Ridge" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395861141797cm" Height="0.758449323538362cm" Left="14.4518823623657cm" Top="0cm" Value="= IsNull(Sum(Fields.MontantPaye),0)" Format="{0:N0}" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Ridge" Bottom="Ridge" Left="Ridge" Right="Ridge" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395861141797cm" Height="0.758449323538362cm" Left="17.0260419941652cm" Top="0cm" Value="= IsNull(Sum(Fields.MontantRestant),0)" Format="{0:N0}" Name="textBox10">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Ridge" Bottom="Ridge" Left="Ridge" Right="Ridge" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.57772665085758cm" Height="0.758549446623142cm" Left="10.3000000504653cm" Top="0cm" Value="TOTAL :" Name="textBox11">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.04708318340944cm" Height="0.758449323538362cm" Left="0.0529166651947631cm" Top="0cm" Value="NOMBRE DE TRANSACTION :" Name="textBox12">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.69979929964306cm" Height="0.758449323538362cm" Left="5.10020049849588cm" Top="0cm" Value="= Count(Fields.ID)" Format="{0:N0}" Name="textBox13">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+    <DetailSection Height="1.00915894085521cm" Name="detail">
+      <Items>
+        <TextBox Width="2.04708280703868cm" Height="1.00000010093053cm" Left="0.0529166651947631cm" Top="0cm" Value="= Fields.DateTransaction" Format="{0:d}" CanGrow="True" Name="dateTransactionDataTextBox" StyleName="Data">
+          <Style Color="0, 0, 0" TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Underline="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.39980028583444cm" Height="1.00000010093053cm" Left="2.10019931468089cm" Top="0cm" Value="= Fields.NoTransaction" CanGrow="True" Name="vehiculeDataTextBox" StyleName="Data">
+          <Style TextAlign="Left">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Padding Left="0.2cm" Right="0cm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395839691162cm" Height="1.00000011920929cm" Left="11.8779258728027cm" Top="0cm" Value="=Fields.MontantTotal" Format="{0:N0}" CanGrow="True" Name="montantTotalDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395833597774cm" Height="1.00000010093053cm" Left="14.4518839440219cm" Top="0cm" Value="= IsNull(Fields.MontantPaye,0)" Format="{0:N0}" CanGrow="True" Name="montantEncaisseDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395833597774cm" Height="1.00000010093053cm" Left="17.0259418710804cm" Top="0cm" Value="= Fields.MontantRestant" Format="{0:N0}" CanGrow="True" Name="montantRestantDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.20336733277404cm" Height="1.00000011920929cm" Left="7.10020110407906cm" Top="0cm" Value="= Fields.Devise" CanGrow="True" Name="textBox15" StyleName="Data">
+          <Style TextAlign="Left">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Padding Left="0.200000002980232cm" Right="0cm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.59980070670442cm" Height="1.00000011920929cm" Left="4.50019999384324cm" Top="0cm" Value="= Fields.Paiement" CanGrow="True" Name="textBox17" StyleName="Data">
+          <Style TextAlign="Left">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Padding Left="0.200000002980232cm" Right="0cm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.57395839691162cm" Height="1.00000011920929cm" Left="9.30376889734911cm" Top="0cm" Value="= Fields.Valeur" Format="{0:N0}" CanGrow="True" Name="textBox19" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="7mm" Right="7mm" Top="5mm" Bottom="5mm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="1.06770873069763cm" Name="labelsGroupHeaderSection">
+          <Items>
+            <TextBox Width="2.04708280703868cm" Height="1.00000010093053cm" Left="0.0529166651947631cm" Top="0.0677086398046792cm" Value="DATE" CanGrow="True" Name="dateTransactionCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.39980068955655cm" Height="1.00000010093053cm" Left="2.1001992225647cm" Top="0.0677086412906647cm" Value="No" CanGrow="True" Name="vehiculeCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.57395833597774cm" Height="1.00000010093053cm" Left="11.8779261400482cm" Top="0.0677086398046792cm" Value="DEBIT" CanGrow="True" Name="montantTotalCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.57395833597774cm" Height="1.00000010093053cm" Left="14.4518839440219cm" Top="0.0677086398046792cm" Value="CREDIT" CanGrow="True" Name="montantEncaisseCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.57395833597774cm" Height="1.00000010093053cm" Left="17.0260419941652cm" Top="0.0677086398046792cm" Value="SOLDE" CanGrow="True" Name="montantRestantCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.20336733277404cm" Height="1.00000011920929cm" Left="7.10020110407906cm" Top="0.0677090435267953cm" Value="Monnaie" CanGrow="True" Name="textBox14" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.59980058862602cm" Height="1.00000011920929cm" Left="4.50019999384324cm" Top="0.0677090436220169cm" Value="Paiement" CanGrow="True" Name="textBox16" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.57395839691162cm" Height="1.00000011920929cm" Left="9.30376889734911cm" Top="0.0677086398046792cm" Value="Valeur" CanGrow="True" Name="textBox18" StyleName="Caption">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.132291662986908cm" Name="labelsGroupFooterSection">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+  <ReportParameters>
+    <ReportParameter Name="Debut" Type="DateTime" Text="Date de Debut" Visible="True" AutoRefresh="True">
+      <Value>
+        <String></String>
+      </Value>
+    </ReportParameter>
+    <ReportParameter Name="Fin" Type="DateTime" Text="Date de Fin" Visible="True" AutoRefresh="True">
+      <Value>
+        <String></String>
+      </Value>
+    </ReportParameter>
+    <ReportParameter Name="Client" Type="Integer" Text="Client" Visible="True" AutoRefresh="True">
+      <AvailableValues DataSourceName="sqlDataSource2" DisplayMember="= IsNull(Fields.Noms + ' ' + Fields.Prenoms, Fields.Noms)" ValueMember="= Fields.ID" />
+      <Value>
+        <String></String>
+      </Value>
+    </ReportParameter>
+  </ReportParameters>
+</Report>

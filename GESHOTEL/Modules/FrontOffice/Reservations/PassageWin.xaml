@@ -1,0 +1,45 @@
+﻿<Window x:Class="GESHOTEL.FrontOffice.PassageWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:Models="clr-namespace:GESHOTEL.Models;assembly=GESHOTEL.Models"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+        Title="Passage" Height="347" Width="600" Loaded="Window_Loaded_1" Icon="/GESHOTEL.FrontOffice;component/hotel.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="chambreAutoComplete">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Numero}"  />
+            </StackPanel>
+        </DataTemplate>
+        <CollectionViewSource x:Key="chambresViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Chambres}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid >
+        <Path Data="M8,8 L327,8" Fill="#FFF4F4F5" Height="1" Margin="8,25,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top"/>
+        <Label Content="Passage" HorizontalAlignment="Left" Margin="8,0,0,0" VerticalAlignment="Top" FontFamily="Papyrus" FontSize="16" FontStyle="Italic"/>
+        <Label Content="Heure de Depart" Height="28" HorizontalAlignment="Left" Margin="10,102,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold" />
+        <telerik:RadTimePicker x:Name="rtHD" HorizontalAlignment="Left" Height="23" Margin="154,102,0,0" VerticalAlignment="Top" Width="164" KeyUp="rtHD_KeyUp" SelectionChanged="rtHD_SelectionChanged" IsEnabled="False"/>
+        <Label Content="Heure de Fin" Height="28" HorizontalAlignment="Left" Margin="10,147,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold" />
+        <telerik:RadTimePicker x:Name="rtHF" HorizontalAlignment="Left" Height="23" Margin="154,147,0,0" VerticalAlignment="Top" Width="164" KeyUp="rtHF_KeyUp" SelectionChanged="rtHF_SelectionChanged" IsEnabled="False"/>
+        <Label Content="Tarif" Height="28" HorizontalAlignment="Left" Margin="12,200,0,0" x:Name="label1_Copy3" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold" />
+        <telerik:RadNumericUpDown x:Name="rntarif" HorizontalAlignment="Left" Margin="154,200,0,0" VerticalAlignment="Top" Width="164" FontFamily="Perpetua Titling MT" ShowButtons="False" IsInteger="True" NumberDecimalDigits="0" TabIndex="4" Height="24" IsEnabled="False" />
+        <telerik:RadNumericUpDown x:Name="rnHeure" HorizontalAlignment="Left" Margin="336,128,0,0" VerticalAlignment="Top" Width="62" NumberDecimalDigits="0" IsInteger="True" ValueChanged="rnHeure_ValueChanged" KeyUp="rnHeure_KeyUp_1" Minimum="0"/>
+        <Label Content="Chambre" Height="28" HorizontalAlignment="Left" Margin="12,59,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold" />
+
+        <telerik:RadAutoCompleteBox  WatermarkContent="N° Chambre"
+        	x:Name="chambreAutoCompleteBox"
+        	TextSearchMode="StartsWith"
+        	SelectionMode="Single"
+        	TextSearchPath="Numero"
+        	DropDownItemTemplate="{StaticResource chambreAutoComplete}"
+            ItemsSource="{Binding Source={StaticResource chambresViewSource}}"
+        	Margin="154,57,0,0" Height="22" BorderBrush="#FF25A0DA" BorderThickness="1"
+        	SelectionChanged="chambreAutoCompleteBoxSelectionChanged" TabIndex="3" AutoCompleteMode="Append" IsTabStop="True" HorizontalAlignment="Left" Width="86" KeyUp="chambreAutoCompleteBox_KeyUp" VerticalAlignment="Top"/>
+
+        <telerik:RadButton x:Name="btnValider" Content="Enregistrer" Height="23" HorizontalAlignment="Left" Margin="182,267,0,0" VerticalAlignment="Top" Width="90" Click="btnEnregistrer_Click" />
+        <telerik:RadButton x:Name="btnAnnuler" Content="Annuler" Height="23" HorizontalAlignment="Left" Margin="336,267,0,0" VerticalAlignment="Top" Width="90" Click="RadButton_Click"/>
+        <telerik:RadComboBox DisplayMemberPath="Numero" ItemsSource="{Binding Source={StaticResource chambresViewSource}}" HorizontalAlignment="Left" Margin="255,59,0,0" x:Name="rcbChambres" VerticalAlignment="Top" Width="213" IsEditable="True" SelectionChanged="rcbChambres_SelectionChanged" Height="20" />
+
+    </Grid>
+</Window>

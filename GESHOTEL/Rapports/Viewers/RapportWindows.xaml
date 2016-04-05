@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tr="http://schemas.telerik.com/wpf" x:Class="GESHOTEL.Rapports.Viewers.RapportWindows"
+        xmlns:telerikReporting="clr-namespace:Telerik.Reporting;assembly=Telerik.Reporting"
+        Title="Rapport" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="83*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="67*"/>
+        </Grid.RowDefinitions>
+        <Border Height="25" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Black" Background="YellowGreen" Visibility="Collapsed">
+            <TextBlock Text="Visualiseur de Rapport" FontSize="18"  FontWeight="Bold" FontStyle="Normal" TextAlignment="Center" />
+        </Border>
+        <tr:ReportViewer Name="reportViewer" Grid.Column="1" Grid.Row="1" ViewMode="PrintPreview" />
+    </Grid>
+</Window>

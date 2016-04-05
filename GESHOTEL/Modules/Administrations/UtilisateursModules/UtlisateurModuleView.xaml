@@ -1,0 +1,155 @@
+﻿<Window x:Class="GESHOTEL.UtilisateursModules.UtlisateurModuleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:res="clr-namespace:GESHOTEL.COMMON"
+             xmlns:Model="clr-namespace:GESHOTEL.Models" 
+             xmlns:example="clr-namespace:GESHOTEL.UtilisateursModules.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            Title="Administration" WindowStartupLocation="CenterScreen" Width="800" Height="600" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <HierarchicalDataTemplate x:Key="ItemTemplate" ItemsSource="{Binding Permissions1}">
+            <TextBlock Text="{Binding DisplayName}"/>
+        </HierarchicalDataTemplate>
+
+        <Style x:Key="MenuContainerStyle" TargetType="{x:Type telerik:RadTreeViewItem}">
+            <Setter Property="Background" Value="Red"/>
+            <!--<Setter Property="" Value="False"/>-->
+            <Setter Property="IsExpanded" Value="True"/>
+        </Style>
+
+        <Style x:Key="SousMenuContainerStyle" TargetType="{x:Type telerik:RadTreeViewItem}">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="IsExpanded" Value="True"/>
+        </Style>
+
+        <Style x:Key="ActionContainerStyle" TargetType="{x:Type telerik:RadTreeViewItem}">
+            <Setter Property="Background" Value="Yellow"/>
+            <Setter Property="IsExpanded" Value="True"/>
+        </Style>
+
+        <example:ItemContainerStyleSelector x:Key="myContainerStyleSelector"
+            MenuStyle="{StaticResource MenuContainerStyle}"
+            SousMenuStyle="{StaticResource SousMenuContainerStyle}"
+            ActionStyle="{StaticResource ActionContainerStyle}"/>
+
+        <Style x:Key="ExpanderStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="IsEnabled" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonOver" Storyboard.TargetProperty="(UIElement.Opacity)" To="1"/>
+                                            <DoubleAnimation Storyboard.TargetName="Button" Storyboard.TargetProperty="(UIElement.Opacity)" To="0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ButtonOver" Storyboard.TargetProperty="(UIElement.Opacity)" To="0"/>
+                                            <DoubleAnimation Storyboard.TargetName="Button" Storyboard.TargetProperty="(UIElement.Opacity)" To="1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="CollapsedVisualOver" Storyboard.TargetProperty="(UIElement.Opacity)" To="0"/>
+                                            <DoubleAnimation Storyboard.TargetName="CollapsedVisual" Storyboard.TargetProperty="(UIElement.Opacity)" To="0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="CollapsedVisualOver" Storyboard.TargetProperty="(UIElement.Opacity)" To="1"/>
+                                            <DoubleAnimation Storyboard.TargetName="CollapsedVisual" Storyboard.TargetProperty="(UIElement.Opacity)" To="1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        <Grid>
+                            <Grid x:Name="ButtonOver" Opacity="0" Margin="0,4,0,0"
+                               HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Width="16" Height="16">
+                                <Rectangle Stroke="#FF027BA6" HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch" Width="Auto" Height="Auto"
+                                   RadiusX="3" RadiusY="3">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00BCFF" Offset="0" />
+                                            <GradientStop Color="#FF027BA6" Offset="1" />
+                                            <GradientStop Color="#FF00A5E0" Offset="0.5" />
+                                            <GradientStop Color="#FF005674" Offset="0.501" />
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle x:Name="CollapsedVisualOver"
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   Width="2" Height="8" RadiusX="0" RadiusY="0"
+                                   Fill="#FFFFFFFF" Margin="7,4,0,0" />
+                                <Rectangle RadiusX="0" RadiusY="0" Fill="#FFFFFFFF"
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   Width="8" Height="2" Margin="4,7,0,0" />
+                            </Grid>
+                            <Grid x:Name="Button" Margin="0,4,0,0" HorizontalAlignment="Right"
+                       VerticalAlignment="Top" Width="16" Height="16">
+                                <Rectangle Stroke="#FF027BA6" HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch" Width="Auto" Height="Auto"
+                           RadiusX="3" RadiusY="3" Fill="#FF00A2DC">
+                                </Rectangle>
+                                <Rectangle x:Name="CollapsedVisual" HorizontalAlignment="Left"
+                           VerticalAlignment="Top" Width="2" Height="8" RadiusX="0"
+                           RadiusY="0" Fill="#FFFFFFFF" Margin="7,4,0,0" />
+                                <Rectangle RadiusX="0" RadiusY="0" Fill="#FFFFFFFF"
+                           HorizontalAlignment="Left" Margin="4,7,0,0"
+                           VerticalAlignment="Top" Width="8" Height="2" />
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="452*"/>
+            <RowDefinition Height="59*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Label   FontSize="20" Content="Choississez les droits de cet utilisateur" HorizontalAlignment="Center" Margin="212,10,212,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="3"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="2" Margin="0,0,0,10">
+
+            <telerik:RadButton Content="Valider" Height="33" HorizontalAlignment="Left" x:Name="button1" VerticalAlignment="Top" Width="76" Click="btnEnregistrer_Click" Margin="0,0,5,0" />
+            <telerik:RadButton Content="Annuler" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Click="btnAnnuler_Click" Margin="5,0,0,0" />
+
+        </StackPanel>
+
+        <telerik:RadTreeView x:Name="radTreeView" ItemTemplate="{StaticResource ItemTemplate}" ItemContainerStyleSelector="{StaticResource myContainerStyleSelector}" IsOptionElementsEnabled="False" Margin="0,7,0,10" ExpanderStyle="{StaticResource ExpanderStyle}" IsLineEnabled="True" SelectionMode="Extended" Checked="radTreeView_Checked" Unselected="radTreeView_Unselected" HorizontalAlignment="Left" Width="358" Grid.Row="1"/>
+        <ListBox x:Name="lstDroit" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="435" Margin="10,7,0,0" VerticalAlignment="Top" Width="351" Grid.Column="2" Grid.Row="1"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Grid.Row="1">
+            <telerik:RadButton x:Name="btnAdd" Content="+" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="30" Margin="0,0,0,10" Click="btnAdd_Click"/>
+            <telerik:RadButton x:Name="btnRemove" Content="-" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="30" Margin="0,10,0,0" Click="btnRemove_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

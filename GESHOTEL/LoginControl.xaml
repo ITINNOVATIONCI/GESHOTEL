@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="GESHOTEL.LoginControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:w="clr-namespace:GESHOTEL.COMMON"
+        Loaded="UserControl_Loaded_1" Height="259" Width="458" KeyDown="Grid_KeyDown_1">
+    <Grid Background="#FF09A6F7" VerticalAlignment="Center" HorizontalAlignment="Center" Height="170" Width="451" Margin="0,0,0,0" >
+        <Label   FontSize="10" Content="Login" Height="28" HorizontalAlignment="Left" Margin="32,30,0,0" VerticalAlignment="Top" Width="132" />
+        <TextBox TabIndex="1" x:Name="txtLogin" Text="Kignon" Height="23" HorizontalAlignment="Left" Margin="178,32,0,0" VerticalAlignment="Top" Width="215" KeyUp="txtLogin_KeyUp" />
+        <Label   FontSize="10" Content="Password" Height="28" HorizontalAlignment="Left" Margin="32,77,0,0" VerticalAlignment="Top" Width="132" />
+        <StackPanel>
+            <PasswordBox x:Name="txtPassword" TabIndex="2" HorizontalAlignment="Left" Margin="178,79,0,0" VerticalAlignment="Top" w:PasswordHelper.Attach="True" 
+         w:PasswordHelper.Password="{Binding Text, ElementName=plain, Mode=TwoWay}" 
+                 Width="215" Height="23" KeyUp="PasswordBox_KeyUp_1" />
+            <TextBlock Padding="10,0" x:Name="plain" Text="Kignon" Visibility="Hidden" />
+        </StackPanel>
+        <telerik:RadButton   Content="Annuler" Height="32" HorizontalAlignment="Left" Margin="321,120,0,0" VerticalAlignment="Top" Width="72" Name="btnAnnuler" Click="btnAnnuler_Click" />
+        <telerik:RadButton   Content="Valider" Height="32" HorizontalAlignment="Left" Margin="242,120,0,0" VerticalAlignment="Top" Width="62" Name="btnValider" Click="btnValider_Click" />
+    </Grid>
+</UserControl>

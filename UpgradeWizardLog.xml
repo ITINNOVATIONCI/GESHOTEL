@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event action="Analyze" type="Success" name="Assembly References" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\GESRESTO.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="GESRESTO" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\GESRESTO.csproj" />
+  <event action="Analyze" type="Success" name="GESRESTO" path="c:\Users\Mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO.sln" />
+  <event action="Backup" type="Success" name="GESRESTO" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\GESRESTO.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\GESRESTO.csproj" />
+  <event action="Upgrade" type="Success" name="GESRESTO" path="c:\users\mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO\GESRESTO.csproj" />
+  <event action="Upgrade" type="Success" name="GESRESTO" path="c:\Users\Mathieu\documents\visual studio 2015\Projects\GESRESTO\GESRESTO.sln" />
+</log>

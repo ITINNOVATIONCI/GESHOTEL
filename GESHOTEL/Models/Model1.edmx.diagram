@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6440c79fbcfd41cca90e2e54f992c68d" Name="Diagram1">
+        <EntityTypeShape EntityType="GESHOTELModel.Amenities" Width="1.5" PointX="1.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.AmenitiesTypes" Width="1.5" PointX="1.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.BI" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.CancelationRules" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Cancelations" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Categories" Width="1.5" PointX="9" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.CategorieSchedule" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Chambres" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Clients" Width="1.5" PointX="3.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Communes" Width="1.5" PointX="1.5" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Comptes" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Conditionnements" Width="1.5" PointX="9" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.DetailPaiements" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.DetailTransactions" Width="1.5" PointX="13.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.DetatilDepenses" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Employees" Width="1.5" PointX="6" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.EtatOperation" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Fournisseurs" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.HotelInfo" Width="1.5" PointX="6.75" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.IDTypes" Width="1.5" PointX="1.5" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.MethodePaiements" Width="1.5" PointX="8.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Nationalités" Width="1.5" PointX="1.5" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.OperationRules" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Parametres" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Pays" Width="1.5" PointX="1.5" PointY="42.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.PrixChambres" Width="1.5" PointX="5.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Produits" Width="1.5" PointX="11.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Promotions" Width="1.5" PointX="3.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Quartiers" Width="1.5" PointX="1.5" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Raisons" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.RaisonType" Width="1.5" PointX="1.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Reductions" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Registres" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Reservations" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.ReservationTypes" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Rubriques" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Rules" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Sous_Rubriques" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.TimeMarkers" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.TranReductions" Width="1.5" PointX="10.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Transactions" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.TypeChambres" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.TypeEmployees" Width="1.5" PointX="3.75" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.TypePrix" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GESHOTELModel.Villes" Width="1.5" PointX="1.5" PointY="48.5" IsExpanded="true" />
+        <AssociationConnector Association="GESHOTELModel.FK_Amenities_AmenitiesTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Cancelations_CancelationRules" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Produits_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Chambres_TypeChambres" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_Chambres" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_Communes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_IDTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_Nationalités" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_Pays" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_Quartiers" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Clients_Villes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_HotelInfo_Communes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Produits_Conditionnements" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetailPaiements_MethodePaiements" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetailPaiements_Transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetailTransactions_Produits" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetailTransactions_Transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetatilDepenses_Sous_Rubriques" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_DetatilDepenses_Transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Employees_TypeEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Transactions_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Transactions_Fournisseurs" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_HotelInfo_Pays" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_HotelInfo_Quartiers" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_HotelInfo_Villes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_OperationRules_Reductions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_OperationRules_ReservationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_OperationRules_Rules" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_OperationRules_TypeChambres" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_PrixChambres_TypeChambres" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_TypePrix_TypeChambre_TypePrix" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_Promotions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Raisons_RaisonType" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_Raisons" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_TranReductions_Reductions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_ReservationType" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Transactions_Reservations" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_TypePrix_ReservationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_Sous_Rubriques_Rubriques" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_TranReductions_Rules" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.FK_TranReductions_Transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="GESHOTELModel.TypeChambreAmenities" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GESHOTELModel.Permissions" Width="1.5" PointX="15.375" PointY="1" />
+        <EntityTypeShape EntityType="GESHOTELModel.Utilisateurs" Width="1.5" PointX="17.625" PointY="1.5" />
+        <AssociationConnector Association="GESHOTELModel.fk_Permissions_Permissions" />
+        <AssociationConnector Association="GESHOTELModel.HasPermission" />
+        <AssociationConnector Association="GESHOTELModel.FK_Reservations_TypeChambres" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

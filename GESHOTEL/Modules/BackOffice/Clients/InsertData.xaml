@@ -1,0 +1,67 @@
+﻿<Window      x:Class="GESHOTEL.ClientsModules.InsertData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             Title="Module de Clients" Width="923" Background="White" Height="565" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="lblMessageError" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="14" TextDecorations="Underline" Foreground="#FFFF0023" TextWrapping="Wrap" Opacity="0.75" Margin="3,4,3,3" Height="40" Grid.ColumnSpan="10"/>
+        <Border HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Bottom" Margin="0" Grid.Row="20" BorderBrush="#FF09A6F7" BorderThickness="0,3,0,0" Grid.ColumnSpan="10">
+            <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <telerik:RadButton x:Name="btnValider" ToolTip="Valider" Tag="Valider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="0,0,20,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnValider_Click">
+                    <Image Source="/Images/Navigation/Submit-01.png" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+                <telerik:RadButton x:Name="btnAnnuler" ToolTip="Annuler" Tag="Annuler" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="20,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnAnnuler_Click">
+                    <Image Source="/Images/Navigation/Cancel.png" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+            </StackPanel>
+        </Border>
+
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
+            <Grid Visibility="Visible">
+                <Label Content="Nom" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="29,47,0,0" VerticalAlignment="Top" Width="119" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="179,47,0,0" Name="textBox1" Text="{Binding SelectedData.Noms, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="0" />
+                <Label Content="Sexe" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="32,155,0,0" VerticalAlignment="Top" Width="119" />
+                <Label Content="pays" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="32,338,0,0" VerticalAlignment="Top" Width="119" />
+                <Label Content="Ville" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="32,381,0,0" VerticalAlignment="Top" Width="119" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="633,153,0,0" Name="textBox5" Text="{Binding SelectedData.Addresse, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="11" />
+                <Label Content="Fax" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,282,0,0" VerticalAlignment="Top" Width="119" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="633,283,0,0" Name="textBox6" Text="{Binding SelectedData.Fax, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="14" />
+                <Label Content="Email" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,330,0,0" VerticalAlignment="Top" Width="128" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="633,330,0,0" Name="textBox7" Text="{Binding SelectedData.Email, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="15" />
+                <Label Content="date de naissance" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="29,202,0,0" VerticalAlignment="Top" Width="150" />
+                <Label Content="Nationalite" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="32,295,0,0" VerticalAlignment="Top" Width="119" />
+                <Label Content="Lieu de naissance" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="29,252,0,0" VerticalAlignment="Top" Width="150" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="179,253,0,0" Name="textBox10" Text="{Binding SelectedData.LieuNaissance, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="5" />
+                <Label Content="Addresse" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,153,0,0" VerticalAlignment="Top" Width="119" />
+                <Label Content="Telephone" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,195,0,0" VerticalAlignment="Top" Width="119" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="633,196,0,0" Name="textBox12" Text="{Binding SelectedData.Telephone, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="12" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="633,238,0,0" Name="textBox13" Text="{Binding SelectedData.Mobile, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="13" />
+                <Label Content="mobile" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,238,0,0" VerticalAlignment="Top" Width="119" />
+                <RadioButton Content="Masculin" Height="16" HorizontalAlignment="Left" Margin="184,155,0,0" x:Name="rdMasc" VerticalAlignment="Top" TabIndex="2" />
+                <RadioButton Content="Feminin" Height="16" HorizontalAlignment="Right" Margin="0,155,562,0" x:Name="rdFem" VerticalAlignment="Top" TabIndex="3" />
+                <telerik:RadComboBox ItemsSource="{Binding AllPays}" HorizontalAlignment="Left"  Margin="179,340,0,0" Name="rcbPays" VerticalAlignment="Top" Width="220" IsEditable="True" SelectedItem="{Binding SelectedData.Pays}" DisplayMemberPath="Libelle" TabIndex="7">
+                </telerik:RadComboBox>
+                <telerik:RadComboBox ItemsSource="{Binding AllVilles}" HorizontalAlignment="Left" Margin="179,383,0,0" Name="rcbVilles" SelectedItem="{Binding SelectedData.Villes}" VerticalAlignment="Top" Width="220" IsEditable="True" IsEnabled="True" DisplayMemberPath="Libelle" TabIndex="8">
+                </telerik:RadComboBox>
+                <telerik:RadComboBox ItemsSource="{Binding AllNationalités}" SelectedItem="{Binding SelectedData.Nationalités}" HorizontalAlignment="Left" Margin="179,297,0,0" Name="rcbNationalite" VerticalAlignment="Top" Width="220" IsFilteringEnabled="False" IsEditable="True" DisplayMemberPath="Libelle" TabIndex="6">
+                </telerik:RadComboBox>
+                <telerik:RadDatePicker SelectedDate="{Binding SelectedData.DateNaissance}"  HorizontalAlignment="Left" Margin="179,202,0,0" Name="radDatePicker1" VerticalAlignment="Top" Width="211" TabIndex="4" />
+                <Label Content="Prénoms" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="29,98,0,0" VerticalAlignment="Top" Width="119" />
+                <TextBox FontFamily="Perpetua Titling MT" Height="23" HorizontalAlignment="Left" Margin="179,100,0,0" x:Name="textBox1_Copy" Text="{Binding SelectedData.Prenoms, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="220" TabIndex="1" />
+                <Label Content="Commune" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,54,0,0" VerticalAlignment="Top" Width="119" />
+                <telerik:RadComboBox ItemsSource="{Binding AllCommunes}" HorizontalAlignment="Left" Margin="633,56,0,0" x:Name="rcbCommune" SelectedItem="{Binding SelectedData.Communes}" VerticalAlignment="Top" Width="220" IsEditable="True" IsEnabled="True" DisplayMemberPath="Libelle" TabIndex="9"/>
+                <Label Content="Quartier" FontFamily="Perpetua Titling MT" HorizontalAlignment="Left" Margin="486,96,0,0" VerticalAlignment="Top" Width="119" />
+                <telerik:RadComboBox ItemsSource="{Binding AllQuartiers}" HorizontalAlignment="Left" Margin="633,98,0,0" x:Name="rcbQuartier" SelectedItem="{Binding SelectedData.Quartiers}" VerticalAlignment="Top" Width="220" IsEditable="True" IsEnabled="True" DisplayMemberPath="Libelle" TabIndex="10"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

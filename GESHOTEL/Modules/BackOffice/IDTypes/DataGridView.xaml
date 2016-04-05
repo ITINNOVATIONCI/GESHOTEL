@@ -1,0 +1,115 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:GESHOTEL.IDTypesModules.ViewModels"
+        xmlns:DataFilter="clr-namespace:Telerik.Windows.Controls.Data.DataFilter;assembly=Telerik.Windows.Controls.Data" x:Class="GESHOTEL.IDTypesModules.DataGridView"
+        mc:Ignorable="d" 
+        d:DesignHeight="300" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:IDTypesViewModel x:Key="IDTypesViewModel" />
+        <telerik:InvertedBooleanConverter x:Key="InverseBooleanConverter" />
+        <local:EntityObjectToInt x:Key="EntityObjectToInt" />
+        <!--EditorTemplate for the Name property.-->
+        <DataTemplate x:Key="dateFilterEditorTemplate">
+            <telerik:RadDateTimePicker SelectedValue="{Binding Value, FallbackValue=null, Mode=TwoWay}" MinWidth="100" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComboBoxEditor">
+            <telerik:RadComboBox FontFamily="Perpetua Titling MT" SelectedValue="{Binding Value, FallbackValue=null, Mode=TwoWay}"
+        		MinWidth="100" />
+        </DataTemplate>
+
+        <local:MyEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+            <local:MyEditorTemplateSelector.EditorTemplateRules>
+            </local:MyEditorTemplateSelector.EditorTemplateRules>
+        </local:MyEditorTemplateSelector>
+
+        <DataTemplate x:Key="MyTemplate">
+            <StackPanel>
+                <telerik:DataFormDataField Label='Identifiant' DataMemberBinding='{Binding IdIDTypes, Mode=TwoWay}' />
+                <!--<telerik:DataFormDataField Label='Prenoms' DataMemberBinding='{Binding Prenoms, Mode=TwoWay}' />-->
+                <telerik:DataFormDataField Label='Nom' DataMemberBinding='{Binding Nom, Mode=TwoWay}' />
+                <!--<telerik:DataFormDataField Label='Cel' DataMemberBinding='{Binding Cel, Mode=TwoWay}' />
+                <telerik:DataFormDataField Label='Email' DataMemberBinding='{Binding Email, Mode=TwoWay}' />
+                <telerik:DataFormDataField DataMemberBinding='{Binding Plafond}' Label='Plafond de Crédit'/>-->
+
+            </StackPanel>
+        </DataTemplate>
+
+        <local:Types x:Key="Types" />
+
+    </UserControl.Resources>
+    <Grid Name="Main" DataContext="{StaticResource IDTypesViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="199*"/>
+        </Grid.RowDefinitions>
+
+        <telerik:RadExpander VerticalContentAlignment="Top"
+			telerik:AnimationManager.IsAnimationEnabled="True">
+            <telerik:RadExpander.Header>
+                <TextBlock Text="Filtre" />
+            </telerik:RadExpander.Header>
+            <telerik:RadDataFilter x:Name="radDataFilter" 
+				Source="{Binding AllData}"
+				EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}"
+				MinHeight="200" MaxHeight="250"
+				Margin="1" AutoGenerateItemPropertyDefinitions="False">
+                <telerik:RadDataFilter.ItemPropertyDefinitions>
+                    <DataFilter:ItemPropertyDefinition DisplayName='Désignation' PropertyName='Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
+                </telerik:RadDataFilter.ItemPropertyDefinitions>
+            </telerik:RadDataFilter>
+
+        </telerik:RadExpander>
+
+        <Grid x:Name="mainGrid" Grid.Row="1">
+            <Grid Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="96*" />
+                </Grid.RowDefinitions>
+
+                <telerik:RadDataPager x:Name="raddatapager" Grid.Row="0" 
+					PageSize="20" Margin="2"
+					Source="{Binding FilteredSource, ElementName=radDataFilter}" />
+                <StackPanel Orientation="Horizontal" Margin="0,2,118,2" HorizontalAlignment="Right">
+                    <TextBlock Text="PageSize:"  Margin="0,7,0,5"/>
+                    <telerik:RadNumericUpDown Value="{Binding PageSize, ElementName=raddatapager, Mode=TwoWay}"
+										  IsInteger="True"
+										  Minimum="10" Margin="0,5,0,5" />
+                </StackPanel>
+                <telerik:RadGridView x:Name="dataGrid" 
+					ShowGroupPanel="True"
+					RowIndicatorVisibility="Collapsed"
+					AutoGenerateColumns="False"
+					CanUserFreezeColumns="True"
+					IsBusy="{Binding IsBusy}"
+					Grid.Row="1"
+					Margin="2" ItemsSource="{Binding FilteredSource, ElementName=radDataFilter}" FrozenColumnCount="0" SelectedItem="{Binding SelectedData}" >
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Libelle}' Header='DESIGNATION' Width='1200' IsReadOnly='True' />
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </Grid>
+            <StackPanel Grid.Column="2" Margin="0,38,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                <telerik:RadButton x:Name="btnRefresh" ToolTip="Rafraichir" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnRefresh_Click">
+                    <Image Source="/Images/CRUD/Reload.png" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+                <telerik:RadButton x:Name="btnAdd" ToolTip="Ajouter" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnAdd_Click" Visibility="Visible">
+                    <Image Source="/Images/CRUD/Add.png" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+                <telerik:RadButton x:Name="btnEdit" ToolTip="Modifier" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnEdit_Click" Visibility="Visible">
+                    <Image Source="/Images/CRUD/Edit.png" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+                <telerik:RadButton x:Name="btnDelete" ToolTip="Supprimer" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnDelete_Click" Visibility="Visible">
+                    <Image Source="/Images/CRUD/Minus.png" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </telerik:RadButton>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="19.6000014130274cm" Name="Balance" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="GESHOTEL" SelectCommand="SELECT        DateTransaction, TypeTransaction, SUM(MontantClient) AS MontantClient, SUM(MontantFournisseur) AS MontantFournisseur&#xD;&#xA;FROM            dbo.ListeTransactions&#xD;&#xA;WHERE        (CONVERT(DATE, DateTransaction) &gt;= @Debut) AND (CONVERT(DATE, DateTransaction) &lt;= @Fin)&#xD;&#xA;GROUP BY DateTransaction, TypeTransaction" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Date" Name="@Debut">
+          <Value>
+            <String>= Parameters.Debut.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="Date" Name="@Fin">
+          <Value>
+            <String>= Parameters.Fin.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+    <SqlDataSource ConnectionString="GESHOTEL" SelectCommand="SELECT        NoTransaction, DateTransaction, Client, Fournisseur, Monnaie, ModePaiement, Utilisateur, Montant, Valeur, MontantTotal, MontantPaye, MontantRestant, TypeTransaction, Etat, Prenoms, idClients, &#xD;&#xA;                         idFournisseurs, idModeReglements, idRubrique, idUtilisateur&#xD;&#xA;FROM            dbo.ListeTransactions&#xD;&#xA;WHERE        (TypeTransaction = 'FOURNISSEUR') and (CONVERT(DATE, DateTransaction) &gt;= @Debut) AND (CONVERT(DATE, DateTransaction) &lt;= @Fin)" Name="sqlDataSource2">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Date" Name="@Debut">
+          <Value>
+            <String>= Parameters.Debut.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="Date" Name="@Fin">
+          <Value>
+            <String>= Parameters.Fin.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="3.00000010093053cm" Name="pageHeader">
+      <Items>
+        <TextBox Width="6.4cm" Height="0.999999899069471cm" Left="0.700000050465264cm" Top="0.499999949534735cm" Value="BALANCE" Name="textBox1">
+          <Style BackgroundColor="238, 236, 225" TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.99249902388456cm" Height="0.500000178813934cm" Left="0.660417519319365cm" Top="2cm" Value="PERIODE :" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.33417548023965cm" Height="0.500000178813934cm" Left="2.65311640671168cm" Top="2cm" Value="= Parameters.Debut.Value" Format="{0:d}" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.912707052066102cm" Height="0.500000178813934cm" Left="4.98729072685625cm" Top="2cm" Value="AU :" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.33417558670044cm" Height="0.500000178813934cm" Left="5.89999984860421cm" Top="2cm" Value="= Parameters.Fin.Value" Format="{0:d}" Name="textBox7">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <PageFooterSection Height="1.10583343132006cm" Name="pageFooter">
+      <Items>
+        <TextBox Width="7.82770833832274cm" Height="1.00000010093053cm" Left="0.0529166651947631cm" Top="0.0529166651947631cm" Value="=NOW()" Name="currentTimeTextBox" StyleName="PageInfo" />
+        <TextBox Width="11.666357968589cm" Height="1.00000010093053cm" Left="7.93354166871227cm" Top="0.0529166651947631cm" Value="=PageNumber" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right" />
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="3.49999984860421cm" Name="reportHeader">
+      <Items>
+        <TextBox Width="2.79999974706767cm" Height="0.500000178813934cm" Left="0.700000050465264cm" Top="0.500000151395794cm" Value="Total Acheter :" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.79999971389771cm" Height="0.500000178813934cm" Left="0.700000050465264cm" Top="1.6cm" Value="Total Vendu :" Name="textBox3">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.79999971389771cm" Height="0.500000178813934cm" Left="3.50020009477377cm" Top="0.500000151395794cm" Value="= Sum(Fields.MontantClient)" Format="{0:N0}" Name="textBox8">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.79999971389771cm" Height="0.500000178813934cm" Left="3.50020009477377cm" Top="1.6cm" Value="= Sum(Fields.MontantFournisseur)" Format="{0:N0}" Name="textBox9">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.79999971389771cm" Height="0.500000178813934cm" Left="3.50020009477377cm" Top="2.59999989906947cm" Value="=Sum(Fields.MontantFournisseur) - Sum(Fields.MontantClient)" Format="{0:N0}" Name="textBox10">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.79999971389771cm" Height="0.500000178813934cm" Left="0.695616839451321cm" Top="2.59999989906947cm" Value="Benefice :" Name="textBox11">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="1.2585487905747cm" Name="reportFooter">
+      <Style Visible="False" />
+    </ReportFooterSection>
+    <DetailSection Height="1.00000010093052cm" Name="detail">
+      <Style Visible="False" />
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="7mm" Right="7mm" Top="5mm" Bottom="5mm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <ReportParameters>
+    <ReportParameter Name="Debut" Type="DateTime" Text="Date de Debut" Visible="True" AutoRefresh="True">
+      <Value>
+        <String>01-10-2015</String>
+      </Value>
+    </ReportParameter>
+    <ReportParameter Name="Fin" Type="DateTime" Text="Date de Fin" Visible="True" AutoRefresh="True">
+      <Value>
+        <String>04-11-2015</String>
+      </Value>
+    </ReportParameter>
+  </ReportParameters>
+</Report>
