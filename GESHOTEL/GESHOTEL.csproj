@@ -415,6 +415,28 @@
     <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\MyEditorTemplateSelector.cs" />
     <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\Types.cs" />
     <Compile Include="Modules\Administrations\UtilisateursModules\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Amenities\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Amenities\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Amenities\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Amenities\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Amenities\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Amenities\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Amenities\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Chambres\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Chambres\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Chambres\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Chambres\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Chambres\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Chambres\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Chambres\ViewModels\ViewModel.cs" />
     <Compile Include="Modules\BackOffice\Clients\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
@@ -448,17 +470,28 @@
     <Compile Include="Modules\BackOffice\Communes\ViewModels\MyEditorTemplateSelector.cs" />
     <Compile Include="Modules\BackOffice\Communes\ViewModels\Types.cs" />
     <Compile Include="Modules\BackOffice\Communes\ViewModels\ViewModel.cs" />
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\DataGridView.xaml.cs">
+    <Compile Include="Modules\BackOffice\Conditionnements\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\InsertData.xaml.cs">
+    <Compile Include="Modules\BackOffice\Conditionnements\InsertData.xaml.cs">
       <DependentUpon>InsertData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\EditorTemplateRule.cs" />
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\EntityObjectToInt.cs" />
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\MyEditorTemplateSelector.cs" />
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\Types.cs" />
-    <Compile Include="Modules\BackOffice\IDTypes\Conditionnements\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Conditionnements\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Conditionnements\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Conditionnements\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Conditionnements\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Conditionnements\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\HotelInfo\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\HotelInfo\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\HotelInfo\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\HotelInfo\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\HotelInfo\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\HotelInfo\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\HotelInfo\ViewModels\ViewModel.cs" />
     <Compile Include="Modules\BackOffice\IDTypes\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
@@ -514,6 +547,17 @@
     <Compile Include="Modules\BackOffice\Produits\ViewModels\MyEditorTemplateSelector.cs" />
     <Compile Include="Modules\BackOffice\Produits\ViewModels\Types.cs" />
     <Compile Include="Modules\BackOffice\Produits\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Promotions\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Promotions\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Promotions\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Promotions\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Promotions\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Promotions\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Promotions\ViewModels\ViewModel.cs" />
     <Compile Include="Modules\BackOffice\Quartiers\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
@@ -547,6 +591,17 @@
     <Compile Include="Modules\BackOffice\RaisonType\ViewModels\MyEditorTemplateSelector.cs" />
     <Compile Include="Modules\BackOffice\RaisonType\ViewModels\Types.cs" />
     <Compile Include="Modules\BackOffice\RaisonType\ViewModels\ViewModel.cs" />
+    <Compile Include="Modules\BackOffice\Reductions\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Reductions\InsertData.xaml.cs">
+      <DependentUpon>InsertData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BackOffice\Reductions\ViewModels\EditorTemplateRule.cs" />
+    <Compile Include="Modules\BackOffice\Reductions\ViewModels\EntityObjectToInt.cs" />
+    <Compile Include="Modules\BackOffice\Reductions\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\BackOffice\Reductions\ViewModels\Types.cs" />
+    <Compile Include="Modules\BackOffice\Reductions\ViewModels\ViewModel.cs" />
     <Compile Include="Modules\BackOffice\ReservationTypes\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
@@ -681,6 +736,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Modules\BackOffice\Amenities\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Amenities\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Chambres\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Chambres\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Modules\BackOffice\Clients\DataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -705,11 +776,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Modules\BackOffice\IDTypes\Conditionnements\DataGridView.xaml">
+    <Page Include="Modules\BackOffice\Conditionnements\DataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Modules\BackOffice\IDTypes\Conditionnements\InsertData.xaml">
+    <Page Include="Modules\BackOffice\Conditionnements\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\HotelInfo\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\HotelInfo\InsertData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -753,6 +832,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Modules\BackOffice\Promotions\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Promotions\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Modules\BackOffice\Quartiers\DataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -774,6 +861,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Modules\BackOffice\RaisonType\InsertData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Reductions\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\BackOffice\Reductions\InsertData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

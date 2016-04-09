@@ -12,39 +12,25 @@ using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.Data.DataForm;
 using Telerik.Windows.Data;
 
-namespace GESHOTEL.ProduitsModules.ViewModels
+namespace GESHOTEL.HotelInfoModules.ViewModels
 {
-    public class ProduitsViewModel : ObservableObject
+    public class HotelInfoViewModel : ObservableObject
     {
 
         #region Members
         public GESHOTELEntities model;
         private BackgroundWorker worker = new BackgroundWorker();
-        ObservableCollection<Produits> _data = new ObservableCollection<Produits>();
-        ObservableCollection<Conditionnements> _allConditionnements = new ObservableCollection<Conditionnements>();
-        ObservableCollection<Categories> _allCategories = new ObservableCollection<Categories>();
+        ObservableCollection<HotelInfo> _data = new ObservableCollection<HotelInfo>();
+        ObservableCollection<Pays> _Allpays = new ObservableCollection<Pays>();
+        ObservableCollection<Villes> _Allvilles = new ObservableCollection<Villes>();
 
-        Produits _selectedData = new Produits();
+        HotelInfo _selectedData = new HotelInfo();
         bool _isBusy;
         int _count = 0;
         #endregion
 
         #region Properties
-     
-        public ObservableCollection<Conditionnements> AllConditionnements
-        {
-            get
-            {
-                return _allConditionnements;
-            }
-            set
-            {
-                _allConditionnements = value;
-                RaisePropertyChanged("AllConditionnements");
-            }
-        }
-
-        public ObservableCollection<Produits> AllData
+        public ObservableCollection<HotelInfo> AllData
         {
             get
             {
@@ -57,19 +43,33 @@ namespace GESHOTEL.ProduitsModules.ViewModels
             }
         }
 
-        public ObservableCollection<Categories> AllCategories
+        public ObservableCollection<Villes> Allvilles
         {
             get
             {
-                return _allCategories;
+                return _Allvilles;
             }
             set
             {
-                _allCategories = value;
-                RaisePropertyChanged("AllCategories");
+                _Allvilles = value;
+                RaisePropertyChanged("Allvilles");
             }
         }
-        public Produits SelectedData
+
+        public ObservableCollection<Pays> Allpays
+        {
+            get
+            {
+                return _Allpays;
+            }
+            set
+            {
+                _Allpays = value;
+                RaisePropertyChanged("Allpays");
+            }
+        }
+
+        public HotelInfo SelectedData
         {
             get
             {
@@ -81,7 +81,6 @@ namespace GESHOTEL.ProduitsModules.ViewModels
                 RaisePropertyChanged("SelectedData");
             }
         }
-
 
         public bool IsBusy
         {
@@ -99,7 +98,7 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         #endregion
 
         #region Construction
-        public ProduitsViewModel()
+        public HotelInfoViewModel()
         {
             worker.DoWork += this.WorkerDoWork;
             worker.RunWorkerCompleted += WorkerRunWorkerCompleted;
@@ -148,32 +147,21 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         {
 
             model = new GESHOTELEntities();
-                        var resultat = from res in model.Produits
+
+            var resultat = from res in model.HotelInfo
                            where res.Etat == "ACTIF"
                            select res;
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
 
-            model = new GESHOTELEntities();
-            var resultat1 = from res in model.Categories
-                           where res.Etat == "ACTIF"
-                           select res;
-            AllCategories = new ObservableCollection<Categories>(resultat1.ToList());
-
-            model = new GESHOTELEntities();
-            var resultat2 = from res in model.Conditionnements
-                            where res.Etat == "ACTIF"
-                           select res;
-            AllConditionnements = new ObservableCollection<Conditionnements>(resultat2.ToList());
+            AllData = new ObservableCollection<HotelInfo>(resultat.ToList());
 
         }
 
         public void CancelChanged()
         {
 
-            var resultat = from res in model.Produits
+            var resultat = from res in model.HotelInfo
                            select res;
-
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
+                        AllData = new ObservableCollection<HotelInfo>(resultat.ToList());
 
         }
 

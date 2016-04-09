@@ -90,7 +90,9 @@
 					Grid.Row="1"
 					Margin="2" ItemsSource="{Binding FilteredSource, ElementName=radDataFilter}" FrozenColumnCount="0" SelectedItem="{Binding SelectedData}" >
                     <telerik:RadGridView.Columns>
-                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Libelle}' Header='Sous_Rubriques' Width='1200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Libelle}' Header='DESIGNATION' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Rubriques.Libelle}' Header='RUBRIQUE' Width='1200' IsReadOnly='True' />
+
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>
             </Grid>

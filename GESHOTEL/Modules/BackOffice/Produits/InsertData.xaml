@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
-             Title="Module de Produits" Width="431" Background="White" Height="216.473" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
+             Title="Module de Produits" Width="883.315" Background="White" Height="277.509" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="ConditionnementsSearchAutoComplete">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Libelle}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="CategoriesSearchAutoComplete">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Libelle}" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="412*"/>
+            <ColumnDefinition Width="385*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,8 +37,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="lblMessageError" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="14" TextDecorations="Underline" Foreground="#FFFF0023" TextWrapping="Wrap" Opacity="0.75" Margin="3,4,3,3" Height="40" Grid.ColumnSpan="10"/>
-        <Border HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Bottom" Margin="0" Grid.Row="20" BorderBrush="#FF09A6F7" BorderThickness="0,3,0,0" Grid.ColumnSpan="10">
+       
+        <TextBlock x:Name="lblMessageError" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="14" TextDecorations="Underline" Foreground="#FFFF0023" TextWrapping="Wrap" Opacity="0.75" Margin="3,4,3,3" Height="40" Grid.ColumnSpan="2"/>
+        <Border HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Bottom" Margin="0" Grid.Row="10" BorderBrush="#FF09A6F7" BorderThickness="0,3,0,0" Grid.ColumnSpan="2">
             <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <telerik:RadButton x:Name="btnValider" ToolTip="Valider" Tag="Valider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="0,0,20,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnValider_Click">
                     <Image Source="/Images/Navigation/Submit-01.png" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -32,10 +50,44 @@
             </StackPanel>
         </Border>
 
-        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
-                <TextBlock Width='120' Text='Produits :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBlock Width='120' Text='DENOMINATION :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
                 <TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
+            </StackPanel>
+        </Border>
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='2' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
+                <TextBlock Width='120' Text='REFERENCE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBox Text='{Binding SelectedData.Reference, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
+            </StackPanel>
+        </Border>
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='3' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
+                <TextBlock Width='120' Text='PRIX UNITAIRE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBox Text='{Binding SelectedData.PrixUnitaire, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
+            </StackPanel>
+        </Border>
+
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' Grid.Column="1" BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
+                <TextBlock Width='120' Text='STOCK :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <telerik:RadNumericUpDown Name="nupd" Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250' Value="{Binding SelectedData.Stock,Mode=TwoWay}" IsInteger="True"/>
+
+                <!--<TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>-->
+            </StackPanel>
+        </Border>
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='2' Grid.Column="1" BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
+                <TextBlock Width='120' Text='CONDITIONNEMENT :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <telerik:RadAutoCompleteBox  Name="rcbConditionnement" WatermarkContent="choississez le conditionnement" ItemsSource="{Binding AllConditionnements}" SelectedItem='{Binding SelectedData.Conditionnements, Mode=TwoWay}' DisplayMemberPath="Libelle" AutoCompleteMode="Suggest" TextSearchMode="Contains" DropDownItemTemplate="{StaticResource ConditionnementsSearchAutoComplete}" Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250' SelectionMode="Single"/>
+            </StackPanel>
+        </Border>
+        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='3' Grid.Column="1" BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan="2">
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
+                <TextBlock Width='120' Text='CATEGORIE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <telerik:RadAutoCompleteBox  Name="rcbCategorie" WatermarkContent="choississez la categorie" ItemsSource="{Binding AllCategories}" SelectedItem='{Binding SelectedData.Categories, Mode=TwoWay}' DisplayMemberPath="Libelle" AutoCompleteMode="Suggest" TextSearchMode="Contains" DropDownItemTemplate="{StaticResource CategoriesSearchAutoComplete}" Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250' SelectionMode="Single"/>
+                <!--<TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>-->
             </StackPanel>
         </Border>
 

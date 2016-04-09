@@ -1,6 +1,6 @@
 ﻿
 using GESHOTEL.Models;
-using GESHOTEL.ProduitsModules.ViewModels;
+using GESHOTEL.ChambresModules.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GESHOTEL.ProduitsModules
+namespace GESHOTEL.ChambresModules
 {
     /// <summary>
     /// Interaction logic for InsertData.xaml
@@ -24,7 +24,7 @@ namespace GESHOTEL.ProduitsModules
     public partial class InsertData : Window
     {
         string Etat = "";
-        ProduitsViewModel viewVM;
+        ChambresViewModel viewVM;
         string msg;
 
         public string Msg
@@ -41,7 +41,7 @@ namespace GESHOTEL.ProduitsModules
             set { errorMsg = value; }
         }
 
-        public InsertData(string etat, Produits ele, ProduitsViewModel view)
+        public InsertData(string etat, Chambres ele, ChambresViewModel view)
         {
             InitializeComponent();
 
@@ -51,12 +51,11 @@ namespace GESHOTEL.ProduitsModules
 
             if (etat == "AJOUT")
             {
-                this.Title = "Enregistrement d'un Produit";
-                nupd.Value = 0;
+                this.Title = "Enregistrement d'un Quartier";
             }
             else
             {
-                this.Title = "Modification d'un Produit";
+                this.Title = "Modification d'un Quartier";
             }
         }
 
@@ -64,52 +63,18 @@ namespace GESHOTEL.ProduitsModules
         {
             try
             {
-                ProduitsViewModel vm = this.DataContext as ProduitsViewModel;
-                Produits ent = vm.SelectedData;
+                ChambresViewModel vm = this.DataContext as ChambresViewModel;
+                Chambres ent = vm.SelectedData;
 
                 if (Etat == "AJOUT")
                 {
                     try
                     {
-                        GESHOTELEntities context = new GESHOTELEntities();
-                        var query = from res in context.Conditionnements
-                                    where res.Libelle == rcbConditionnement.SearchText && res.Etat == "ACTIF"
-                                    select res;
-                        if (query.Count() != 0)
-                        {
-
-                        }
-                            else
-                        {
-                        Conditionnements cd = new Conditionnements();
-                            cd.Etat = "ACTIF";
-                            cd.idHotel = 1;
-                            cd.Libelle = rcbCategorie.SearchText;
-                            viewVM.model.Conditionnements.Add(cd);
-                            ent.Conditionnements = cd;
-                        }
-
-                        var quer = from res in context.Categories
-                                    where res.Libelle == rcbCategorie.SearchText && res.Etat == "ACTIF"
-                                    select res;
-                        if (quer.Count() != 0)
-                        {
-                     
-                        }
-                        else
-                        {
-                            Categories cat = new Categories();
-                            cat.Etat = "ACTIF";
-                            cat.idHotel = 1;
-                            cat.Libelle = rcbCategorie.SearchText;
-                            viewVM.model.Categories.Add(cat);
-                            ent.Categories = cat;
-                        }
-
-
+                        
                         ent.Etat = "ACTIF";
+                        ent.EtatOperation = "LIBRE";
                         ent.idHotel = 1;
-                        viewVM.model.Produits.Add(ent);
+                        viewVM.model.Chambres.Add(ent);
                         viewVM.model.SaveChanges();
                          Msg = "OK";
                         this.Close();
@@ -129,13 +94,15 @@ namespace GESHOTEL.ProduitsModules
                     {
 
                         viewVM.model.SaveChanges();
-                         Msg = "OK";
+
+                        Msg = "OK";
                         this.Close();
 
                     }
                     catch (Exception ex)
                     {
-                       Msg = "Error";
+
+                        Msg = "Error";
                         ErrorMsg = ex.Message;
 
                     }
@@ -143,12 +110,13 @@ namespace GESHOTEL.ProduitsModules
             }
             catch (Exception)
             {
+
             }
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            ProduitsViewModel vehi = this.DataContext as ProduitsViewModel;
+            ChambresViewModel vehi = this.DataContext as ChambresViewModel;
             vehi.SelectedData = null;
 
             this.Close();

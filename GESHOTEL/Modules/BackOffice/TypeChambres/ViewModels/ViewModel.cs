@@ -21,6 +21,8 @@ namespace GESHOTEL.TypeChambresModules.ViewModels
         public GESHOTELEntities model;
         private BackgroundWorker worker = new BackgroundWorker();
         ObservableCollection<TypeChambres> _data = new ObservableCollection<TypeChambres>();
+        ObservableCollection<Amenities> _allamenities = new ObservableCollection<Amenities>();
+
         TypeChambres _selectedData = new TypeChambres();
         bool _isBusy;
         int _count = 0;
@@ -37,6 +39,19 @@ namespace GESHOTEL.TypeChambresModules.ViewModels
             {
                 _data = value;
                 RaisePropertyChanged("AllData");
+            }
+        }
+
+        public ObservableCollection<Amenities> AllAmenities
+        {
+            get
+            {
+                return _allamenities;
+            }
+            set
+            {
+                _allamenities = value;
+                RaisePropertyChanged("AllAmenities");
             }
         }
 
@@ -118,12 +133,16 @@ namespace GESHOTEL.TypeChambresModules.ViewModels
         {
 
             model = new GESHOTELEntities();
-
             var resultat = from res in model.TypeChambres
                            where res.Etat == "ACTIF"
                            select res;
-
             AllData = new ObservableCollection<TypeChambres>(resultat.ToList());
+
+            model = new GESHOTELEntities();
+            var resultat1 = from res in model.Amenities
+                           where res.Etat == "ACTIF"
+                           select res;
+            AllAmenities = new ObservableCollection<Amenities>(resultat1.ToList());
 
         }
 

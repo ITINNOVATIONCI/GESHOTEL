@@ -12,39 +12,23 @@ using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.Data.DataForm;
 using Telerik.Windows.Data;
 
-namespace GESHOTEL.ProduitsModules.ViewModels
+namespace GESHOTEL.AmenitiesModules.ViewModels
 {
-    public class ProduitsViewModel : ObservableObject
+    public class AmenitiesViewModel : ObservableObject
     {
 
         #region Members
         public GESHOTELEntities model;
         private BackgroundWorker worker = new BackgroundWorker();
-        ObservableCollection<Produits> _data = new ObservableCollection<Produits>();
-        ObservableCollection<Conditionnements> _allConditionnements = new ObservableCollection<Conditionnements>();
-        ObservableCollection<Categories> _allCategories = new ObservableCollection<Categories>();
-
-        Produits _selectedData = new Produits();
+        ObservableCollection<Amenities> _data = new ObservableCollection<Amenities>();
+        ObservableCollection<AmenitiesTypes> _AllAmenitiestype = new ObservableCollection<AmenitiesTypes>();
+        Amenities _selectedData = new Amenities();
         bool _isBusy;
         int _count = 0;
         #endregion
 
         #region Properties
-     
-        public ObservableCollection<Conditionnements> AllConditionnements
-        {
-            get
-            {
-                return _allConditionnements;
-            }
-            set
-            {
-                _allConditionnements = value;
-                RaisePropertyChanged("AllConditionnements");
-            }
-        }
-
-        public ObservableCollection<Produits> AllData
+        public ObservableCollection<Amenities> AllData
         {
             get
             {
@@ -56,20 +40,20 @@ namespace GESHOTEL.ProduitsModules.ViewModels
                 RaisePropertyChanged("AllData");
             }
         }
-
-        public ObservableCollection<Categories> AllCategories
+        public ObservableCollection<AmenitiesTypes> AllAmenitiestypes
         {
             get
             {
-                return _allCategories;
+                return _AllAmenitiestype;
             }
             set
             {
-                _allCategories = value;
-                RaisePropertyChanged("AllCategories");
+                _AllAmenitiestype = value;
+                RaisePropertyChanged("AllAmenitiestypes");
             }
         }
-        public Produits SelectedData
+
+        public Amenities SelectedData
         {
             get
             {
@@ -81,7 +65,6 @@ namespace GESHOTEL.ProduitsModules.ViewModels
                 RaisePropertyChanged("SelectedData");
             }
         }
-
 
         public bool IsBusy
         {
@@ -99,7 +82,7 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         #endregion
 
         #region Construction
-        public ProduitsViewModel()
+        public AmenitiesViewModel()
         {
             worker.DoWork += this.WorkerDoWork;
             worker.RunWorkerCompleted += WorkerRunWorkerCompleted;
@@ -148,32 +131,26 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         {
 
             model = new GESHOTELEntities();
-                        var resultat = from res in model.Produits
+                        var resultat = from res in model.Amenities
                            where res.Etat == "ACTIF"
                            select res;
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
+             AllData = new ObservableCollection<Amenities>(resultat.ToList());
 
             model = new GESHOTELEntities();
-            var resultat1 = from res in model.Categories
+            var resultat1 = from res in model.AmenitiesTypes
                            where res.Etat == "ACTIF"
                            select res;
-            AllCategories = new ObservableCollection<Categories>(resultat1.ToList());
-
-            model = new GESHOTELEntities();
-            var resultat2 = from res in model.Conditionnements
-                            where res.Etat == "ACTIF"
-                           select res;
-            AllConditionnements = new ObservableCollection<Conditionnements>(resultat2.ToList());
+            AllAmenitiestypes = new ObservableCollection<AmenitiesTypes>(resultat1.ToList());
 
         }
 
         public void CancelChanged()
         {
 
-            var resultat = from res in model.Produits
+            var resultat = from res in model.Amenities
                            select res;
 
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
+            AllData = new ObservableCollection<Amenities>(resultat.ToList());
 
         }
 

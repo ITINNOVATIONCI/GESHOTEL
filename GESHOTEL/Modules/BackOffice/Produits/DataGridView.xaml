@@ -59,8 +59,11 @@
 				MinHeight="200" MaxHeight="250"
 				Margin="1" AutoGenerateItemPropertyDefinitions="False">
                 <telerik:RadDataFilter.ItemPropertyDefinitions>
-                    <DataFilter:ItemPropertyDefinition DisplayName='Désignation' PropertyName='Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
-                </telerik:RadDataFilter.ItemPropertyDefinitions>
+                    <DataFilter:ItemPropertyDefinition DisplayName='DENOMINATION' PropertyName='Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
+                    <DataFilter:ItemPropertyDefinition DisplayName='REFERENCE' PropertyName='Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
+                    <DataFilter:ItemPropertyDefinition DisplayName='TYPE PRODUIT' PropertyName='Categories.Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
+                    <DataFilter:ItemPropertyDefinition DisplayName='CONDITIONNNEMENTS' PropertyName='Conditionnements.Libelle'  PropertyType='{Binding String, Source={StaticResource Types}}' />
+                  </telerik:RadDataFilter.ItemPropertyDefinitions>
             </telerik:RadDataFilter>
 
         </telerik:RadExpander>
@@ -90,8 +93,13 @@
 					Grid.Row="1"
 					Margin="2" ItemsSource="{Binding FilteredSource, ElementName=radDataFilter}" FrozenColumnCount="0" SelectedItem="{Binding SelectedData}" >
                     <telerik:RadGridView.Columns>
-                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Libelle}' Header='Produits' Width='1200' IsReadOnly='True' />
-                    </telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Libelle}' Header='DENOMINATION' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Reference}' Header='REFERENCE' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Categories.Libelle}' Header='TYPE PRODUIT' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding PrixUnitaire}' Header='PRIX UNIQUE' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Stock}' Header='STOCK' Width='200' IsReadOnly='True' />
+                        <telerik:GridViewDataColumn DataMemberBinding='{Binding Conditionnements.Libelle}' Header='CONDITIONNEMENT' Width='200' IsReadOnly='True' />
+</telerik:RadGridView.Columns>
                 </telerik:RadGridView>
             </Grid>
             <StackPanel Grid.Column="2" Margin="0,38,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" >

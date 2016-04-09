@@ -5,8 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
-             Title="Module de TypeChambres" Width="431" Background="White" Height="356.448" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
+             Title="Module de TypeChambres" Width="934.851" Background="White" Height="356.448" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="itemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Libelle}" Width="50" />
+                <ComboBox ItemsSource="{Binding AllAmenities}" 
+                    DisplayMemberPath="Libelle" 
+                    SelectedValuePath="Libelle" 
+                    Width="200"/>
+                <!--SelectedValue="{Binding Libelle}"-->
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="449*"/>
+            <ColumnDefinition Width="480*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,8 +36,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="lblMessageError" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="14" TextDecorations="Underline" Foreground="#FFFF0023" TextWrapping="Wrap" Opacity="0.75" Margin="3,4,3,3" Height="40" Grid.ColumnSpan="10"/>
-        <Border HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Bottom" Margin="0" Grid.Row="20" BorderBrush="#FF09A6F7" BorderThickness="0,3,0,0" Grid.ColumnSpan="10">
+        <TextBlock x:Name="lblMessageError" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="14" TextDecorations="Underline" Foreground="#FFFF0023" TextWrapping="Wrap" Opacity="0.75" Margin="3,4" Height="40" Grid.ColumnSpan="2"/>
+        <Border HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Bottom" Margin="0" Grid.Row="10" BorderBrush="#FF09A6F7" BorderThickness="0,3,0,0" Grid.ColumnSpan="2">
             <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <telerik:RadButton x:Name="btnValider" ToolTip="Valider" Tag="Valider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="0,0,20,0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" Click="btnValider_Click">
                     <Image Source="/Images/Navigation/Submit-01.png" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -32,21 +48,21 @@
             </StackPanel>
         </Border>
 
-        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
+        <Border HorizontalAlignment='Left' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
                 <TextBlock Width='120' Text='TYPE DE CHAMBRES :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
                 <TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
             </StackPanel>
         </Border>
-        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='2' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
+        <Border HorizontalAlignment='Left' VerticalAlignment='Top' Grid.Row='2' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
-                <TextBlock Width='120' Text='PLACE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBlock Width='120' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'>PLACE :</TextBlock>
                 <telerik:RadNumericUpDown Margin='10,0,0,0' FontSize='14' Width='250'  Value='{Binding SelectedData.Place, Mode=TwoWay}' IsInteger="True"/>
                 <!--<TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>-->
 
             </StackPanel>
         </Border>
-        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='3' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
+        <Border HorizontalAlignment='Left' VerticalAlignment='Top' Grid.Row='3' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
                 <TextBlock Width='120' Text='OBSERVATION :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
                 <RichTextBox x:Name="richTextBox" Height="100" Margin='10,0,0,0' FontSize='14' Width='250'>
@@ -56,16 +72,20 @@
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox x:Name="richTextBox1" Height="7" Width="228">
-                    <FlowDocument>
-                        <Paragraph>
-                            <Run Text="RichTextBox"/>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
 
                 <!--<RichTextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>-->
             </StackPanel>
         </Border>
+        <GroupBox x:Name="groupBox" Grid.ColumnSpan="2" Header="SELECTION EQUIPEMENTS" HorizontalAlignment="Left" Height="192" Margin="441,1,0,0" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" Width="478">
+            <StackPanel>
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" Height="27" Margin="0,5,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="comboBox_SelectionChanged"/>
+                <DataGrid x:Name="dt" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Height="135" AutoGenerateColumns="False">
+                    <DataGrid.Columns  >
+                        
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </StackPanel>      </GroupBox>
+
     </Grid>
 </Window>

@@ -1,19 +1,11 @@
-﻿<Window      x:Class="GESHOTEL.Sous_RubriquesModules.InsertData"
+﻿<Window      x:Class="GESHOTEL.HotelInfoModules.InsertData"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
-             Title="Module de Sous_Rubriques" Width="431" Background="White" Height="236.656" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
-    <Window.Resources>
-        <DataTemplate x:Key="RubriquesSearchAutoComplete">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Libelle}" />
-            </StackPanel>
-        </DataTemplate>
-
-    </Window.Resources>
+             Title="Module de HotelInfo" Width="431" Background="White" Height="216.473" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Images/Template.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -42,14 +34,8 @@
 
         <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
-                <TextBlock Width='120' Text='SOUS-RUBRIQUES :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBlock Width='120' Text='VILLE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
                 <TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
-            </StackPanel>
-        </Border>
-        <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='2' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
-            <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
-                <TextBlock Width='120' Text='RUBRIQUES :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
-                <telerik:RadAutoCompleteBox  Name="rcbRubriques" WatermarkContent="choississez une rubrique" ItemsSource="{Binding AllRubriques}" SelectedItem='{Binding SelectedData.Rubriques, Mode=TwoWay}' DisplayMemberPath="Libelle" AutoCompleteMode="Suggest" TextSearchMode="Contains" DropDownItemTemplate="{StaticResource RubriquesSearchAutoComplete}" Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250' SelectionMode="Single"/>
             </StackPanel>
         </Border>
 

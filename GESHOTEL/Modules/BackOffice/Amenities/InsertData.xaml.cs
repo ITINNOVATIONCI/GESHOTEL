@@ -1,6 +1,6 @@
 ﻿
 using GESHOTEL.Models;
-using GESHOTEL.TypeChambresModules.ViewModels;
+using GESHOTEL.AmenitiesModules.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GESHOTEL.TypeChambresModules
+namespace GESHOTEL.AmenitiesModules
 {
     /// <summary>
     /// Interaction logic for InsertData.xaml
@@ -24,7 +24,7 @@ namespace GESHOTEL.TypeChambresModules
     public partial class InsertData : Window
     {
         string Etat = "";
-        TypeChambresViewModel viewVM;
+        AmenitiesViewModel viewVM;
         string msg;
 
         public string Msg
@@ -41,23 +41,21 @@ namespace GESHOTEL.TypeChambresModules
             set { errorMsg = value; }
         }
 
-        public InsertData(string etat, TypeChambres ele, TypeChambresViewModel view)
+        public InsertData(string etat, Amenities ele, AmenitiesViewModel view)
         {
             InitializeComponent();
 
             this.DataContext = viewVM = view;
-            GESHOTELEntities model = new GESHOTELEntities();
-            var query = from res in model.Amenities where res.Etat == "ACTIF" select res.Libelle;
-            comboBox.ItemsSource = query.ToList();
+
             Etat = etat;
 
             if (etat == "AJOUT")
             {
-                this.Title = "Enregistrement d'un Quartier";
+                this.Title = "Enregistrement d'un Equipement";
             }
             else
             {
-                this.Title = "Modification d'un Quartier";
+                this.Title = "Modification d'un Equipement";
             }
         }
 
@@ -65,17 +63,16 @@ namespace GESHOTEL.TypeChambresModules
         {
             try
             {
-                TypeChambresViewModel vm = this.DataContext as TypeChambresViewModel;
-                TypeChambres ent = vm.SelectedData;
+                AmenitiesViewModel vm = this.DataContext as AmenitiesViewModel;
+                Amenities ent = vm.SelectedData;
 
                 if (Etat == "AJOUT")
                 {
                     try
                     {
-                        
-                        ent.Etat = "ACTIF";
+                                                ent.Etat = "ACTIF";
                         ent.idHotel = 1;
-                        viewVM.model.TypeChambres.Add(ent);
+                        viewVM.model.Amenities.Add(ent);
                         viewVM.model.SaveChanges();
                          Msg = "OK";
                         this.Close();
@@ -117,16 +114,11 @@ namespace GESHOTEL.TypeChambresModules
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            TypeChambresViewModel vehi = this.DataContext as TypeChambresViewModel;
+            AmenitiesViewModel vehi = this.DataContext as AmenitiesViewModel;
             vehi.SelectedData = null;
 
             this.Close();
         }
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string row = comboBox.Text;
-            dt.Items.Add(row);
-        }
     }
 }

@@ -34,7 +34,7 @@
 
         <Border HorizontalAlignment='Stretch' VerticalAlignment='Top' Grid.Row='1' BorderBrush='#FF09A6F7' BorderThickness='0,1,0,0' Padding='20,0,0,0' Grid.ColumnSpan='2'>
             <StackPanel Orientation='Horizontal' HorizontalAlignment='Stretch' Margin='0,5,0,5'>
-                <TextBlock Width='120' Text='DESIGNATION:' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
+                <TextBlock Width='120' Text='VILLE :' TextWrapping='Wrap' Margin='0,0,10,0' FontWeight='Bold' FontSize='14'/>
                 <TextBox Text='{Binding SelectedData.Libelle, Mode=TwoWay}' Height='Auto' HorizontalAlignment='Stretch' VerticalAlignment='Stretch' Margin='10,0,0,0' FontSize='14' Width='250'/>
             </StackPanel>
         </Border>

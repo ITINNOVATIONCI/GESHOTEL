@@ -12,39 +12,22 @@ using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.Data.DataForm;
 using Telerik.Windows.Data;
 
-namespace GESHOTEL.ProduitsModules.ViewModels
+namespace GESHOTEL.PromotionsModules.ViewModels
 {
-    public class ProduitsViewModel : ObservableObject
+    public class PromotionsViewModel : ObservableObject
     {
 
         #region Members
         public GESHOTELEntities model;
         private BackgroundWorker worker = new BackgroundWorker();
-        ObservableCollection<Produits> _data = new ObservableCollection<Produits>();
-        ObservableCollection<Conditionnements> _allConditionnements = new ObservableCollection<Conditionnements>();
-        ObservableCollection<Categories> _allCategories = new ObservableCollection<Categories>();
-
-        Produits _selectedData = new Produits();
+        ObservableCollection<Promotions> _data = new ObservableCollection<Promotions>();
+        Promotions _selectedData = new Promotions();
         bool _isBusy;
         int _count = 0;
         #endregion
 
         #region Properties
-     
-        public ObservableCollection<Conditionnements> AllConditionnements
-        {
-            get
-            {
-                return _allConditionnements;
-            }
-            set
-            {
-                _allConditionnements = value;
-                RaisePropertyChanged("AllConditionnements");
-            }
-        }
-
-        public ObservableCollection<Produits> AllData
+        public ObservableCollection<Promotions> AllData
         {
             get
             {
@@ -57,19 +40,7 @@ namespace GESHOTEL.ProduitsModules.ViewModels
             }
         }
 
-        public ObservableCollection<Categories> AllCategories
-        {
-            get
-            {
-                return _allCategories;
-            }
-            set
-            {
-                _allCategories = value;
-                RaisePropertyChanged("AllCategories");
-            }
-        }
-        public Produits SelectedData
+        public Promotions SelectedData
         {
             get
             {
@@ -81,7 +52,6 @@ namespace GESHOTEL.ProduitsModules.ViewModels
                 RaisePropertyChanged("SelectedData");
             }
         }
-
 
         public bool IsBusy
         {
@@ -99,7 +69,7 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         #endregion
 
         #region Construction
-        public ProduitsViewModel()
+        public PromotionsViewModel()
         {
             worker.DoWork += this.WorkerDoWork;
             worker.RunWorkerCompleted += WorkerRunWorkerCompleted;
@@ -148,32 +118,22 @@ namespace GESHOTEL.ProduitsModules.ViewModels
         {
 
             model = new GESHOTELEntities();
-                        var resultat = from res in model.Produits
+
+            var resultat = from res in model.Promotions
                            where res.Etat == "ACTIF"
                            select res;
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
 
-            model = new GESHOTELEntities();
-            var resultat1 = from res in model.Categories
-                           where res.Etat == "ACTIF"
-                           select res;
-            AllCategories = new ObservableCollection<Categories>(resultat1.ToList());
-
-            model = new GESHOTELEntities();
-            var resultat2 = from res in model.Conditionnements
-                            where res.Etat == "ACTIF"
-                           select res;
-            AllConditionnements = new ObservableCollection<Conditionnements>(resultat2.ToList());
+            AllData = new ObservableCollection<Promotions>(resultat.ToList());
 
         }
 
         public void CancelChanged()
         {
 
-            var resultat = from res in model.Produits
+            var resultat = from res in model.Promotions
                            select res;
 
-            AllData = new ObservableCollection<Produits>(resultat.ToList());
+            AllData = new ObservableCollection<Promotions>(resultat.ToList());
 
         }
 

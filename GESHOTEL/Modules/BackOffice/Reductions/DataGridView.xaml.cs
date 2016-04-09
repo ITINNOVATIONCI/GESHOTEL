@@ -1,5 +1,5 @@
 ﻿using GESHOTEL.Models;
-using GESHOTEL.ProduitsModules.ViewModels;
+using GESHOTEL.ReductionsModules.ViewModels;
 using GESHOTEL.UtilisateursModules;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,14 @@ using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.GridView;
 
-namespace GESHOTEL.ProduitsModules
+namespace GESHOTEL.ReductionsModules
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class DataGridView : UserControl
     {
-        ProduitsViewModel viewM;
+        ReductionsViewModel viewM;
         public DataGridView()
         {
             InitializeComponent();
@@ -53,21 +53,21 @@ namespace GESHOTEL.ProduitsModules
                 {
                     try
                     {
-                        if (GlobalData.VerificationDroit("CanEditProduits"))
+                        if (GlobalData.VerificationDroit("CanEditReductions"))
                         {
-                            viewM = this.Main.DataContext as ProduitsViewModel;
+                            viewM = this.Main.DataContext as ReductionsViewModel;
 
                             InsertData view = new InsertData("MOD", viewM.SelectedData, viewM);
                             view.ShowDialog();
 
                             if (view.Msg == "OK")
                             {
-                                MessageBox.Show("Opération effectuée avec succès", "Produits", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Opération effectuée avec succès", "Reductions", MessageBoxButton.OK, MessageBoxImage.Information);
                                 viewM.Refresh();
                             }
                             else if (view.Msg == "Error")
                             {
-                                MessageBox.Show("    Echec Opération    ", "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                MessageBox.Show("    Echec Opération    ", "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 viewM.Refresh();
                             }
                             else
@@ -134,7 +134,7 @@ namespace GESHOTEL.ProduitsModules
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            viewM = this.Main.DataContext as ProduitsViewModel;
+            viewM = this.Main.DataContext as ReductionsViewModel;
             viewM.Refresh();
         }
 
@@ -143,21 +143,21 @@ namespace GESHOTEL.ProduitsModules
           
             try
             {
-               viewM = this.Main.DataContext as ProduitsViewModel;
-                viewM.SelectedData = new Produits();
+               viewM = this.Main.DataContext as ReductionsViewModel;
+                viewM.SelectedData = new Reductions();
                 InsertData view = new InsertData("AJOUT", viewM.SelectedData, viewM);
                 view.ShowDialog();
 
                 if (view.Msg == "OK")
                 {
 
-                    MessageBox.Show("Opération effectuée avec succès", "Produits", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Opération effectuée avec succès", "Reductions", MessageBoxButton.OK, MessageBoxImage.Information);
                     viewM.Refresh();
 
                 }
                 else if (view.Msg == "Error")
                 {
-                    MessageBox.Show("   Echec Opération    ", "Produits ", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("   Echec Opération    ", "Reductions ", MessageBoxButton.OK, MessageBoxImage.Warning);
                     viewM.Refresh();
 
                 }
@@ -172,7 +172,7 @@ namespace GESHOTEL.ProduitsModules
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(ex.Message, "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
 
@@ -184,20 +184,20 @@ namespace GESHOTEL.ProduitsModules
             {
                 try
                 {
-                    //if (GlobalData.VerificationDroit("CanAddProduits"))
+                    //if (GlobalData.VerificationDroit("CanAddReductions"))
                     //{
-                    viewM = this.Main.DataContext as ProduitsViewModel;
+                    viewM = this.Main.DataContext as ReductionsViewModel;
                     InsertData view = new InsertData("MOD", viewM.SelectedData, viewM);
                     view.ShowDialog();
 
                     if (view.Msg == "OK")
                     {
-                        MessageBox.Show("Opération effectuée avec succès", "Produits", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Opération effectuée avec succès", "Reductions", MessageBoxButton.OK, MessageBoxImage.Information);
                         viewM.Refresh();
                     }
                     else if (view.Msg == "Error")
                     {
-                        MessageBox.Show("    Echec Opération    ", "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("    Echec Opération    ", "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
                         viewM.Refresh();
                     }
                     else
@@ -210,13 +210,13 @@ namespace GESHOTEL.ProduitsModules
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(ex.Message, "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 }
             }
             else
             {
-                MessageBox.Show("Aucune ligne selectionnée dans la liste", "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Aucune ligne selectionnée dans la liste", "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -224,7 +224,7 @@ namespace GESHOTEL.ProduitsModules
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
 
-            //if (GlobalData.VerificationDroit("CanAddProduits"))
+            //if (GlobalData.VerificationDroit("CanAddReductions"))
             //{
 
             var result = MessageBox.Show("Voulez vous vraiment supprimer ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -236,24 +236,28 @@ namespace GESHOTEL.ProduitsModules
                 {
                     try
                     {
-                        viewM = this.Main.DataContext as ProduitsViewModel;
-                        Produits ent = dataGrid.SelectedItem as Produits;
+                        viewM = this.Main.DataContext as ReductionsViewModel;
+                        Reductions ent = dataGrid.SelectedItem as Reductions;
                         ent.Etat = "SUPPRIMER";
-                         viewM.model.SaveChanges();
-                         viewM.Refresh();
-                         MessageBox.Show("Opération effectuée avec succès", "Produits", MessageBoxButton.OK, MessageBoxImage.Information);
-                      }
+
+                        viewM.model.SaveChanges();
+
+                        viewM.Refresh();
+
+                        MessageBox.Show("Opération effectuée avec succès", "Reductions", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    }
                     catch (Exception ex)
                     {
 
-                        MessageBox.Show(ex.Message, "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show(ex.Message, "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
                         viewM.Refresh();
 
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Aucune ligne selectionnée dans la liste", "Produits", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Aucune ligne selectionnée dans la liste", "Reductions", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 }
 
@@ -264,17 +268,17 @@ namespace GESHOTEL.ProduitsModules
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (GlobalData.VerificationDroit("CanAddProduits"))
+            if (GlobalData.VerificationDroit("CanAddReductions"))
             {
                 btnAdd.Visibility = System.Windows.Visibility.Visible;
             }
 
-            if (GlobalData.VerificationDroit("CanEditProduits"))
+            if (GlobalData.VerificationDroit("CanEditReductions"))
             {
                 btnEdit.Visibility = System.Windows.Visibility.Visible;
             }
 
-            if (GlobalData.VerificationDroit("CanDeleteProduits"))
+            if (GlobalData.VerificationDroit("CanDeleteReductions"))
             {
                 btnDelete.Visibility = System.Windows.Visibility.Visible;
             }

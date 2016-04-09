@@ -122,8 +122,7 @@ namespace GESHOTEL.ReservationTypesModules.ViewModels
             var resultat = from res in model.ReservationTypes
                            where res.Etat == "ACTIF"
                            select res;
-
-            AllData = new ObservableCollection<ReservationTypes>(resultat.ToList());
+                        AllData = new ObservableCollection<ReservationTypes>(resultat.ToList());
 
         }
 
@@ -132,8 +131,7 @@ namespace GESHOTEL.ReservationTypesModules.ViewModels
 
             var resultat = from res in model.ReservationTypes
                            select res;
-
-            AllData = new ObservableCollection<ReservationTypes>(resultat.ToList());
+                        AllData = new ObservableCollection<ReservationTypes>(resultat.ToList());
 
         }
 
