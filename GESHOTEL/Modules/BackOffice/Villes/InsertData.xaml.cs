@@ -23,6 +23,7 @@ namespace GESHOTEL.VillesModules
     /// </summary>
     public partial class InsertData : Window
     {
+        //git,od
         string Etat = "";
         VillesViewModel viewVM;
         string msg;
