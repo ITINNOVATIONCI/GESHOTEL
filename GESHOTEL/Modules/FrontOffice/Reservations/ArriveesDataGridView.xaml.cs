@@ -26,10 +26,10 @@ namespace GESHOTEL.ReservationsModules
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DataGridView : UserControl
+    public partial class ArriveesDataGridView : UserControl
     {
         ReservationsViewModel viewM;
-        public DataGridView()
+        public ArriveesDataGridView()
         {
             InitializeComponent();
 

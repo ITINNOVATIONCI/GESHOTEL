@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 
-namespace GESHOTEL.FrontOffice
+namespace GESHOTEL.ReservationsModules
 {
     /// <summary>
     /// Interaction logic for TransactionEdit.xaml

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:local="clr-namespace:GESHOTEL" x:Class="GESHOTEL.MainWindow"
+        xmlns:ReservationsModule="clr-namespace:GESHOTEL.ReservationsModules"
         Title="" Height="350" Width="525" WindowState="Maximized" Loaded="RadRibbonWindow_Loaded_1" Icon="Images/Logo/Template.ico">
     <Grid x:Name="RootGrid">
         <Grid x:Name="FirstLayout"  >
@@ -23,12 +24,13 @@
                         <telerik:RadRibbonButton Content="SEJOUR\NUIT" Click="btnSjourNuit_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="RESERVATION" Click="btnReservation_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="LISTE DES RESERVATIONS" Click="btnListeReservation_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
+                        <telerik:RadRibbonButton Content="LISTE DES ARRIVEES" Click="btnListeArriveReservation_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                     </telerik:RadRibbonGroup>
-                    <telerik:RadRibbonGroup Header="DEPENSES" Tag="" Visibility="Visible">
+                    <!--<telerik:RadRibbonGroup Header="DEPENSES" Tag="" Visibility="Visible">
                         <telerik:RadRibbonButton Content="DEPENSE" Click="btnDepense_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="DECAISSEMENT" Click="btnDecaissement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="APPROVISIONNEMENT" Click="btnApprovisionnement_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
-                    </telerik:RadRibbonGroup>
+                    </telerik:RadRibbonGroup>-->
                     <telerik:RadRibbonGroup Header="ROOM SERVICE" Tag="" Visibility="Visible">
                         <telerik:RadRibbonButton Content="DISPONIBILITE" Click="btnDisponibilite_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="LISTE DES CHAMBRES" Click="btnListeChambre_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
@@ -86,7 +88,7 @@
                         <telerik:RadRibbonButton Content="RAISON" Click="btnRaison_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                         <telerik:RadRibbonButton Content="RAISON TYPE" Click="btnRaisonType_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
                     </telerik:RadRibbonGroup>
-                           </telerik:RadRibbonTab>
+                </telerik:RadRibbonTab>
                 <telerik:RadRibbonTab Header="ADMINISTRATION" IsSelected="False" Visibility="Visible">
                     <telerik:RadRibbonGroup Header="ADMINISTRATION" Tag="" Visibility="Visible">
                         <telerik:RadRibbonButton Content="COMPTE D'UTILISATEUR" Click="btnUtilisateurs_Click" Tag="CanShowTransactions" LargeImage="/Images/Menu/Money-Transfer.png" Size="Large" Visibility="Visible"/>
@@ -104,9 +106,10 @@
                 </telerik:RadDocking.DocumentHost>
 
             </telerik:RadDocking>
+            <ReservationsModule:ReservationPanel Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
 
         <local:LoginControl  x:Name="logControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>
-        
+
     </Grid>
 </telerik:RadRibbonWindow>

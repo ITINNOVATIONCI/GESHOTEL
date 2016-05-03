@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="GESHOTEL.ReservationsModules.RoomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <DataTemplate x:Key="occupeDataTemplate">
+            <Border BorderBrush="#FF79D62F" BorderThickness="4" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="89" CornerRadius="3" Background="#FF6BC027">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="libreDatatemplate">
+            <Border BorderBrush="#FF419CC2" BorderThickness="4" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="89" CornerRadius="3" Background="#FF04B4FD">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="salleDatatemplate">
+            <Border BorderBrush="#FF834141" BorderThickness="4" Width="89"  Height="79" VerticalAlignment="Top" CornerRadius="3" Background="#FF854F4F">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border> 
+        </DataTemplate>
+        <DataTemplate x:Key="indisponibleDatatemplate">
+            <Border BorderBrush="#FFC22727" BorderThickness="4" Width="89"  Height="79" VerticalAlignment="Top" CornerRadius="3" Background="#FFF57878">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="maintenanceDatatemplate">
+            <Border BorderBrush="#FFF3D12F" BorderThickness="4" Width="89"  Height="79" VerticalAlignment="Top" CornerRadius="3" Background="Yellow">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="reservationDatatemplate">
+            <Border BorderBrush="#FFFF2C0B" BorderThickness="4" CornerRadius="3" Background="#FFEB4D33" HorizontalAlignment="Right" Width="89"  Height="79">
+                <Grid Margin="0">
+                    <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Numero}" FontSize="26.667" FontFamily="Stencil"/>
+                    <TextBlock Height="15.698" TextWrapping="Wrap" Text="{Binding TypeChambres.Libelle}" VerticalAlignment="Bottom" FontSize="9.333" FontStyle="Italic" FontWeight="Bold" FontFamily="Stencil" HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding AllChambres}" SelectedItem="{Binding SelectedChambres}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <!-- ItemsPanelTemplate -->
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" Width="1000"  HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <!-- ItemTemplate -->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="OCCUPER">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource occupeDataTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="LIBRE">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource libreDatatemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="SALLE">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource salleDatatemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="DUE OUT">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource indisponibleDatatemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="MAINTENANCE">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource maintenanceDatatemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="INDISPONIBLE">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource indisponibleDatatemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding EtatOperation}" Value="RESERVER">
+                                        <Setter Property="ContentTemplate"
+                                    Value="{StaticResource reservationDatatemplate}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <!-- ContextMenu -->
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Actualiser" Command="{Binding RefreshCommand}"/>
+                    <MenuItem Header="Passage" Command="{Binding PassageCommand}"/>
+                    <MenuItem Header="Nuit / Séjour" Command="{Binding NuitSejourCommand}"/>
+                    <MenuItem Header="Réservation" Command="{Binding NewReservationCommand}"/>
+                    <MenuItem Header="Rendre la Chambre Propre" Command="{Binding ChambrePropreCommand}"/>
+                    <MenuItem Header="Rendre la Chambre Disponible" Command="{Binding ChambreDispoCommand}"/>
+                    <MenuItem Header="Rendre la Chambre Indisponible" Command="{Binding ChambreInDispoCommand}"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <StackPanel Grid.Row="1"  HorizontalAlignment="Right" Margin="0,0,8,8" Orientation="Vertical" VerticalAlignment="Bottom" Width="Auto">
+            <StackPanel Margin="0,0,38.216,0" Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FF79D62F" BorderThickness="4" CornerRadius="3" Background="#FF6BC027" HorizontalAlignment="Left" Width="32" Height="32"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="OCCUPER" FontSize="18.667"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,74.226,0" Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FF419CC2" BorderThickness="4" Height="32" Width="32" CornerRadius="3" Background="#FF04B4FD"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="LIBRE" FontSize="18.667"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FF834141" BorderThickness="4" Height="32" CornerRadius="3" Background="#FF854F4F" Width="32"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="SALLE" FontSize="18.667"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FFC22727" BorderThickness="4" Height="32" CornerRadius="3" Background="#FFF57878" Width="32"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="HORS SERVICE " FontSize="18.667"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FFF3D12F" BorderThickness="4" Height="32" CornerRadius="3" Background="Yellow" Width="32"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="MAINTENANCE" FontSize="18.667"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+                <Border BorderBrush="#FFFF2C0B" BorderThickness="4" Height="32" CornerRadius="3" Background="#FFEB4D33" Width="32"/>
+                <TextBlock Height="25" Margin="0" TextWrapping="Wrap" Text="RESERVATION" FontSize="18.667"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

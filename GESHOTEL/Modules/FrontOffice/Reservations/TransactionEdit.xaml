@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-	xmlns:Models="clr-namespace:GESHOTEL.Models;assembly=GESHOTEL.Models" x:Class="GESHOTEL.FrontOffice.TransactionEdit" 
+	xmlns:Models="clr-namespace:GESHOTEL.Models;assembly=GESHOTEL.Models" x:Class="GESHOTEL.ReservationsModules.TransactionEdit" 
 	mc:Ignorable="d" Loaded="UserControl_Loaded_1">
     <UserControl.Resources>
         <CollectionViewSource x:Key="reservationsViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Reservations}, CreateList=True}"/>

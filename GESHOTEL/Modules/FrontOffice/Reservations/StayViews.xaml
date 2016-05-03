@@ -1,0 +1,176 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GESHOTEL.ReservationsModules"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:scheduleView="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.ScheduleView"
+             x:Class="GESHOTEL.ReservationsModules.StayViews" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.Resources>
+        <telerik:Windows8Theme x:Key="Theme" />
+
+        <LinearGradientBrush x:Key="ShadowBrush" EndPoint="1.49,0.504" StartPoint="2.436,0.504">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#7FFFFFFF" Offset="0.549"/>
+            <GradientStop Color="Transparent" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="ClearButtonStyle" TargetType="telerik:RadButton">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="2 0" />
+            <Setter Property="MinWidth" Value="16" />
+            <Setter Property="MinHeight" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="telerik:RadButton">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backgroundRect" Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="#FFD6D4D4" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="backgroundRect"  Fill="Transparent" />
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="YellowCategoryBrush" Color="#FFF0C600" />
+        <SolidColorBrush x:Key="GreenCategoryBrush" Color="#FFA3C734" />
+        <SolidColorBrush x:Key="PurpleCategoryBrush" Color="#FF9774B4" />
+        <SolidColorBrush x:Key="PinkCategoryBrush" Color="#FFD6798D" />
+        <SolidColorBrush x:Key="FreeMarkerBrush" Color="#FF309B46" />
+        <SolidColorBrush x:Key="BusyMarkerBrush" Color="#FFE61E26" />
+        <SolidColorBrush x:Key="TentativeMarkerBrush" Color="#FF41229B" />
+        <SolidColorBrush x:Key="OutOfOfficeMarkerBrush" Color="#FFF1C700" />
+
+        <DataTemplate x:Key="CategoryHeaderTemplate">
+            <TextBlock Text="{Binding DisplayName}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="TimeMarkerHeaderTemplate">
+            <TextBlock Text="{Binding TimeMarkerName}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="AppointmentTemplate">
+            <Grid Margin="2 0 1 0" >
+
+                <StackPanel Margin="0 2 0 0">
+                    <TextBlock Text="{Binding Subject}" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                               FontSize="10" Foreground="White" FontFamily="Segoe UI Semibold" TextWrapping="Wrap" Margin="0 0 20 0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                        <Grid Width="10" Height="10" HorizontalAlignment="Left">
+                            <Ellipse Fill="#FFA0AFC3" StrokeThickness="0"/>
+                            <Path Data="M0.49834815,0.15624278 C0.77310983,0.15624278 0.99500001,0.44771525 0.99500001,1 L0.99500001,2 C0.99500001,2.0862944 0.98956204,2.1700361 0.9793374,2.2499156 L0.97761548,2.2621038 0.99138665,2.2724657 C1.0551,2.3217192 1.1181594,2.3770881 1.1791788,2.4381075 L2.1627799,3.4035487 C2.5533043,3.7940731 2.602693,4.1590443 2.4084071,4.3533302 2.2141213,4.5476161 1.8497329,4.4976445 1.4592087,4.1071201 L0.47560761,3.1416788 C0.39018041,3.0562518 0.31582806,2.9668262 0.25382683,2.8772056 L0.23600964,2.8506927 0.21934302,2.8292158 C0.15979189,2.7483475 0.10941981,2.6422429 0.072024727,2.5185363 L0.068973461,2.5078697 0.06744724,2.5030127 0.065087656,2.4942856 0.060045546,2.4766593 C0.021751793,2.3349662 1.8765149E-09,2.1725891 0,2 L0,1 C1.8765149E-09,0.44771525 0.22358649,0.15624278 0.49834815,0.15624278 z" 
+                              Fill="White" Margin="4,2,3,3" Stretch="Fill"/>
+                        </Grid>
+                        <TextBlock Text="{Binding Appointment.NbreHeure}"  Margin="4,2,2,4" TextWrapping="Wrap" FontSize="10" />
+                    </StackPanel>
+                    <TextBlock Text="{Binding Appointment.TimeMarker.TimeMarkerName}" Margin="4,2,2,4" TextWrapping="Wrap" FontSize="10" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AppointmentToolTipTemplate">
+            <Grid MaxWidth="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="43" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Appointment.Chambre}" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="5 8 4 3" FontWeight="Bold" />
+                <Image Grid.Row="1"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" Source="clock.png" Width="28" Height="29" />
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Margin="0 5 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                        <TextBlock Text="{Binding Start, StringFormat='dddd dd MMM yyyy'}" TextWrapping="Wrap" FontSize="10" />
+                        <TextBlock Text=" ( " FontSize="10" />
+                        <TextBlock Text="{Binding Start, StringFormat='HH:mm tt'}" TextWrapping="Wrap" FontSize="10" />
+                        <TextBlock Text=" - " FontSize="10" />
+                        <TextBlock Text="{Binding End, StringFormat='HH:mm tt'}" TextWrapping="Wrap" FontSize="10" />
+                        <TextBlock Text=" ) " FontSize="10" />
+                    </StackPanel>
+                    <TextBlock Text="{Binding Appointment.Category.DisplayName}" Margin="0 3" FontSize="10" />
+                </StackPanel>
+                <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Appointment.TimeMarker.TimeMarkerName}" Margin="5 3 5 8" TextWrapping="Wrap"  />
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="104*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Background="{StaticResource ShadowBrush}" />
+
+            <telerik:RadBusyIndicator  Grid.Row="2" Grid.Column="2" IsBusy="{Binding IsLoading}">
+                <telerik:RadScheduleView x:Name="scheduleview" Grid.Row="2" Grid.Column="2" Margin="0" 
+								 CurrentDate="{Binding CurrentDate,Mode=TwoWay}" BorderThickness="0 1 1 1" 
+                                 FirstVisibleTime="0:0:0" MinAppointmentHeight="60" 
+                                 FirstDayOfWeek="Monday"
+                                 AppointmentsSource="{Binding Appointments}"
+                                 CategoriesSource="{Binding Categories}"
+                                 ResourceTypesSource="{Binding ResourceTypes}"
+                                 ShowDialog="RadScheduleView_ShowDialog"
+                                 IsInlineEditingEnabled="False"
+                                 ToolTipTemplate="{StaticResource AppointmentToolTipTemplate}"
+                                 AppointmentItemContentTemplate="{StaticResource AppointmentTemplate}" AppointmentEditing="scheduleview_AppointmentEditing" AppointmentEdited="scheduleview_AppointmentEdited">
+                    <telerik:RadScheduleView.ViewDefinitions>
+                        <scheduleView:TimelineViewDefinition x:Name="passage" DayStartTime="0:00" DayEndTime="0:00" MajorTickLength="1h"
+											MinTimeRulerExtent="12000" FirstDayOfWeek="Monday" Title="Passage Meilleur Vue" TimerulerGroupStringFormat="{}{0:dddd dd MMM yyyy}" TimerulerMajorTickStringFormat="{}{0:HH:mm tt}" />
+                        <telerik:TimelineViewDefinition  x:Name="sejour" Orientation="Horizontal" MajorTickLength="1day" 
+											MinTimeRulerExtent="1200" FirstDayOfWeek="Monday" Title="Nuit\Sejour Meilleure Vue" TimerulerGroupStringFormat="{}{0:dddd dd MMM yyyy}" TimerulerMajorTickStringFormat="{}{0:HH:mm tt}" />
+
+                        <!--<telerik:MonthViewDefinition Title="Mois"/>-->
+                    </telerik:RadScheduleView.ViewDefinitions>
+
+                    <telerik:RadScheduleView.GroupDescriptionsSource>
+                        <telerik:GroupDescriptionCollection>
+                            <scheduleView:DateGroupDescription />
+                            <!--<scheduleView:ResourceGroupDescription ResourceType="TypeChambres" />-->
+                            <scheduleView:ResourceGroupDescription ResourceType="Chambres" />
+                        </telerik:GroupDescriptionCollection>
+                    </telerik:RadScheduleView.GroupDescriptionsSource>
+                    <!--<telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu>
+                            <telerik:RadMenuItem Header="Modifier Transaction" 	/>
+                            <telerik:RadMenuItem Header="Changement de Chambre" />
+                            <telerik:RadMenuItem Header="Prolonger le Sejour" />
+                            <telerik:RadMenuItem Header="Annuler Transaction" />
+                            <telerik:RadMenuItem Header="Annuler Check In" Visibility="Collapsed"/>
+
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>-->
+                </telerik:RadScheduleView>
+            </telerik:RadBusyIndicator>
+        </Grid>
+
+    </Grid>
+</UserControl>

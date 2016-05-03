@@ -44,6 +44,7 @@ namespace GESHOTEL
             //Windows8Palette.Palette.FontFamilyStrong = new FontFamily("Segoe Print");
 
             StyleManager.ApplicationTheme = new Windows8Theme();
+            GlobalData.Init();
 
             InitializeComponent();
 
@@ -153,18 +154,135 @@ namespace GESHOTEL
 
         private void btnPassage_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
 
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.PassageUC();
+            rad.Header = "PASSAGE";
+            rrvMain.Title = "PASSAGE";
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+            if (!VerifyDock("PASSAGE"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
         }
 
         private void btnSjourNuit_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
 
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.StayInsert();
+            rad.Header = "WALK IN";
+            rrvMain.Title = "WALK IN";
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+            if (!VerifyDock("WALK IN"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
         }
 
         private void btnReservation_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
+
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
             RadDocumentPane rad = new RadDocumentPane();
-            rad.Content = new GESHOTEL.FrontOffice.ReservationInsert();
+            rad.Content = new GESHOTEL.ReservationsModules.ReservationInsert();
             rad.Header = "RESERVATIONS";
             rrvMain.Title = "RESERVATIONS";
             rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
@@ -184,6 +302,35 @@ namespace GESHOTEL
 
         private void btnListeReservation_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
+
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
             RadDocumentPane rad = new RadDocumentPane();
             rad.Content = new GESHOTEL.ReservationsModules.DataGridView();
             rad.Header = "LISTE DES RESERVATIONS";
@@ -193,6 +340,55 @@ namespace GESHOTEL
 
 
             if (!VerifyDock("LISTE DES RESERVATIONS"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnListeArriveReservation_Click(object sender, RoutedEventArgs e)
+        {
+            if (!GlobalData.VerifyClotureSession())
+            {
+
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.ArriveesDataGridView();
+            rad.Header = "LISTE DES ARRIVEES";
+            rrvMain.Title = "LISTE DES ARRIVEES";
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+            if (!VerifyDock("LISTE DES ARRIVEES"))
             {
                 rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
             }
@@ -219,12 +415,100 @@ namespace GESHOTEL
 
         private void btnDisponibilite_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
 
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.StayViews();
+            rad.Header = "DISPONIBILITE";
+            rrvMain.Title = "DISPONIBILITE";
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+            if (!VerifyDock("DISPONIBILITE"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
         }
 
         private void btnListeChambre_Click(object sender, RoutedEventArgs e)
         {
+            if (!GlobalData.VerifyClotureSession())
+            {
 
+                var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RadDocumentPane radMenu = new RadDocumentPane();
+                    radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                    radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                    radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                    radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                    radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                    if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                    {
+                        rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                return;
+            }
+
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.RoomView();
+            rad.Header = "LISTE DES CHAMBRES";
+            rrvMain.Title = "LISTE DES CHAMBRES";
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+            if (!VerifyDock("LISTE DES CHAMBRES"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
         }
 
         private void btnRecherche_Click(object sender, RoutedEventArgs e)
@@ -235,11 +519,57 @@ namespace GESHOTEL
         private void btnCloture_Click(object sender, RoutedEventArgs e)
         {
 
+            //if (!GlobalData.VerifyClotureSession())
+            //{
+
+            GlobalData.VerifyClotureSession();
+            var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                RadDocumentPane radMenu = new RadDocumentPane();
+                radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+
+                if (!VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                {
+                    rpgMainView.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                }
+                else
+                {
+
+                }
+            }
+
+            return;
+            //}
         }
 
         private void btnVueDensemble_Click(object sender, RoutedEventArgs e)
         {
+            GlobalData.VerifyClotureSession();
 
+            RadDocumentPane rad = new RadDocumentPane();
+            rad.Content = new GESHOTEL.ReservationsModules.ClotureJournee();
+            rad.Header = "Vue d'ensemble";
+            rrvMain.Title = "Vue d'ensemble";
+            rad.FontFamily = new FontFamily("Perpetua Titling MT");
+            rad.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            rad.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+
+            if (!VerifyDock("Vue d'ensemble"))
+            {
+                rpgMainView.AddItem(rad, Telerik.Windows.Controls.Docking.DockPosition.Center);
+            }
+            else
+            {
+
+            }
         }
 
         private void btnJcaisse_Click(object sender, RoutedEventArgs e)

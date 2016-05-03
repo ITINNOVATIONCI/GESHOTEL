@@ -1,6 +1,6 @@
-﻿//using GESHOTEL.ReservationsModules.Views.Win;
-using GESHOTEL.Models;
-//using GESHOTEL.RapportLib;
+﻿using GESHOTEL.Models;
+using GESHOTEL.Rapports.Viewers;
+using GESHOTEL.ReservationsModules;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +22,7 @@ namespace GESHOTEL.ReservationsModules
     /// <summary>
     /// Interaction logic for StayInsert.xaml
     /// </summary>
-    public partial class ReservationInsert : UserControl
+    public partial class StayInsert : UserControl
     {
 
         string Etat;
@@ -31,6 +31,7 @@ namespace GESHOTEL.ReservationsModules
         string ReductionType;
         string Chambre;
         string ResType;
+        bool loaded = false;
 
         public string Msg
         {
@@ -46,18 +47,17 @@ namespace GESHOTEL.ReservationsModules
             set { errorMsg = value; }
         }
 
-        public ReservationInsert()
+        public StayInsert()
         {
             InitializeComponent();
         }
 
-        public ReservationInsert(string num, string resType)
+        public StayInsert(string num, string resType)
         {
             InitializeComponent();
 
             this.Chambre = num;
             this.ResType = resType;
-
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
@@ -65,6 +65,7 @@ namespace GESHOTEL.ReservationsModules
 
             Clear();
 
+            rnAdult.Value = 1;
         }
 
         private void Load()
@@ -100,7 +101,7 @@ namespace GESHOTEL.ReservationsModules
             rcbModePaiement.ItemsSource = GlobalData.model.MethodePaiements.Where(c => c.Etat == "ACTIF").ToList();
             rcbRules.ItemsSource = GlobalData.model.Rules.Where(c => c.Etat == "ACTIF").ToList();
             rcbReductions.ItemsSource = GlobalData.model.Reductions.Where(c => c.Etat == "ACTIF").ToList();
-
+            
             dpArrival.SelectedValue = DateTime.Now;
 
             if (rnNuit.Value == null)
@@ -117,6 +118,8 @@ namespace GESHOTEL.ReservationsModules
             rcbRules.SelectedIndex = -1;
             rcbTypeChambre.SelectedIndex = 0;
 
+            loaded = true;
+
         }
 
         private void Clear()
@@ -124,6 +127,7 @@ namespace GESHOTEL.ReservationsModules
 
             EtatClear = "CLEAR";
             dpArrival.SelectableDateStart = DateTime.Now;
+            rnAdult.Value = 1;
 
             //rcbTypeChambre.SelectedIndex = -1;
 
@@ -131,7 +135,7 @@ namespace GESHOTEL.ReservationsModules
 
             rcbReductions.SelectedIndex = -1;
             rcbRules.SelectedIndex = -1;
-            //rcbChambres.SelectedIndex = -1;
+            rcbChambres.SelectedIndex = -1;
 
             paysRadComboBox.SelectedIndex = -1;
             villeRadComboBox.SelectedIndex = -1;
@@ -169,8 +173,6 @@ namespace GESHOTEL.ReservationsModules
             this.grdPaiement.DataContext = Trans;
             this.grdReduction.DataContext = Trans;
 
-            rnAdult.Value = 1;
-
             if (Chambre != null)
             {
                 int i = 0;
@@ -187,107 +189,77 @@ namespace GESHOTEL.ReservationsModules
                 }
 
 
-                //i = 0;
-                //foreach (Chambres item in rcbChambres.Items)
-                //{
-                //    if (item.Numero == Chambre)
-                //    {
+                i = 0;
+                foreach (Chambres item in rcbChambres.Items)
+                {
+                    if (item.Numero == Chambre)
+                    {
 
-                //        //rcbChambres.SelectedIndex = i;
-                //        rcbChambres.SelectedValue = item;
+                        //rcbChambres.SelectedIndex = i;
+                        rcbChambres.SelectedValue = item;
 
-                //    }
+                    }
 
-                //    i++;
-                //}
+                    i++;
+                }
 
                 //chambreAutoCompleteBox.SearchText
             }
 
+            rnAdult.Value = 1;
             EtatClear = "";
 
         }
 
         private void ClearAll()
         {
-            //rcbReductions.SelectedIndex = -1;
-            //rcbRules.SelectedIndex = -1;
-            //rcbChambres.SelectedIndex = -1;
-            //rcbTypeChambre.SelectedIndex = -1;
-
-            //try
-            //{
-            //    Reservations Reservations = this.gbSejour.DataContext as Reservations;
-            //    GlobalData.model.DeleteObject(Reservations);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-            //try
-            //{
-            //    Clients client = this.gbInfoClient.DataContext as Clients;
-            //    GlobalData.model.DeleteObject(client);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-            //try
-            //{
-            //    Transactions Trans = this.gbFacture.DataContext as Transactions;
-
-            //    GlobalData.model.DeleteObject(Trans);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-            ////GlobalData.model.SaveChanges();
-
-
-
+            //rnAdult.Value = 1;
         }
 
         private void btnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                if (!GlobalData.VerifyClotureSession())
-                {
+                //if (!GlobalData.VerifyClotureSession())
+                //{
 
-                    var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                //    var result = MessageBox.Show("Voulez-vous fermer la session précédente ?", "Message", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        RadDocumentPane radMenu = new RadDocumentPane();
-                        radMenu.Content = new GESHOTEL.ReservationsModules.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
-                        radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
-                        GlobalData.rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
-                        radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
-                        radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-                        radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+                //    if (result == MessageBoxResult.Yes)
+                //    {
+                //        RadDocumentPane radMenu = new RadDocumentPane();
+                //        radMenu.Content = new GESHOTEL.ReservationsModules.Views.Win.ClotureJourneeFrm("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString());
+                //        radMenu.Header = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                //        GlobalData.rrvMain.Title = "Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString();
+                //        radMenu.FontFamily = new FontFamily("Perpetua Titling MT");
+                //        radMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                //        radMenu.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
 
-                        if (!GlobalData.VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
-                        {
-                            GlobalData.PaneGroup.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
-                        }
-                        else
-                        {
+                //        if (!GlobalData.VerifyDock("Cloture de la session du " + GlobalData.CurrentRegistres.DateDebut.Value.ToShortDateString()))
+                //        {
+                //            GlobalData.PaneGroup.AddItem(radMenu, Telerik.Windows.Controls.Docking.DockPosition.Center);
+                //        }
+                //        else
+                //        {
 
-                        }
-                    }
+                //        }
+                //    }
 
-                    return;
-                }
+                //    return;
+                //}
+
 
                 if (!isAvailable())
                 {
-                    MessageBox.Show("Il existe deja une reservation pour cette Heure sur cette chambre", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                Chambres Cham = rcbChambres.SelectedItem as Chambres;
+
+                if (Cham.EtatOperation == "SALLE")
+                {
+                    MessageBox.Show("La chambre est salle veuillez la nettoyée", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -306,19 +278,14 @@ namespace GESHOTEL.ReservationsModules
                     if (client.Etat == null)
                     {
                         client.Etat = "ACTIF";
-                        client.idHotel = 1;
+                        //client.idHotel = GlobalData.HotId;
                     }
 
                     Transactions Trans = (Transactions)this.gbFacture.DataContext;
 
                     if (client.Noms == null) { MessageBox.Show("Choisissez un Client svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-                    if (client.Prenoms == null) { MessageBox.Show("Choisissez un Client svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-                    //if (rcbChambres.SelectedIndex == -1) { MessageBox.Show("Choisissez une chambre svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-                    if (rcbTypeChambre.SelectedIndex == -1) { MessageBox.Show("Choisissez un type de chambre svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-                    if (rcbTypeReservation.SelectedIndex == -1) { MessageBox.Show("Choisissez un type de sejour svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-
-                    if (dpArrival.SelectedDate == null) { MessageBox.Show("Choisissez la date d'arrivée svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
-                    //if (txtCellulaire.Text == "") { MessageBox.Show("Choisissez le numero du cellulaire svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
+                    //if (client.Numero == null || client.IDTypes == null) { MessageBox.Show("Veuillez choisir le type de piece et saisisser le numero svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
+                    if (rcbChambres.SelectedIndex == -1) { MessageBox.Show("Choisissez une chambre svp", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
                     if (rnNuit.Value <= 0) { MessageBox.Show("Le nombre de nuit ne peut pa etre egale a 0", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning); return; }
 
                     Trans.DateTransaction = DateTime.Now;
@@ -334,7 +301,7 @@ namespace GESHOTEL.ReservationsModules
                         dtPaie.MethodePaiements = autoSaveMethodePaiements(rcbModePaiement.Text);
                         dtPaie.Transactions = Trans;
                         dtPaie.Etat = "ACTIF";
-                        dtPaie.idHotel = 1;
+                        //dtPaie.idHotel = GlobalData.HotId;
 
                         Trans.Etat = "PAYE";
 
@@ -350,7 +317,7 @@ namespace GESHOTEL.ReservationsModules
                             dtPaie.MethodePaiements = autoSaveMethodePaiements(rcbModePaiement.Text);
                             dtPaie.Transactions = Trans;
                             dtPaie.Etat = "ACTIF";
-                            dtPaie.idHotel = 1;
+                            //dtPaie.idHotel = GlobalData.HotId;
 
                             Trans.Etat = "PARTIELLEMENT PAYE";
                             //Trans.EtatTables = "TERMINER";
@@ -362,38 +329,35 @@ namespace GESHOTEL.ReservationsModules
 
                     TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
 
+                    if (Cham.EtatOperation == "LIBRE" || Cham.EtatOperation == "RESERVER")
+                    {
+                        Cham.EtatOperation = "OCCUPER";
+                    }
+
                     ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
 
                     Reservations Reservations = (Reservations)this.gbSejour.DataContext;
                     Reservations.Clients = client;
-                    Reservations.TypeChambres = rcbTypeChambre.SelectedItem as TypeChambres;
-
-                    //if (rcbChambres.SelectedIndex != -1)
-                    //{
-                    //    Chambres Cham = rcbChambres.SelectedItem as Chambres;
-
-                    //    if (Cham.EtatOperation == "LIBRE" || Cham.EtatOperation == "RESERVER")
-                    //    {
-                    //        Cham.EtatOperation = "RESERVER";
-                    //    }
-                    //    Reservations.Chambres = Cham;
-                    //}
+                    Reservations.Chambres = Cham;
+                    Reservations.Transactions.Add(Trans);
+                    Reservations.ReservationTypes = resType;
 
                     Reservations.DateArrive = dpArrival.SelectedValue;
                     Reservations.DateDepart = dpDepart.SelectedValue;
-                    Reservations.Transactions.Add(Trans);
-                    Reservations.ReservationTypes = resType;
-                    Reservations.ReservationDate = DateTime.Now;
+
                     Reservations.TotalPaye = Trans.TotalPaye;
                     Reservations.TotalReste = Trans.TotalReste;
                     Reservations.TotalTTC = Trans.TotalTTC;
                     Reservations.Reduction = Trans.Reduction;
-                    Reservations.TypeOperation = "RESERVATION";
-                    Reservations.idHotel = 1;
+                    Reservations.TypeOperation = "LOCATION CHAMBRE";
+                    //Reservations.idHotel = GlobalData.HotId;
                     Reservations.idRegistre = GlobalData.RegId;
+                    Reservations.ReservationDate = DateTime.Now;
+                    Reservations.DateCheckIn = DateTime.Now;
+                    Reservations.isCheckIn = true;
+                    Reservations.EtatOperation = "ARRIVEE";
+                    Reservations.Etat = "ACTIF";
 
-                    Reservations.Etat = "RESERVER";
-                    Reservations.EtatOperation = "RESERVEE";
 
                     GetDetailTrans();
                     GetReductionAuto();
@@ -409,10 +373,12 @@ namespace GESHOTEL.ReservationsModules
                         transred.Valeur = Convert.ToDecimal(rdReduction.Value);
                         transred.Type = ReductionType;
                         transred.Etat = "ACTIF";
-                        transred.idHotel = 1;
+                        //transred.idHotel = GlobalData.HotId;
+
+                        Trans.TranReductions.Add(transred);
                     }
 
-                    Trans.idHotel = 1;
+                    //Trans.idHotel = GlobalData.HotId;
                     Trans.idRegistre = GlobalData.RegId;
                     Trans.TypeTransaction = resType.ReservationType;
 
@@ -426,30 +392,31 @@ namespace GESHOTEL.ReservationsModules
                     GlobalData.model.Reservations.Add(Reservations);
                     GlobalData.model.SaveChanges();
 
-                    //var result = MessageBox.Show("Voulez vous imprimer le recu?", "Vente", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    var result = MessageBox.Show("Voulez vous imprimer le recu?", "Vente", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                    //if (result == MessageBoxResult.Yes)
-                    //{
+                    if (result == MessageBoxResult.Yes)
+                    {
 
-                    //    try
-                    //    {
-                    //        RapportWindows frm = new RapportWindows("Facture.trdx", Trans.ID);
-                    //        frm.ShowDialog();
-                    //    }
-                    //    catch (Exception)
-                    //    {
+                        try
+                        {
+                            RapportWindows frm = new RapportWindows("Facture.trdx", Trans.ID);
+                            frm.ShowDialog();
+                        }
+                        catch (Exception)
+                        {
 
-                    //    }
+                        }
 
-                    //}
+                    }
 
                     GlobalFO.rpVM.Load();
 
                     Clear();
 
-                    MessageBox.Show("Operation terminée", "Message", MessageBoxButton.OK, MessageBoxImage.None);
+                    //MessageBox.Show("Operation terminée", "Message", MessageBoxButton.OK, MessageBoxImage.None);
 
                     Msg = "OK";
+
                 }
 
             }
@@ -465,9 +432,7 @@ namespace GESHOTEL.ReservationsModules
                     ErrorMsg = ex.Message;
                 }
 
-
             }
-
 
         }
 
@@ -497,18 +462,18 @@ namespace GESHOTEL.ReservationsModules
                     r = (double)rdReduction.Value;
                 }
 
-                //Chambres Cham = rcbChambres.SelectedItem as Chambres;
+                Chambres Cham = rcbChambres.SelectedItem as Chambres;
                 TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
 
                 if (rcbTypeReservation.SelectedIndex != -1)
                 {
                     ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
 
-                    TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
+                    TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
 
 
                     var resreserv = from res in GlobalData.model.PrixChambres
-                                    where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
+                                    where res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
                                     select res;
 
                     if (resreserv != null && resreserv.Count() != 0)
@@ -531,14 +496,14 @@ namespace GESHOTEL.ReservationsModules
                             {
                                 DetailTransactions dtTrans = new DetailTransactions();
                                 dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                                dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                                dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                                 dtTrans.prix = Convert.ToDecimal(p);
                                 dtTrans.Quantite = 1;
                                 dtTrans.Reduction = Convert.ToDecimal(r);
                                 dtTrans.Montant = (dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite)) - dtTrans.Reduction;
                                 dtTrans.Transactions = Trans;
                                 dtTrans.Etat = "ACTIF";
-                                dtTrans.idHotel = 1;
+                                //dtTrans.idHotel = GlobalData.HotId;
                                 dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                                 Trans.DetailTransactions.Add(dtTrans);
@@ -547,7 +512,7 @@ namespace GESHOTEL.ReservationsModules
                             {
                                 DetailTransactions dtTrans = new DetailTransactions();
                                 dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                                dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                                dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                                 dtTrans.prix = Convert.ToDecimal(p);
                                 dtTrans.Quantite = 1;
                                 dtTrans.Reduction = 0;
@@ -555,11 +520,13 @@ namespace GESHOTEL.ReservationsModules
                                 dtTrans.Montant = (dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite)) - dtTrans.Reduction;
                                 dtTrans.Transactions = Trans;
                                 dtTrans.Etat = "ACTIF";
-                                dtTrans.idHotel = 1;
+                                //dtTrans.idHotel = GlobalData.HotId;
                                 dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                                 Trans.DetailTransactions.Add(dtTrans);
                             }
+
+
 
                         }
 
@@ -573,14 +540,14 @@ namespace GESHOTEL.ReservationsModules
                             {
                                 DetailTransactions dtTrans = new DetailTransactions();
                                 dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                                dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                                dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                                 dtTrans.prix = Convert.ToDecimal(p);
                                 dtTrans.Quantite = 1;
                                 dtTrans.Reduction = Convert.ToDecimal(r);
                                 dtTrans.Montant = (dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite)) - dtTrans.Reduction;
                                 dtTrans.Transactions = Trans;
                                 dtTrans.Etat = "ACTIF";
-                                dtTrans.idHotel = 1;
+                                //dtTrans.idHotel = GlobalData.HotId;
                                 dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                                 Trans.DetailTransactions.Add(dtTrans);
@@ -589,14 +556,14 @@ namespace GESHOTEL.ReservationsModules
                             {
                                 DetailTransactions dtTrans = new DetailTransactions();
                                 dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                                dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                                dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                                 dtTrans.prix = Convert.ToDecimal(p);
                                 dtTrans.Quantite = 1;
                                 dtTrans.Reduction = 0;
                                 dtTrans.Montant = (dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite)) - dtTrans.Reduction;
                                 dtTrans.Transactions = Trans;
                                 dtTrans.Etat = "ACTIF";
-                                dtTrans.idHotel = 1;
+                                //dtTrans.idHotel = GlobalData.HotId;
                                 dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                                 Trans.DetailTransactions.Add(dtTrans);
@@ -610,18 +577,17 @@ namespace GESHOTEL.ReservationsModules
                         {
                             DetailTransactions dtTrans = new DetailTransactions();
                             dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                            dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                            dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                             dtTrans.prix = Convert.ToDecimal(p);
                             dtTrans.Quantite = 1;
                             dtTrans.Reduction = Convert.ToDecimal(r);
                             dtTrans.Montant = (dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite)) - dtTrans.Reduction;
                             dtTrans.Transactions = Trans;
                             dtTrans.Etat = "ACTIF";
-                            dtTrans.idHotel = 1;
+                            //dtTrans.idHotel = GlobalData.HotId;
                             dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                             Trans.DetailTransactions.Add(dtTrans);
-
                         }
                         break;
                     case 4:
@@ -630,13 +596,13 @@ namespace GESHOTEL.ReservationsModules
                         {
                             DetailTransactions dtTrans = new DetailTransactions();
                             dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                            dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                            dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                             dtTrans.prix = Convert.ToDecimal(p);
                             dtTrans.Quantite = 1;
                             dtTrans.Montant = dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite);
                             dtTrans.Transactions = Trans;
                             dtTrans.Etat = "ACTIF";
-                            dtTrans.idHotel = 1;
+                            //dtTrans.idHotel = GlobalData.HotId;
                             dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                             Trans.DetailTransactions.Add(dtTrans);
@@ -654,13 +620,13 @@ namespace GESHOTEL.ReservationsModules
                         {
                             DetailTransactions dtTrans = new DetailTransactions();
                             dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                            dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                            dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                             dtTrans.prix = Convert.ToDecimal(p);
                             dtTrans.Quantite = 1;
                             dtTrans.Montant = dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite);
                             dtTrans.Transactions = Trans;
                             dtTrans.Etat = "ACTIF";
-                            dtTrans.idHotel = 1;
+                            //dtTrans.idHotel = GlobalData.HotId;
                             dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                             Trans.DetailTransactions.Add(dtTrans);
@@ -680,18 +646,18 @@ namespace GESHOTEL.ReservationsModules
             }
             else
             {
-                //Chambres Cham = rcbChambres.SelectedItem as Chambres;
+                Chambres Cham = rcbChambres.SelectedItem as Chambres;
                 TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
 
                 if (rcbTypeReservation.SelectedIndex != -1)
                 {
                     ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
 
-                    TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
+                    TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
 
 
                     var resreserv = from res in GlobalData.model.PrixChambres
-                                    where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
+                                    where res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
                                     select res;
 
                     if (resreserv != null && resreserv.Count() != 0)
@@ -702,13 +668,13 @@ namespace GESHOTEL.ReservationsModules
                         {
                             DetailTransactions dtTrans = new DetailTransactions();
                             dtTrans.Date = DateTime.Now.AddDays(i - 1);
-                            dtTrans.Descriptions = "CHAMBRE " + tpCham.Libelle;
+                            dtTrans.Descriptions = "CHAMBRE " + Cham.TypeChambres.Libelle + " " + Cham.Numero;
                             dtTrans.prix = Convert.ToDecimal(prix.Prix);
                             dtTrans.Quantite = 1;
                             dtTrans.Montant = dtTrans.prix * Convert.ToDecimal(dtTrans.Quantite);
                             dtTrans.Transactions = Trans;
                             dtTrans.Etat = "ACTIF";
-                            dtTrans.idHotel = 1;
+                            //dtTrans.idHotel = GlobalData.HotId;
                             dtTrans.Produits = GlobalData.model.Produits.Where(c => c.Libelle == "CHAMBRE").First();
 
                             Trans.DetailTransactions.Add(dtTrans);
@@ -725,25 +691,25 @@ namespace GESHOTEL.ReservationsModules
             Transactions Trans = (Transactions)this.gbFacture.DataContext;
             DetailTransactions dt;
 
-            //Chambres Cham = rcbChambres.SelectedItem as Chambres;
+            Chambres Cham = rcbChambres.SelectedItem as Chambres;
             TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
 
             if (rcbTypeReservation.SelectedIndex != -1)
             {
                 ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
 
-                TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
+                TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
 
 
                 var resreserv = from res in GlobalData.model.PrixChambres
-                                where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
+                                where res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
                                 select res;
 
                 if (resreserv != null && resreserv.Count() != 0)
                 {
                     PrixChambres prix = resreserv.FirstOrDefault();
                     var resOR = from res in GlobalData.model.OperationRules
-                                where res.idHotel == 1 && res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
+                                where res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
                                 select res;
 
                     if (resOR != null && resOR.Count() != 0)
@@ -765,7 +731,7 @@ namespace GESHOTEL.ReservationsModules
                                 case 1:
                                     int i = 1;
 
-                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
+                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
                                     {
                                         if (i % (n + 1) == 0)
                                         {
@@ -784,7 +750,7 @@ namespace GESHOTEL.ReservationsModules
 
                                     int j = 1;
 
-                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
+                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
                                     {
                                         if (j > n)
                                         {
@@ -800,7 +766,7 @@ namespace GESHOTEL.ReservationsModules
 
                                     break;
                                 case 3:
-                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
+                                    foreach (DetailTransactions item in Trans.DetailTransactions.Where(c => c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES"))
                                     {
                                         DetailTransactions dtTrans = item;
                                         dtTrans.ReductionAuto = Convert.ToDecimal(r);
@@ -810,7 +776,7 @@ namespace GESHOTEL.ReservationsModules
                                     break;
                                 case 4:
 
-                                    dt = Trans.DetailTransactions.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES").FirstOrDefault();
+                                    dt = Trans.DetailTransactions.Where(c => c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES").FirstOrDefault();
 
                                     dt.ReductionAuto = Convert.ToDecimal(r);
                                     dt.Montant = (dt.prix * Convert.ToDecimal(dt.Quantite)) - dt.Reduction - dt.ReductionAuto;
@@ -818,7 +784,7 @@ namespace GESHOTEL.ReservationsModules
                                     break;
                                 case 5:
 
-                                    dt = Trans.DetailTransactions.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES").LastOrDefault();
+                                    dt = Trans.DetailTransactions.Where(c => c.Etat == "ACTIF" && c.Produits.Categories.Libelle == "CHAMBRES").LastOrDefault();
 
                                     dt.ReductionAuto = Convert.ToDecimal(r);
                                     dt.Montant = (dt.prix * Convert.ToDecimal(dt.Quantite)) - dt.Reduction - dt.ReductionAuto;
@@ -860,6 +826,8 @@ namespace GESHOTEL.ReservationsModules
             this.gbContactClient.DataContext = client;
             this.gbAutreClient.DataContext = client;
 
+            //txtAddresse.Focus();
+
 
         }
 
@@ -872,9 +840,11 @@ namespace GESHOTEL.ReservationsModules
                 this.gbInfoClient.DataContext = client;
                 this.gbContactClient.DataContext = client;
                 this.gbAutreClient.DataContext = client;
+                                
 
                 //rcbTypeChambre.Focus();
             }
+
         }
 
         private void txtNoms_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1033,11 +1003,11 @@ namespace GESHOTEL.ReservationsModules
                     if (resType.ReservationType == "NUIT")
                     {
 
-                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
+                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
 
 
                         var resreserv = from res in GlobalData.model.PrixChambres
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
+                                        where res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
                                         select res;
 
                         if (resreserv != null && resreserv.Count() != 0)
@@ -1045,7 +1015,7 @@ namespace GESHOTEL.ReservationsModules
                             PrixChambres prix = resreserv.FirstOrDefault();
 
                             var resOR = from res in GlobalData.model.OperationRules
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
+                                        where res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
                                         select res;
 
                             if (resOR != null && resOR.Count() != 0)
@@ -1118,8 +1088,8 @@ namespace GESHOTEL.ReservationsModules
                         //Transaction
                         //Trans.TotalHT = (decimal)(Convert.ToDouble(tpCham.PrixNuit) * Convert.ToDouble(rnNuit.Value));
 
-                        Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
-                        //Trans.TVA = 0;
+                        //Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
+                        Trans.TVA = 0;
 
                         Trans.TotalTTC = Trans.TotalHT + Trans.TVA;
 
@@ -1137,6 +1107,7 @@ namespace GESHOTEL.ReservationsModules
 
                             Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
                         }
+
 
                         rdMontant.Value = Convert.ToDouble(Trans.TotalHT);
                         //rdReduction.Value = Convert.ToDouble(Trans.Reduction);
@@ -1148,11 +1119,11 @@ namespace GESHOTEL.ReservationsModules
                     }
                     else
                     {
-                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
+                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
 
 
                         var resreserv = from res in GlobalData.model.PrixChambres
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
+                                        where res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
                                         select res;
 
                         if (resreserv != null && resreserv.Count() != 0)
@@ -1160,7 +1131,7 @@ namespace GESHOTEL.ReservationsModules
                             PrixChambres prix = resreserv.FirstOrDefault();
 
                             var resOR = from res in GlobalData.model.OperationRules
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
+                                        where res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
                                         select res;
 
                             if (resOR != null && resOR.Count() != 0)
@@ -1233,8 +1204,8 @@ namespace GESHOTEL.ReservationsModules
                         //Transaction
                         //Trans.TotalHT = (decimal)(Convert.ToDouble(tpCham.PrixNuit) * Convert.ToDouble(rnNuit.Value));
 
-                        Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
-                        //Trans.TVA = 0;
+                        //Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
+                        Trans.TVA = 0;
 
                         Trans.TotalTTC = Trans.TotalHT + Trans.TVA;
 
@@ -1252,13 +1223,14 @@ namespace GESHOTEL.ReservationsModules
 
                             Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
                         }
-
-                        rdMontant.Value = Convert.ToDouble(Trans.TotalHT);
+                        
+                        rdMontant.Value =  Convert.ToDouble(Trans.TotalHT);
                         //rdReduction.Value = Convert.ToDouble(Trans.Reduction);
                         rdTVA.Value = Convert.ToDouble(Trans.TVA);
                         rdTTC.Value = Convert.ToDouble(Trans.TotalTTC);
                         rdMontantPaye.Value = Convert.ToDouble(Trans.TotalPaye);
                         rdMontantRestant.Value = Convert.ToDouble(Trans.TotalReste);
+
 
                     }
 
@@ -1273,140 +1245,133 @@ namespace GESHOTEL.ReservationsModules
         {
             Transactions Trans = (Transactions)this.gbFacture.DataContext;
 
-            try
+            if (rcbRules.SelectedItem != null && (double)Trans.TotalHT != 0 && (double)rdReduction.Value != 0)
             {
-                if (rcbRules.SelectedItem != null && (double)Trans.TotalHT != 0 && (double)rdReduction.Value != 0)
+                Rules OpRule = rcbRules.SelectedItem as Rules;
+                Reductions red = rcbReductions.SelectedItem as Reductions;
+
+                int nbr = (int)rnNuit.Value;
+                double h = (double)rnNuit.Value;
+                double n = (double)rdNNuit.Value;
+                double r = 0;
+
+                if (red.OpenReduction == true)
                 {
-                    Rules OpRule = rcbRules.SelectedItem as Rules;
-                    Reductions red = rcbReductions.SelectedItem as Reductions;
-
-                    int nbr = (int)rnNuit.Value;
-                    double h = (double)rnNuit.Value;
-                    double n = (double)rdNNuit.Value;
-                    double r = 0;
-
-                    if (red.OpenReduction == true)
+                    if (ReductionType == "FIXE")
                     {
-                        if (ReductionType == "FIXE")
-                        {
-                            r = (double)rdReduction.Value;
-                        }
-                        else
-                        {
-                            rdReduction.Value = (double)Trans.TotalHT * (double)rdPourcentage.Value * 0.01;
-                            r = (double)rdReduction.Value;
-                        }
+                        r = (double)rdReduction.Value;
                     }
                     else
                     {
-                        if (ReductionType == "FIXE")
-                        {
-                            r = (double)red.Valeur;
-                        }
-                        else
-                        {
-                            r = (double)Trans.TotalHT * (double)red.Pourcentage * 0.01;
-                        }
-                    }
-
-                    double pc = 0;
-
-
-                    switch (OpRule.idRules)
-                    {
-                        case 1:
-
-                            pc = (r * (int)(h / (n + 1)));
-
-                            if (pc < (double)Trans.TotalHT)
-                            {
-                                Trans.Reduction = Convert.ToDecimal(pc);
-                            }
-                            else
-                            {
-                                Trans.Reduction = 0;
-                                MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                            }
-
-
-                            break;
-                        case 2:
-                            if (h > n)
-                            {
-                                pc = (r * (h - n));
-                            }
-                            else
-                            {
-                                pc = 0;
-                            }
-
-                            if (pc < (double)Trans.TotalHT)
-                            {
-                                Trans.Reduction = Convert.ToDecimal(pc);
-                            }
-                            else
-                            {
-                                Trans.Reduction = 0;
-                                MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                            }
-                            break;
-                        case 3:
-                            pc = (r * h);
-                            if (pc < (double)Trans.TotalHT)
-                            {
-                                Trans.Reduction = Convert.ToDecimal(pc);
-                            }
-                            else
-                            {
-                                Trans.Reduction = 0;
-                                MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                            }
-                            break;
-                        case 4:
-                            pc = (r);
-                            if (pc < (double)Trans.TotalHT)
-                            {
-                                Trans.Reduction = Convert.ToDecimal(pc);
-                            }
-                            else
-                            {
-                                Trans.Reduction = 0;
-                                MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                            }
-                            break;
-                        case 5:
-                            pc = (r);
-                            if (pc < (double)Trans.TotalHT)
-                            {
-                                Trans.Reduction = Convert.ToDecimal(pc);
-                            }
-                            else
-                            {
-                                Trans.Reduction = 0;
-                                MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                            }
-                            break;
-
-                        default:
-
-                            break;
+                        rdReduction.Value = (double)Trans.TotalHT * (double)rdPourcentage.Value * 0.01;
+                        r = (double)rdReduction.Value;
                     }
                 }
                 else
                 {
-                    try
+                    if (ReductionType == "FIXE")
                     {
-                        Trans.Reduction = 0;
+                        r = (double)red.Valeur;
                     }
-                    catch (Exception)
+                    else
                     {
+                        r = (double)Trans.TotalHT * (double)red.Pourcentage * 0.01;
                     }
+                }
 
+                double pc = 0;
+
+
+                switch (OpRule.idRules)
+                {
+                    case 1:
+
+                        pc = (r * (int)(h / (n + 1)));
+
+                        if (pc < (double)Trans.TotalHT)
+                        {
+                            Trans.Reduction = Convert.ToDecimal(pc);
+                        }
+                        else
+                        {
+                            Trans.Reduction = 0;
+                            MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        }
+
+
+                        break;
+                    case 2:
+                        if (h > n)
+                        {
+                            pc = (r * (h - n));
+                        }
+                        else
+                        {
+                            pc = 0;
+                        }
+
+                        if (pc < (double)Trans.TotalHT)
+                        {
+                            Trans.Reduction = Convert.ToDecimal(pc);
+                        }
+                        else
+                        {
+                            Trans.Reduction = 0;
+                            MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        }
+                        break;
+                    case 3:
+                        pc = (r * h);
+                        if (pc < (double)Trans.TotalHT)
+                        {
+                            Trans.Reduction = Convert.ToDecimal(pc);
+                        }
+                        else
+                        {
+                            Trans.Reduction = 0;
+                            MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        }
+                        break;
+                    case 4:
+                        pc = (r);
+                        if (pc < (double)Trans.TotalHT)
+                        {
+                            Trans.Reduction = Convert.ToDecimal(pc);
+                        }
+                        else
+                        {
+                            Trans.Reduction = 0;
+                            MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        }
+                        break;
+                    case 5:
+                        pc = (r);
+                        if (pc < (double)Trans.TotalHT)
+                        {
+                            Trans.Reduction = Convert.ToDecimal(pc);
+                        }
+                        else
+                        {
+                            Trans.Reduction = 0;
+                            MessageBox.Show("La reduction ne peut pa etre superieure au prix total", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        }
+                        break;
+
+                    default:
+
+                        break;
                 }
             }
-            catch (Exception)
+            else
             {
-
+                try
+                {
+                    Trans.Reduction = 0;
+                }
+                catch (Exception)
+                {
+                }
+                
             }
 
         }
@@ -1422,7 +1387,7 @@ namespace GESHOTEL.ReservationsModules
 
                     if (resType.ReservationType == "NUIT")
                     {
-                        dpArrival.IsEnabled = true;
+                        dpArrival.IsEnabled = false;
                         dpArrival.SelectedTime = resType.HeureDepart;
                         dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays(1);
                         dpDepart.SelectedTime = resType.HeureFin;
@@ -1430,7 +1395,6 @@ namespace GESHOTEL.ReservationsModules
                         if (rnNuit.Value != 1)
                         {
                             rnNuit.Value = 1;
-
                         }
 
                         rnAdult.Value = 1;
@@ -1465,7 +1429,6 @@ namespace GESHOTEL.ReservationsModules
                             dpDepart.SelectedTime = dpArrival.SelectedTime.Value.Add(TimeSpan.FromMinutes(Convert.ToDouble(((int)rnNuit.Value * resType.Heure * 60) - 1)));
                             rdNNuit.Maximum = 1.7976931348623157E+308;
                             rdNNuit.Minimum = 0;
-                            rnAdult.Value = 1;
 
                             if (EtatClear != "CLEAR")
                             {
@@ -1478,6 +1441,7 @@ namespace GESHOTEL.ReservationsModules
                                 }
                             }
 
+                            rnAdult.Value = 1;
                             //rdReduction.Value = 0;
                             //GetReduction();
                             UpdateMontant();
@@ -1507,38 +1471,30 @@ namespace GESHOTEL.ReservationsModules
         {
             if (rcbTypeChambre.SelectedIndex != -1)
             {
-                try
+                TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
+
+                if (tpCham != null)
                 {
-                    TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
+                    var resSer = tpCham.Chambres.Where(c => c.Etat != "SUPPRIMER");
 
-                    if (tpCham != null)
+                    ObservableCollection<Chambres> lstChambre = new ObservableCollection<Chambres>();
+
+                    foreach (Chambres item in resSer)
                     {
-                        var resSer = tpCham.Chambres.Where(c => c.Etat != "SUPPRIMER" && c.idHotel == 1);
-
-                        ObservableCollection<Chambres> lstChambre = new ObservableCollection<Chambres>();
-
-                        foreach (Chambres item in resSer)
+                        if (isAvailable(dpArrival.SelectedValue.Value, dpDepart.SelectedValue.Value, item))
                         {
-                            if (isAvailable(dpArrival.SelectedValue.Value, dpDepart.SelectedValue.Value, item))
+                            if (item.EtatOperation == "LIBRE" || item.EtatOperation == "RESERVER")
                             {
-                                //if (item.EtatOperation == "RESERVER")
-                                //{
-                                    lstChambre.Add(item);
-                                //}
+                                lstChambre.Add(item);
                             }
                         }
-
-                        //rcbChambres.ItemsSource = lstChambre;
-
-                        rnAdult.Value = 1;
-                        //rdReduction.Value = 0;
-                        //GetReduction();
-                        UpdateMontant();
-
                     }
-                }
-                catch (Exception)
-                {
+
+                    rcbChambres.ItemsSource = lstChambre;
+                    rnAdult.Value = 1;
+                    //rdReduction.Value = 0;
+                    //GetReduction();
+                    UpdateMontant();
 
                 }
 
@@ -1549,85 +1505,20 @@ namespace GESHOTEL.ReservationsModules
 
         private void dpArrival_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (rcbTypeReservation.SelectedIndex != -1)
-            {
+            //try
+            //{
+            //    dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays((int)rnNuit.Value);
+            //}
+            //catch (Exception)
+            //{
 
-                try
-                {
-                    ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
-
-                    if (resType.ReservationType == "NUIT")
-                    {
-                        dpArrival.IsEnabled = false;
-                        dpArrival.SelectedTime = resType.HeureDepart;
-                        dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays(1);
-                        dpDepart.SelectedTime = resType.HeureFin;
-                        rnNuit.Value = 1;
-                        rdNNuit.Maximum = 1;
-                        rdNNuit.Minimum = 1;
-
-                        if (EtatClear != "CLEAR")
-                        {
-                            if (!isAvailable())
-                            {
-                                if (rnNuit.Value != 0)
-                                {
-                                    rnNuit.Value = 0;
-                                    MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
-
-                            }
-                        }
-
-                        //rdReduction.Value = 0;
-                        //GetReduction();
-                        UpdateMontant();
-                    }
-                    else
-                    {
-                        try
-                        {
-                            dpArrival.IsEnabled = true;
-                            //dpArrival.SelectedTime = DateTime.Now.TimeOfDay ;
-                            dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays((int)rnNuit.Value);
-                            //dpDepart.SelectedTime = resType.HeureFin;
-                            dpDepart.SelectedTime = dpArrival.SelectedTime.Value.Add(TimeSpan.FromMinutes(Convert.ToDouble(((int)rnNuit.Value * resType.Heure * 60) - 1)));
-                            rdNNuit.Maximum = 1.7976931348623157E+308;
-                            rdNNuit.Minimum = 0;
-
-                            if (!isAvailable())
-                            {
-                                rnNuit.Value = 0;
-                                MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            }
-                            //rdReduction.Value = 0;
-                            //GetReduction();
-                            UpdateMontant();
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-
-
-                }
-
-                //rdReduction.Value = 0;
-                //GetReduction();
-                UpdateMontant();
-
-
-            }
+            //}
+            //UpdateMontant();
         }
 
         private void dpDepart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateMontant();
+            //UpdateMontant();
         }
 
         private void rnNuit_ValueChanged(object sender, Telerik.Windows.Controls.RadRangeBaseValueChangedEventArgs e)
@@ -1646,23 +1537,23 @@ namespace GESHOTEL.ReservationsModules
                         dpArrival.SelectedTime = resType.HeureDepart;
                         dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays(1);
                         dpDepart.SelectedTime = resType.HeureFin;
-                        //rnNuit.Value = 1;
-                        rdNNuit.Maximum = 1;
-                        rdNNuit.Minimum = 1;
 
-                        if (EtatClear != "CLEAR")
+                        if (rnNuit.Value != 1)
                         {
-                            if (!isAvailable())
-                            {
-                                if (rnNuit.Value != 0)
-                                {
-                                    rnNuit.Value = 0;
-                                    MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
-
-                            }
+                            //rnNuit.Value = 1;
+                            rdNNuit.Maximum = 1;
+                            rdNNuit.Minimum = 1;
                         }
 
+                        if (!isAvailable())
+                        {
+                            if (rnNuit.Value != 0)
+                            {
+                                //rnNuit.Value = 0;
+                                MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
+
+                        }
                         //rdReduction.Value = 0;
                         //GetReduction();
                         UpdateMontant();
@@ -1671,8 +1562,8 @@ namespace GESHOTEL.ReservationsModules
                     {
                         try
                         {
-                            dpArrival.IsEnabled = true;
-                            //dpArrival.SelectedTime = DateTime.Now.TimeOfDay ;
+                            dpArrival.IsEnabled = false;
+                            dpArrival.SelectedTime = DateTime.Now.TimeOfDay;
                             dpDepart.SelectedDate = dpArrival.SelectedDate.Value.AddDays((int)rnNuit.Value);
                             //dpDepart.SelectedTime = resType.HeureFin;
                             dpDepart.SelectedTime = dpArrival.SelectedTime.Value.Add(TimeSpan.FromMinutes(Convert.ToDouble(((int)rnNuit.Value * resType.Heure * 60) - 1)));
@@ -1681,7 +1572,7 @@ namespace GESHOTEL.ReservationsModules
 
                             if (!isAvailable())
                             {
-                                rnNuit.Value = 0;
+                                //rnNuit.Value = 0;
                                 MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
                             }
                             //rdReduction.Value = 0;
@@ -1712,56 +1603,59 @@ namespace GESHOTEL.ReservationsModules
         private void rcbChambres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //if (!isAvailable())
-            //{
-            //    MessageBox.Show("Cette chambre n'est pas disponible", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    rcbChambres.SelectedIndex = -1;
-            //}
+            if (!isAvailable())
+            {
 
-            //try
-            //{
-            //    Chambres Cham = rcbChambres.SelectedItem as Chambres;
+            }
 
-            //    if (Cham.EtatOperation == "SALLE")
-            //    {
-            //        MessageBox.Show("Cette chambre est salle", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //        rcbChambres.SelectedItem = null;
-            //        return;
-            //    }
-            //}
-            //catch (Exception)
-            //{
+            try
+            {
+                Chambres Cham = rcbChambres.SelectedItem as Chambres;
 
-            //}
+                if (Cham.EtatOperation == "SALLE")
+                {
+                    MessageBox.Show("La chambre est salle veuillez la nettoyée", "Message", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    rcbChambres.SelectedItem = null;
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        private void paysRadComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
 
         public bool isAvailable()
         {
-            //try
-            //{
-            //    DateTime date = dpArrival.SelectedValue.Value;
-            //    DateTime datefin = dpDepart.SelectedValue.Value;
-            //    Chambres chambre = rcbChambres.SelectedItem as Chambres;
+            try
+            {
+                DateTime date = dpArrival.SelectedValue.Value;
+                DateTime datefin = dpDepart.SelectedValue.Value;
+                Chambres chambre = rcbChambres.SelectedItem as Chambres;
 
-            //    if (chambre != null)
-            //    {
-            //        var resreserv = from res in GlobalData.model.Reservations
-            //                        where res.idChambre == chambre.ID && res.Etat != "TERMINER" && (date >= res.DateArrive || datefin >= res.DateArrive) && (date <= res.DateDepart || datefin <= res.DateDepart)
-            //                        select res;
+                if (chambre != null)
+                {
+                    var resreserv = from res in GlobalData.model.Reservations
+                                    where res.idChambre == chambre.ID && res.Etat != "TERMINER" && (date >= res.DateArrive || datefin >= res.DateArrive) && (date <= res.DateDepart || datefin <= res.DateDepart)
+                                    select res;
 
-            //        if (resreserv != null && resreserv.Count() != 0)
-            //        {
-            //            return false;
-            //        }
+                    if (resreserv != null && resreserv.Count() != 0)
+                    {
+                        return false;
+                    }
 
-            //    }
-            //}
-            //catch (Exception)
-            //{
+                }
+            }
+            catch (Exception)
+            {
 
-
-            //}
+            }
 
 
             return true;
@@ -1778,7 +1672,7 @@ namespace GESHOTEL.ReservationsModules
                 if (chambre != null)
                 {
                     var resreserv = from res in GlobalData.model.Reservations
-                                    where res.idChambre == chambre.ID && res.ReservationTypes.DisplayName != "PASSAGE" && res.Etat != "TERMINER" && (date >= res.DateArrive || datefin >= res.DateArrive) && (date <= res.DateDepart || datefin <= res.DateDepart)
+                                    where res.idChambre == chambre.ID && res.Etat != "TERMINER" && (date >= res.DateArrive || datefin >= res.DateArrive) && (date <= res.DateDepart || datefin <= res.DateDepart)
                                     select res;
 
                     if (resreserv != null && resreserv.Count() != 0)
@@ -1791,6 +1685,7 @@ namespace GESHOTEL.ReservationsModules
             catch (Exception)
             {
 
+
             }
 
             return true;
@@ -1802,11 +1697,6 @@ namespace GESHOTEL.ReservationsModules
             {
                 UpdateMontant();
             }
-
-        }
-
-        private void paysRadComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
         }
 
@@ -1916,6 +1806,7 @@ namespace GESHOTEL.ReservationsModules
             }
         }
 
+
         private void txtAddresse_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -2001,12 +1892,8 @@ namespace GESHOTEL.ReservationsModules
 
         }
 
+
         private void RadDatePicker_KeyUp_1(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void textBox8_KeyUp(object sender, KeyEventArgs e)
         {
 
         }
@@ -2035,7 +1922,7 @@ namespace GESHOTEL.ReservationsModules
         {
             if (e.Key == Key.Enter)
             {
-                rdMontantRestant.Focus();
+                btnValider.Focus();
             }
         }
 
@@ -2061,8 +1948,8 @@ namespace GESHOTEL.ReservationsModules
             {
                 if (rcbTypeChambre.SelectedItem != null)
                 {
-                    //rcbChambres.SelectedIndex = 0;
-                    rcbTypeReservation.Focus();
+                    rcbChambres.SelectedIndex = 0;
+                    rcbChambres.Focus();
 
                 }
             }
@@ -2070,14 +1957,14 @@ namespace GESHOTEL.ReservationsModules
 
         private void rcbChambres_KeyUp(object sender, KeyEventArgs e)
         {
-            //if (e.Key == Key.Enter)
-            //{
-            //    if (rcbChambres.SelectedItem != null)
-            //    {
-            //        rcbTypeReservation.Focus();
-            //    }
+            if (e.Key == Key.Enter)
+            {
+                if (rcbChambres.SelectedItem != null)
+                {
+                    rcbTypeReservation.Focus();
+                }
 
-            //}
+            }
         }
 
         private void rcbTypeReservation_KeyUp(object sender, KeyEventArgs e)
@@ -2086,8 +1973,22 @@ namespace GESHOTEL.ReservationsModules
             {
                 if (rcbTypeReservation.SelectedItem != null)
                 {
-                    dpArrival.SelectedDate = DateTime.Now;
-                    rnNuit.Focus();
+                    ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
+
+                    if (resType.ReservationType == "NUIT")
+                    {
+                        rnNuit.IsEnabled = false;
+                        dpArrival.SelectedDate = DateTime.Now;
+                        rnAdult.Focus();
+                    }
+                    else
+                    {
+                        rnNuit.IsEnabled = true;
+                        dpArrival.SelectedDate = DateTime.Now;
+                        rnNuit.Focus();
+                    }
+
+
                 }
             }
         }
@@ -2098,17 +1999,7 @@ namespace GESHOTEL.ReservationsModules
             {
                 if (rnNuit.Value != 0)
                 {
-
-                    ReservationTypes res = rcbTypeReservation.SelectedItem as ReservationTypes;
-                    if (res != null && res.DisplayName == "SEJOUR")
-                    {
-                        dpArrival.Focus();
-                    }
-                    else
-                    {
-                        rnAdult.Focus();
-                    }
-                    
+                    rnAdult.Focus();
                 }
 
             }
@@ -2191,9 +2082,7 @@ namespace GESHOTEL.ReservationsModules
             {
                 if (rdNNuit.Value != 0)
                 {
-
                     rdReduction.Focus();
-
                 }
             }
         }
@@ -2238,10 +2127,10 @@ namespace GESHOTEL.ReservationsModules
                     default:
                         break;
                 }
-                //rdReduction.Value = 0;
-                GetReduction();
-                UpdateMontant();
             }
+
+            GetReduction();
+            UpdateMontant();
 
 
         }
@@ -2344,261 +2233,6 @@ namespace GESHOTEL.ReservationsModules
             //}
         }
 
-        private void rdMontant_ValueChanged(object sender, RadRangeBaseValueChangedEventArgs e)
-        {
-            GetReduction();
-            UpdateMontant();
-        }
 
-        private void ModifyMontant()
-        {
-            if (rcbTypeChambre.SelectedIndex != -1)
-            {
-                TypeChambres tpCham = rcbTypeChambre.SelectedItem as TypeChambres;
-                Transactions Trans = (Transactions)this.gbFacture.DataContext;
-                //Trans.Reduction = Convert.ToDecimal(rdReduction.Value);
-
-                if (rcbTypeReservation.SelectedIndex != -1)
-                {
-                    ReservationTypes resType = rcbTypeReservation.SelectedItem as ReservationTypes;
-
-                    if (resType.ReservationType == "NUIT")
-                    {
-
-                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
-
-
-                        var resreserv = from res in GlobalData.model.PrixChambres
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
-                                        select res;
-
-                        if (resreserv != null && resreserv.Count() != 0)
-                        {
-                            PrixChambres prix = resreserv.FirstOrDefault();
-
-                            var resOR = from res in GlobalData.model.OperationRules
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
-                                        select res;
-
-                            if (resOR != null && resOR.Count() != 0)
-                            {
-
-                                Trans.TotalHT = Convert.ToDecimal((double)prix.Prix * rnNuit.Value) - Trans.Reduction;
-
-                                foreach (OperationRules OpRule in resOR)
-                                {
-
-                                    int nbr = (int)(rnNuit.Value / (OpRule.Quantite + 1));
-                                    double h = (double)rnNuit.Value;
-                                    double n = (double)OpRule.Quantite;
-                                    double r = (double)OpRule.Reductions.Valeur;
-                                    double p = (double)prix.Prix;
-                                    double pc = 0;
-
-
-                                    switch (OpRule.Rules.idRules)
-                                    {
-                                        case 1:
-
-                                            pc = (r * (int)(h / (n + 1)));
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-
-                                            break;
-                                        case 2:
-                                            if (h > n)
-                                            {
-                                                pc = (r * (h - n));
-                                            }
-                                            else
-                                            {
-                                                pc = 0;
-                                            }
-
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 3:
-                                            pc = (r * h);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 4:
-                                            pc = (r);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 5:
-                                            pc = (r);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-
-                                        default:
-                                            break;
-                                    }
-                                }
-
-                            }
-                            else
-                            {
-                                Trans.TotalHT = Convert.ToDecimal((double)prix.Prix * rnNuit.Value) - Trans.Reduction;
-
-                            }
-
-                        }
-                        else
-                        {
-                            return;
-                        }
-
-                        //Transaction
-                        //Trans.TotalHT = (decimal)(Convert.ToDouble(tpCham.PrixNuit) * Convert.ToDouble(rnNuit.Value));
-
-                        Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
-                        //Trans.TVA = 0;
-
-                        Trans.TotalTTC = Trans.TotalHT + Trans.TVA;
-
-                        Trans.TotalReste = Trans.TotalTTC;
-
-                        if (rdMontantPaye.Value > (double)Trans.TotalReste)
-                        {
-                            Trans.TotalPaye = 0;
-
-                            Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
-                        }
-                        else
-                        {
-                            Trans.TotalPaye = Convert.ToDecimal(rdMontantPaye.Value);
-
-                            Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
-                        }
-
-                        rdMontant.Value = Convert.ToDouble(Trans.TotalHT);
-                        //rdReduction.Value = Convert.ToDouble(Trans.Reduction);
-                        rdTVA.Value = Convert.ToDouble(Trans.TVA);
-                        rdTTC.Value = Convert.ToDouble(Trans.TotalTTC);
-                        rdMontantPaye.Value = Convert.ToDouble(Trans.TotalPaye);
-                        rdMontantRestant.Value = Convert.ToDouble(Trans.TotalReste);
-
-                    }
-                    else
-                    {
-                        TypePrix tpPrix = GlobalData.model.TypePrix.Where(c => c.idHotel == 1 && c.Etat == "ACTIF" && c.idReservationType == resType.ID).FirstOrDefault();
-
-
-                        var resreserv = from res in GlobalData.model.PrixChambres
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idTypePrix == tpPrix.idTypePrix && res.idTypeChambre == tpCham.ID
-                                        select res;
-
-                        if (resreserv != null && resreserv.Count() != 0)
-                        {
-                            PrixChambres prix = resreserv.FirstOrDefault();
-
-                            var resOR = from res in GlobalData.model.OperationRules
-                                        where res.idHotel == 1 && res.Etat == "ACTIF" && res.idReservationTypes == resType.ID && res.idTypeChambre == tpCham.ID
-                                        select res;
-
-                            if (resOR != null && resOR.Count() != 0)
-                            {
-
-                                Trans.TotalHT = Convert.ToDecimal((double)prix.Prix * rnNuit.Value) - Trans.Reduction;
-
-                                foreach (OperationRules OpRule in resOR)
-                                {
-
-                                    int nbr = (int)(rnNuit.Value / (OpRule.Quantite + 1));
-                                    double h = (double)rnNuit.Value;
-                                    double n = (double)OpRule.Quantite;
-                                    double r = (double)OpRule.Reductions.Valeur;
-                                    double p = (double)prix.Prix;
-                                    double pc = 0;
-
-
-                                    switch (OpRule.Rules.idRules)
-                                    {
-                                        case 1:
-
-                                            pc = (r * (int)(h / (n + 1)));
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-
-                                            break;
-                                        case 2:
-                                            if (h > n)
-                                            {
-                                                pc = (r * (h - n));
-                                            }
-                                            else
-                                            {
-                                                pc = 0;
-                                            }
-
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 3:
-                                            pc = (r * h);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 4:
-                                            pc = (r);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-                                        case 5:
-                                            pc = (r);
-                                            Trans.TotalHT -= Convert.ToDecimal(pc);
-                                            break;
-
-                                        default:
-                                            break;
-                                    }
-                                }
-
-                            }
-                            else
-                            {
-                                Trans.TotalHT = Convert.ToDecimal((double)prix.Prix * rnNuit.Value) - Trans.Reduction;
-
-                            }
-
-                        }
-                        else
-                        {
-                            return;
-                        }
-
-                        //Transaction
-                        //Trans.TotalHT = (decimal)(Convert.ToDouble(tpCham.PrixNuit) * Convert.ToDouble(rnNuit.Value));
-
-                        Trans.TVA = (decimal)(18 * (double)0.01 * (double)Trans.TotalHT);
-                        //Trans.TVA = 0;
-
-                        Trans.TotalTTC = Trans.TotalHT + Trans.TVA;
-
-                        Trans.TotalReste = Trans.TotalTTC;
-
-                        if (rdMontantPaye.Value > (double)Trans.TotalReste)
-                        {
-                            Trans.TotalPaye = 0;
-
-                            Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
-                        }
-                        else
-                        {
-                            Trans.TotalPaye = Convert.ToDecimal(rdMontantPaye.Value);
-
-                            Trans.TotalReste = Trans.TotalTTC - Convert.ToDecimal(rdMontantPaye.Value);
-                        }
-
-                        rdMontant.Value = Convert.ToDouble(Trans.TotalHT);
-                        //rdReduction.Value = Convert.ToDouble(Trans.Reduction);
-                        rdTVA.Value = Convert.ToDouble(Trans.TVA);
-                        rdTTC.Value = Convert.ToDouble(Trans.TotalTTC);
-                        rdMontantPaye.Value = Convert.ToDouble(Trans.TotalPaye);
-                        rdMontantRestant.Value = Convert.ToDouble(Trans.TotalReste);
-
-                    }
-
-                }
-
-            }
-
-
-        }
     }
 }

@@ -98,6 +98,19 @@
         <AssociationConnector Association="GESHOTELModel.fk_Permissions_Permissions" />
         <AssociationConnector Association="GESHOTELModel.HasPermission" />
         <AssociationConnector Association="GESHOTELModel.FK_Reservations_TypeChambres" />
+        <EntityTypeShape EntityType="GESHOTELModel.ListDepense" Width="1.5" PointX="15.375" PointY="5.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ReservationDashBoard" Width="1.5" PointX="16.375" PointY="9.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ChambreDisponibilite" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ChambreMaintenance" Width="1.5" PointX="17.375" PointY="4.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ChambreNuitRapport" Width="1.5" PointX="18.375" PointY="8.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ChambreReserver" Width="1.5" PointX="18.375" PointY="15.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ListePrixChambre" Width="1.5" PointX="15.375" PointY="18.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ListeReservation" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ListeStatChambre" Width="1.5" PointX="20.375" PointY="8.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.RecuReservations" Width="1.5" PointX="20.375" PointY="12.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.RecuVente" Width="1.5" PointX="17.375" PointY="20.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ReservationCheckIn" Width="1.5" PointX="19.375" PointY="20.75" />
+        <EntityTypeShape EntityType="GESHOTELModel.ReservationCheckOut" Width="1.5" PointX="21.375" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

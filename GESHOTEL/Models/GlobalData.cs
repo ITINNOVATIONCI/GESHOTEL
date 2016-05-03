@@ -16,6 +16,7 @@ namespace GESHOTEL.Models
         public static RadPaneGroup PaneGroup;
 
         public static GESHOTELEntities model;
+        public static GESHOTELEntities modelRP;
         public static bool isLoggedIn = false;
         public static string Nom;
         public static string Profil;
@@ -52,7 +53,7 @@ namespace GESHOTEL.Models
         {
             model = new GESHOTELEntities();
 
-            CurrentUser = model.Utilisateurs.Where(c => c.idUtilisateur == Id).FirstOrDefault();
+            //CurrentUser = model.Utilisateurs.Where(c => c.idUtilisateur == Id).FirstOrDefault();
 
         }
 
@@ -200,6 +201,22 @@ namespace GESHOTEL.Models
 
             return tamp;
         }
+
+        public static bool RemovePane(string Header)
+        {
+            foreach (RadDocumentPane item in PaneGroup.Items)
+            {
+                string str = item.Header.ToString();
+                if (str == Header)
+                {
+                    PaneGroup.Items.Remove(item);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 
     public class IniFile

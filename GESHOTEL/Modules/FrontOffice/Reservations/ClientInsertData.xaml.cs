@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GESHOTEL.FrontOffice
+namespace GESHOTEL.ReservationsModules
 {
     /// <summary>
     /// Interaction logic for InsertData.xaml

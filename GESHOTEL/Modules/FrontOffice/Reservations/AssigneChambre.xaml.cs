@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 
-namespace GESHOTEL.FrontOffice
+namespace GESHOTEL.ReservationsModules
 {
     /// <summary>
     /// Interaction logic for AssigneChambre.xaml
@@ -239,7 +239,7 @@ namespace GESHOTEL.FrontOffice
                     else if (Res.ReservationTypes.ReservationType == "NUIT")
                     {
                         RadDocumentPane rad = new RadDocumentPane();
-                        rad.Content = new GESHOTEL.FrontOffice.TransactionEdit(Res.ID, "Modification de Sejour " + Res.ID.ToString());
+                        rad.Content = new GESHOTEL.ReservationsModules.TransactionEdit(Res.ID, "Modification de Sejour " + Res.ID.ToString());
                         rad.Header = "Modification de Sejour " + Res.ID.ToString();
                         GlobalData.rrvMain.Title = "Modification de Sejour " + Res.ID.ToString();
                         rad.FontFamily = new FontFamily("Perpetua Titling MT");
@@ -258,7 +258,7 @@ namespace GESHOTEL.FrontOffice
                     else if (Res.ReservationTypes.ReservationType == "SEJOUR")
                     {
                         RadDocumentPane rad = new RadDocumentPane();
-                        rad.Content = new GESHOTEL.FrontOffice.TransactionEdit(Res.ID, "Modification de Sejour " + Res.ID.ToString());
+                        rad.Content = new GESHOTEL.ReservationsModules.TransactionEdit(Res.ID, "Modification de Sejour " + Res.ID.ToString());
                         rad.Header = "Modification de Sejour " + Res.ID.ToString();
                         GlobalData.rrvMain.Title = "Modification de Sejour " + Res.ID.ToString();
                         rad.FontFamily = new FontFamily("Perpetua Titling MT");

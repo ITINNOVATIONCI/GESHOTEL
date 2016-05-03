@@ -21,6 +21,7 @@ namespace GESHOTEL.ReservationsModules.ViewModels
         public GESHOTELEntities model;
         private BackgroundWorker worker = new BackgroundWorker();
         ObservableCollection<Reservations> _data = new ObservableCollection<Reservations>();
+        ObservableCollection<Reservations> _ListeArrivees = new ObservableCollection<Reservations>();
         ObservableCollection<Pays> _allPays = new ObservableCollection<Pays>();
         ObservableCollection<Villes> _allVilles = new ObservableCollection<Villes>();
         ObservableCollection<Nationalités> _allNationalités = new ObservableCollection<Nationalités>();
@@ -42,6 +43,19 @@ namespace GESHOTEL.ReservationsModules.ViewModels
             {
                 _data = value;
                 RaisePropertyChanged("AllData");
+            }
+        }
+
+        public ObservableCollection<Reservations> ListeArrivees
+        {
+            get
+            {
+                return _ListeArrivees;
+            }
+            set
+            {
+                _ListeArrivees = value;
+                RaisePropertyChanged("ListeArrivees");
             }
         }
 
@@ -195,6 +209,16 @@ namespace GESHOTEL.ReservationsModules.ViewModels
                            select res;
 
             AllData = new ObservableCollection<Reservations>(resultat.ToList());
+
+            DateTime t = DateTime.Now.Date;
+            DateTime t1 = DateTime.Now.Add(TimeSpan.FromDays(1)).Date;
+
+            var resultat10 = from res in model.Reservations
+                           where res.DateCheckIn != null && res.DateCheckIn >= t && res.DateCheckIn <t1
+                           orderby res.ID descending
+                           select res;
+
+            ListeArrivees = new ObservableCollection<Reservations>(resultat10.ToList());
 
             var resultat1 = from res in model.Quartiers
                             where res.Etat == "ACTIF"

@@ -635,6 +635,351 @@
           <Property Name="idHotel" Type="int" />
           <Property Name="Etat" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ChambreDisponibilite' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ChambreDisponibilite">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="NbreAdult" Type="int" />
+          <Property Name="NbreEnfant" Type="int" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="TypeOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Disponibilite" Type="varchar" MaxLength="50" />
+          <Property Name="IdReservation" Type="int" />
+          <Property Name="idHotel" Type="int" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ChambreMaintenance' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ChambreMaintenance">
+          <Key>
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="Debut" Type="datetime" />
+          <Property Name="Fin" Type="datetime" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Type de Chambre" Type="varchar" MaxLength="50" />
+          <Property Name="Raison" Type="text" />
+          <Property Name="RaisonType" Type="varchar" MaxLength="50" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="Hotel" Type="varchar(max)" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ChambreNuitRapport' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ChambreNuitRapport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Client" Type="varchar" MaxLength="401" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="NbreAdult" Type="int" />
+          <Property Name="TransactionNumero" Type="varchar" MaxLength="50" />
+          <Property Name="TotalHT" Type="money" />
+          <Property Name="Reduction" Type="money" />
+          <Property Name="TVA" Type="money" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="idRegistre" Type="int" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="Type de Prix" Type="varchar" MaxLength="50" />
+          <Property Name="Prix" Type="money" />
+          <Property Name="Hotel" Type="varchar(max)" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ChambreReserver' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ChambreReserver">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="idChambre" Type="int" />
+          <Property Name="idReservationType" Type="int" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="idPromotion" Type="int" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="TypeOperation" Type="varchar" MaxLength="50" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="DateCheckOutVC" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ListDepense' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ListDepense">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Objet" Type="varchar" MaxLength="250" />
+          <Property Name="DateTransaction" Type="date" />
+          <Property Name="Montant" Type="float" />
+          <Property Name="SOLDE" Type="float" />
+          <Property Name="Rubrique" Type="varchar" MaxLength="50" />
+          <Property Name="idRegistre" Type="int" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="TypeTransaction" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ListePrixChambre' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ListePrixChambre">
+          <Key>
+            <PropertyRef Name="idPrixChambres" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="idTypePrix" />
+            <PropertyRef Name="idReservationType" />
+            <PropertyRef Name="idHotel" />
+          </Key>
+          <Property Name="idPrixChambres" Type="int" Nullable="false" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypePrix" Type="varchar" MaxLength="50" />
+          <Property Name="Prix" Type="money" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="idTypePrix" Type="int" Nullable="false" />
+          <Property Name="idReservationType" Type="int" Nullable="false" />
+          <Property Name="idHotel" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ListeReservation' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ListeReservation">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+            <PropertyRef Name="Passage" />
+            <PropertyRef Name="Nuit" />
+            <PropertyRef Name="Sejour" />
+            <PropertyRef Name="Maintenance" />
+            <PropertyRef Name="Annuler" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Client" Type="varchar" MaxLength="401" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="NbreAdult" Type="int" />
+          <Property Name="NbreEnfant" Type="int" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Passage" Type="int" Nullable="false" />
+          <Property Name="Nuit" Type="int" Nullable="false" />
+          <Property Name="Sejour" Type="int" Nullable="false" />
+          <Property Name="Maintenance" Type="int" Nullable="false" />
+          <Property Name="Annuler" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="idRegistre" Type="int" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="Hotel" Type="varchar(max)" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="ReservationDate" Type="date" />
+          <Property Name="CancelDate" Type="date" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ListeStatChambre' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ListeStatChambre">
+          <Key>
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Passage" Type="int" />
+          <Property Name="Nuit" Type="int" />
+          <Property Name="Sejour" Type="int" />
+          <Property Name="Maintenance" Type="int" />
+          <Property Name="Annuler" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateArrive" Type="datetime" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.RecuReservations' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="RecuReservations">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransactionNumero" Type="varchar" MaxLength="50" />
+          <Property Name="DateTransaction" Type="date" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="NbreAdult" Type="int" />
+          <Property Name="Noms" Type="varchar" MaxLength="250" />
+          <Property Name="Prenoms" Type="varchar" MaxLength="150" />
+          <Property Name="Sexe" Type="nchar" MaxLength="1" />
+          <Property Name="Addresse" Type="varchar" MaxLength="250" />
+          <Property Name="Pays" Type="varchar" MaxLength="50" />
+          <Property Name="Nationalités" Type="varchar" MaxLength="250" />
+          <Property Name="Villes" Type="varchar" MaxLength="250" />
+          <Property Name="Communes" Type="varchar" MaxLength="50" />
+          <Property Name="Quartiers" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="Reduction" Type="money" />
+          <Property Name="NomHotel" Type="varchar(max)" />
+          <Property Name="TotalHT" Type="money" />
+          <Property Name="TVA" Type="money" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.RecuVente' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="RecuVente">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="Numero" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Libelle" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionNumero" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'GESHOTELP.dbo.RegleReduction' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
+        <EntityType Name="RegleReduction">
+          <Property Name="regles" Type="varchar" MaxLength="250" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="OpenReduction" Type="bit" />
+          <Property Name="Valeur" Type="float" />
+        </EntityType>-->
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ReservationCheckIn' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ReservationCheckIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="idChambre" Type="int" />
+          <Property Name="idReservationType" Type="int" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="idPromotion" Type="int" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="TypeOperation" Type="varchar" MaxLength="50" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="DateCheckInVC" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ReservationCheckOut' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ReservationCheckOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="idChambre" Type="int" />
+          <Property Name="idReservationType" Type="int" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="idPromotion" Type="int" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="TypeOperation" Type="varchar" MaxLength="50" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="DateCheckOutVC" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'GESHOTELP.dbo.ReservationDashBoard' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="ReservationDashBoard">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ReservationType" Type="varchar" MaxLength="50" />
+          <Property Name="TypeChambres" Type="varchar" MaxLength="50" />
+          <Property Name="Chambre" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Client" Type="varchar" MaxLength="401" />
+          <Property Name="DateArrive" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="DateCheckIn" Type="datetime" />
+          <Property Name="DateCheckOut" Type="datetime" />
+          <Property Name="NbreNuit" Type="int" />
+          <Property Name="NbreAdult" Type="int" />
+          <Property Name="NbreEnfant" Type="int" />
+          <Property Name="TransactionNumero" Type="varchar" MaxLength="50" />
+          <Property Name="TotalHT" Type="money" />
+          <Property Name="Reduction" Type="money" />
+          <Property Name="TVA" Type="money" />
+          <Property Name="TotalTTC" Type="money" />
+          <Property Name="TotalPaye" Type="money" />
+          <Property Name="TotalReste" Type="money" />
+          <Property Name="Etat" Type="varchar" MaxLength="50" />
+          <Property Name="EtatOperation" Type="varchar" MaxLength="50" />
+          <Property Name="idRegistre" Type="int" />
+          <Property Name="idHotel" Type="int" />
+          <Property Name="prix" Type="money" />
+          <Property Name="Quantite" Type="float" />
+          <Property Name="Montant" Type="money" />
+          <Property Name="ReductionDT" Type="money" />
+          <Property Name="ReductionAuto" Type="money" />
+          <Property Name="Categorie" Type="varchar" MaxLength="50" />
+          <Property Name="DateTransaction" Type="varchar" MaxLength="20" />
+          <Property Name="EtatDT" Type="varchar" MaxLength="50" />
+          <Property Name="Hotel" Type="varchar(max)" />
+          <Property Name="isCheckIn" Type="bit" />
+          <Property Name="isCheckOut" Type="bit" />
+          <Property Name="ReservationDate" Type="date" />
+          <Property Name="CancelDate" Type="date" />
+          <Property Name="TypeOperation" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Amenities_AmenitiesTypes">
           <End Role="AmenitiesTypes" Type="Self.AmenitiesTypes" Multiplicity="0..1" />
           <End Role="Amenities" Type="Self.Amenities" Multiplicity="*" />
@@ -1249,6 +1594,287 @@
           <EntitySet Name="TypePrix" EntityType="Self.TypePrix" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Villes" EntityType="Self.Villes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChambreDisponibilite" EntityType="Self.ChambreDisponibilite" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChambreDisponibilite].[ID] AS [ID], 
+    [ChambreDisponibilite].[Numero] AS [Numero], 
+    [ChambreDisponibilite].[TypeChambres] AS [TypeChambres], 
+    [ChambreDisponibilite].[DateArrive] AS [DateArrive], 
+    [ChambreDisponibilite].[DateDepart] AS [DateDepart], 
+    [ChambreDisponibilite].[ReservationType] AS [ReservationType], 
+    [ChambreDisponibilite].[NbreNuit] AS [NbreNuit], 
+    [ChambreDisponibilite].[NbreAdult] AS [NbreAdult], 
+    [ChambreDisponibilite].[NbreEnfant] AS [NbreEnfant], 
+    [ChambreDisponibilite].[TotalTTC] AS [TotalTTC], 
+    [ChambreDisponibilite].[TotalPaye] AS [TotalPaye], 
+    [ChambreDisponibilite].[TotalReste] AS [TotalReste], 
+    [ChambreDisponibilite].[EtatOperation] AS [EtatOperation], 
+    [ChambreDisponibilite].[Etat] AS [Etat], 
+    [ChambreDisponibilite].[TypeOperation] AS [TypeOperation], 
+    [ChambreDisponibilite].[Disponibilite] AS [Disponibilite], 
+    [ChambreDisponibilite].[IdReservation] AS [IdReservation], 
+    [ChambreDisponibilite].[idHotel] AS [idHotel]
+    FROM [dbo].[ChambreDisponibilite] AS [ChambreDisponibilite]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChambreMaintenance" EntityType="Self.ChambreMaintenance" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChambreMaintenance].[Debut] AS [Debut], 
+    [ChambreMaintenance].[Fin] AS [Fin], 
+    [ChambreMaintenance].[Chambre] AS [Chambre], 
+    [ChambreMaintenance].[Type de Chambre] AS [Type de Chambre], 
+    [ChambreMaintenance].[Raison] AS [Raison], 
+    [ChambreMaintenance].[RaisonType] AS [RaisonType], 
+    [ChambreMaintenance].[idHotel] AS [idHotel], 
+    [ChambreMaintenance].[Hotel] AS [Hotel]
+    FROM [dbo].[ChambreMaintenance] AS [ChambreMaintenance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChambreNuitRapport" EntityType="Self.ChambreNuitRapport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChambreNuitRapport].[ID] AS [ID], 
+    [ChambreNuitRapport].[ReservationType] AS [ReservationType], 
+    [ChambreNuitRapport].[TypeChambres] AS [TypeChambres], 
+    [ChambreNuitRapport].[Chambre] AS [Chambre], 
+    [ChambreNuitRapport].[Client] AS [Client], 
+    [ChambreNuitRapport].[DateArrive] AS [DateArrive], 
+    [ChambreNuitRapport].[DateDepart] AS [DateDepart], 
+    [ChambreNuitRapport].[DateCheckIn] AS [DateCheckIn], 
+    [ChambreNuitRapport].[DateCheckOut] AS [DateCheckOut], 
+    [ChambreNuitRapport].[NbreNuit] AS [NbreNuit], 
+    [ChambreNuitRapport].[NbreAdult] AS [NbreAdult], 
+    [ChambreNuitRapport].[TransactionNumero] AS [TransactionNumero], 
+    [ChambreNuitRapport].[TotalHT] AS [TotalHT], 
+    [ChambreNuitRapport].[Reduction] AS [Reduction], 
+    [ChambreNuitRapport].[TVA] AS [TVA], 
+    [ChambreNuitRapport].[TotalTTC] AS [TotalTTC], 
+    [ChambreNuitRapport].[TotalPaye] AS [TotalPaye], 
+    [ChambreNuitRapport].[TotalReste] AS [TotalReste], 
+    [ChambreNuitRapport].[Etat] AS [Etat], 
+    [ChambreNuitRapport].[EtatOperation] AS [EtatOperation], 
+    [ChambreNuitRapport].[idRegistre] AS [idRegistre], 
+    [ChambreNuitRapport].[idHotel] AS [idHotel], 
+    [ChambreNuitRapport].[Type de Prix] AS [Type de Prix], 
+    [ChambreNuitRapport].[Prix] AS [Prix], 
+    [ChambreNuitRapport].[Hotel] AS [Hotel]
+    FROM [dbo].[ChambreNuitRapport] AS [ChambreNuitRapport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChambreReserver" EntityType="Self.ChambreReserver" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChambreReserver].[ID] AS [ID], 
+    [ChambreReserver].[idChambre] AS [idChambre], 
+    [ChambreReserver].[idReservationType] AS [idReservationType], 
+    [ChambreReserver].[DateArrive] AS [DateArrive], 
+    [ChambreReserver].[DateDepart] AS [DateDepart], 
+    [ChambreReserver].[DateCheckIn] AS [DateCheckIn], 
+    [ChambreReserver].[DateCheckOut] AS [DateCheckOut], 
+    [ChambreReserver].[idPromotion] AS [idPromotion], 
+    [ChambreReserver].[EtatOperation] AS [EtatOperation], 
+    [ChambreReserver].[Etat] AS [Etat], 
+    [ChambreReserver].[idHotel] AS [idHotel], 
+    [ChambreReserver].[TypeOperation] AS [TypeOperation], 
+    [ChambreReserver].[ReservationType] AS [ReservationType], 
+    [ChambreReserver].[DateCheckOutVC] AS [DateCheckOutVC]
+    FROM [dbo].[ChambreReserver] AS [ChambreReserver]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListDepense" EntityType="Self.ListDepense" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListDepense].[ID] AS [ID], 
+    [ListDepense].[Objet] AS [Objet], 
+    [ListDepense].[DateTransaction] AS [DateTransaction], 
+    [ListDepense].[Montant] AS [Montant], 
+    [ListDepense].[SOLDE] AS [SOLDE], 
+    [ListDepense].[Rubrique] AS [Rubrique], 
+    [ListDepense].[idRegistre] AS [idRegistre], 
+    [ListDepense].[idHotel] AS [idHotel], 
+    [ListDepense].[TypeTransaction] AS [TypeTransaction]
+    FROM [dbo].[ListDepense] AS [ListDepense]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListePrixChambre" EntityType="Self.ListePrixChambre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListePrixChambre].[idPrixChambres] AS [idPrixChambres], 
+    [ListePrixChambre].[TypeChambres] AS [TypeChambres], 
+    [ListePrixChambre].[ReservationType] AS [ReservationType], 
+    [ListePrixChambre].[TypePrix] AS [TypePrix], 
+    [ListePrixChambre].[Prix] AS [Prix], 
+    [ListePrixChambre].[ID] AS [ID], 
+    [ListePrixChambre].[idTypePrix] AS [idTypePrix], 
+    [ListePrixChambre].[idReservationType] AS [idReservationType], 
+    [ListePrixChambre].[idHotel] AS [idHotel]
+    FROM [dbo].[ListePrixChambre] AS [ListePrixChambre]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListeReservation" EntityType="Self.ListeReservation" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListeReservation].[ID] AS [ID], 
+    [ListeReservation].[ReservationType] AS [ReservationType], 
+    [ListeReservation].[TypeChambres] AS [TypeChambres], 
+    [ListeReservation].[Chambre] AS [Chambre], 
+    [ListeReservation].[Client] AS [Client], 
+    [ListeReservation].[DateArrive] AS [DateArrive], 
+    [ListeReservation].[DateDepart] AS [DateDepart], 
+    [ListeReservation].[DateCheckIn] AS [DateCheckIn], 
+    [ListeReservation].[DateCheckOut] AS [DateCheckOut], 
+    [ListeReservation].[NbreNuit] AS [NbreNuit], 
+    [ListeReservation].[NbreAdult] AS [NbreAdult], 
+    [ListeReservation].[NbreEnfant] AS [NbreEnfant], 
+    [ListeReservation].[Etat] AS [Etat], 
+    [ListeReservation].[EtatOperation] AS [EtatOperation], 
+    [ListeReservation].[Passage] AS [Passage], 
+    [ListeReservation].[Nuit] AS [Nuit], 
+    [ListeReservation].[Sejour] AS [Sejour], 
+    [ListeReservation].[Maintenance] AS [Maintenance], 
+    [ListeReservation].[Annuler] AS [Annuler], 
+    [ListeReservation].[Status] AS [Status], 
+    [ListeReservation].[idRegistre] AS [idRegistre], 
+    [ListeReservation].[idHotel] AS [idHotel], 
+    [ListeReservation].[Hotel] AS [Hotel], 
+    [ListeReservation].[TotalTTC] AS [TotalTTC], 
+    [ListeReservation].[TotalPaye] AS [TotalPaye], 
+    [ListeReservation].[TotalReste] AS [TotalReste], 
+    [ListeReservation].[ReservationDate] AS [ReservationDate], 
+    [ListeReservation].[CancelDate] AS [CancelDate]
+    FROM [dbo].[ListeReservation] AS [ListeReservation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListeStatChambre" EntityType="Self.ListeStatChambre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListeStatChambre].[ReservationType] AS [ReservationType], 
+    [ListeStatChambre].[TypeChambres] AS [TypeChambres], 
+    [ListeStatChambre].[Chambre] AS [Chambre], 
+    [ListeStatChambre].[Total] AS [Total], 
+    [ListeStatChambre].[Passage] AS [Passage], 
+    [ListeStatChambre].[Nuit] AS [Nuit], 
+    [ListeStatChambre].[Sejour] AS [Sejour], 
+    [ListeStatChambre].[Maintenance] AS [Maintenance], 
+    [ListeStatChambre].[Annuler] AS [Annuler], 
+    [ListeStatChambre].[Status] AS [Status], 
+    [ListeStatChambre].[DateArrive] AS [DateArrive]
+    FROM [dbo].[ListeStatChambre] AS [ListeStatChambre]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RecuReservations" EntityType="Self.RecuReservations" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RecuReservations].[ID] AS [ID], 
+    [RecuReservations].[TransactionNumero] AS [TransactionNumero], 
+    [RecuReservations].[DateTransaction] AS [DateTransaction], 
+    [RecuReservations].[ReservationType] AS [ReservationType], 
+    [RecuReservations].[TypeChambres] AS [TypeChambres], 
+    [RecuReservations].[Chambre] AS [Chambre], 
+    [RecuReservations].[DateArrive] AS [DateArrive], 
+    [RecuReservations].[DateDepart] AS [DateDepart], 
+    [RecuReservations].[NbreNuit] AS [NbreNuit], 
+    [RecuReservations].[NbreAdult] AS [NbreAdult], 
+    [RecuReservations].[Noms] AS [Noms], 
+    [RecuReservations].[Prenoms] AS [Prenoms], 
+    [RecuReservations].[Sexe] AS [Sexe], 
+    [RecuReservations].[Addresse] AS [Addresse], 
+    [RecuReservations].[Pays] AS [Pays], 
+    [RecuReservations].[Nationalités] AS [Nationalités], 
+    [RecuReservations].[Villes] AS [Villes], 
+    [RecuReservations].[Communes] AS [Communes], 
+    [RecuReservations].[Quartiers] AS [Quartiers], 
+    [RecuReservations].[Telephone] AS [Telephone], 
+    [RecuReservations].[Mobile] AS [Mobile], 
+    [RecuReservations].[Fax] AS [Fax], 
+    [RecuReservations].[Email] AS [Email], 
+    [RecuReservations].[TotalTTC] AS [TotalTTC], 
+    [RecuReservations].[TotalPaye] AS [TotalPaye], 
+    [RecuReservations].[TotalReste] AS [TotalReste], 
+    [RecuReservations].[Reduction] AS [Reduction], 
+    [RecuReservations].[NomHotel] AS [NomHotel], 
+    [RecuReservations].[TotalHT] AS [TotalHT], 
+    [RecuReservations].[TVA] AS [TVA]
+    FROM [dbo].[RecuReservations] AS [RecuReservations]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RecuVente" EntityType="Self.RecuVente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RecuVente].[ID] AS [ID], 
+    [RecuVente].[Date] AS [Date], 
+    [RecuVente].[DateArrive] AS [DateArrive], 
+    [RecuVente].[DateDepart] AS [DateDepart], 
+    [RecuVente].[ReservationType] AS [ReservationType], 
+    [RecuVente].[NbreNuit] AS [NbreNuit], 
+    [RecuVente].[TotalTTC] AS [TotalTTC], 
+    [RecuVente].[TotalPaye] AS [TotalPaye], 
+    [RecuVente].[TotalReste] AS [TotalReste], 
+    [RecuVente].[Numero] AS [Numero], 
+    [RecuVente].[Libelle] AS [Libelle], 
+    [RecuVente].[TransactionNumero] AS [TransactionNumero]
+    FROM [dbo].[RecuVente] AS [RecuVente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ReservationCheckIn" EntityType="Self.ReservationCheckIn" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ReservationCheckIn].[ID] AS [ID], 
+    [ReservationCheckIn].[idChambre] AS [idChambre], 
+    [ReservationCheckIn].[idReservationType] AS [idReservationType], 
+    [ReservationCheckIn].[DateArrive] AS [DateArrive], 
+    [ReservationCheckIn].[DateDepart] AS [DateDepart], 
+    [ReservationCheckIn].[DateCheckIn] AS [DateCheckIn], 
+    [ReservationCheckIn].[DateCheckOut] AS [DateCheckOut], 
+    [ReservationCheckIn].[idPromotion] AS [idPromotion], 
+    [ReservationCheckIn].[EtatOperation] AS [EtatOperation], 
+    [ReservationCheckIn].[Etat] AS [Etat], 
+    [ReservationCheckIn].[idHotel] AS [idHotel], 
+    [ReservationCheckIn].[TypeOperation] AS [TypeOperation], 
+    [ReservationCheckIn].[ReservationType] AS [ReservationType], 
+    [ReservationCheckIn].[DateCheckInVC] AS [DateCheckInVC]
+    FROM [dbo].[ReservationCheckIn] AS [ReservationCheckIn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ReservationCheckOut" EntityType="Self.ReservationCheckOut" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ReservationCheckOut].[ID] AS [ID], 
+    [ReservationCheckOut].[idChambre] AS [idChambre], 
+    [ReservationCheckOut].[idReservationType] AS [idReservationType], 
+    [ReservationCheckOut].[DateArrive] AS [DateArrive], 
+    [ReservationCheckOut].[DateDepart] AS [DateDepart], 
+    [ReservationCheckOut].[DateCheckIn] AS [DateCheckIn], 
+    [ReservationCheckOut].[DateCheckOut] AS [DateCheckOut], 
+    [ReservationCheckOut].[idPromotion] AS [idPromotion], 
+    [ReservationCheckOut].[EtatOperation] AS [EtatOperation], 
+    [ReservationCheckOut].[Etat] AS [Etat], 
+    [ReservationCheckOut].[idHotel] AS [idHotel], 
+    [ReservationCheckOut].[TypeOperation] AS [TypeOperation], 
+    [ReservationCheckOut].[ReservationType] AS [ReservationType], 
+    [ReservationCheckOut].[DateCheckOutVC] AS [DateCheckOutVC]
+    FROM [dbo].[ReservationCheckOut] AS [ReservationCheckOut]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ReservationDashBoard" EntityType="Self.ReservationDashBoard" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ReservationDashBoard].[ID] AS [ID], 
+    [ReservationDashBoard].[ReservationType] AS [ReservationType], 
+    [ReservationDashBoard].[TypeChambres] AS [TypeChambres], 
+    [ReservationDashBoard].[Chambre] AS [Chambre], 
+    [ReservationDashBoard].[Client] AS [Client], 
+    [ReservationDashBoard].[DateArrive] AS [DateArrive], 
+    [ReservationDashBoard].[DateDepart] AS [DateDepart], 
+    [ReservationDashBoard].[DateCheckIn] AS [DateCheckIn], 
+    [ReservationDashBoard].[DateCheckOut] AS [DateCheckOut], 
+    [ReservationDashBoard].[NbreNuit] AS [NbreNuit], 
+    [ReservationDashBoard].[NbreAdult] AS [NbreAdult], 
+    [ReservationDashBoard].[NbreEnfant] AS [NbreEnfant], 
+    [ReservationDashBoard].[TransactionNumero] AS [TransactionNumero], 
+    [ReservationDashBoard].[TotalHT] AS [TotalHT], 
+    [ReservationDashBoard].[Reduction] AS [Reduction], 
+    [ReservationDashBoard].[TVA] AS [TVA], 
+    [ReservationDashBoard].[TotalTTC] AS [TotalTTC], 
+    [ReservationDashBoard].[TotalPaye] AS [TotalPaye], 
+    [ReservationDashBoard].[TotalReste] AS [TotalReste], 
+    [ReservationDashBoard].[Etat] AS [Etat], 
+    [ReservationDashBoard].[EtatOperation] AS [EtatOperation], 
+    [ReservationDashBoard].[idRegistre] AS [idRegistre], 
+    [ReservationDashBoard].[idHotel] AS [idHotel], 
+    [ReservationDashBoard].[prix] AS [prix], 
+    [ReservationDashBoard].[Quantite] AS [Quantite], 
+    [ReservationDashBoard].[Montant] AS [Montant], 
+    [ReservationDashBoard].[ReductionDT] AS [ReductionDT], 
+    [ReservationDashBoard].[ReductionAuto] AS [ReductionAuto], 
+    [ReservationDashBoard].[Categorie] AS [Categorie], 
+    [ReservationDashBoard].[DateTransaction] AS [DateTransaction], 
+    [ReservationDashBoard].[EtatDT] AS [EtatDT], 
+    [ReservationDashBoard].[Hotel] AS [Hotel], 
+    [ReservationDashBoard].[isCheckIn] AS [isCheckIn], 
+    [ReservationDashBoard].[isCheckOut] AS [isCheckOut], 
+    [ReservationDashBoard].[ReservationDate] AS [ReservationDate], 
+    [ReservationDashBoard].[CancelDate] AS [CancelDate], 
+    [ReservationDashBoard].[TypeOperation] AS [TypeOperation]
+    FROM [dbo].[ReservationDashBoard] AS [ReservationDashBoard]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Amenities_AmenitiesTypes" Association="Self.FK_Amenities_AmenitiesTypes">
             <End Role="AmenitiesTypes" EntitySet="AmenitiesTypes" />
             <End Role="Amenities" EntitySet="Amenities" />
@@ -2859,6 +3485,19 @@
             <End Role="TypeChambres" EntitySet="TypeChambres" />
             <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
+          <EntitySet Name="ListDepense" EntityType="GESHOTELModel.ListDepense" />
+          <EntitySet Name="ReservationDashBoard" EntityType="GESHOTELModel.ReservationDashBoard" />
+          <EntitySet Name="ChambreDisponibilite" EntityType="GESHOTELModel.ChambreDisponibilite" />
+          <EntitySet Name="ChambreMaintenance" EntityType="GESHOTELModel.ChambreMaintenance" />
+          <EntitySet Name="ChambreNuitRapport" EntityType="GESHOTELModel.ChambreNuitRapport" />
+          <EntitySet Name="ChambreReserver" EntityType="GESHOTELModel.ChambreReserver" />
+          <EntitySet Name="ListePrixChambre" EntityType="GESHOTELModel.ListePrixChambre" />
+          <EntitySet Name="ListeReservation" EntityType="GESHOTELModel.ListeReservation" />
+          <EntitySet Name="ListeStatChambre" EntityType="GESHOTELModel.ListeStatChambre" />
+          <EntitySet Name="RecuReservations" EntityType="GESHOTELModel.RecuReservations" />
+          <EntitySet Name="RecuVente" EntityType="GESHOTELModel.RecuVente" />
+          <EntitySet Name="ReservationCheckIn" EntityType="GESHOTELModel.ReservationCheckIn" />
+          <EntitySet Name="ReservationCheckOut" EntityType="GESHOTELModel.ReservationCheckOut" />
         </EntityContainer>
         <EntityType Name="Permissions">
           <Key>
@@ -2917,6 +3556,315 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ListDepense">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Objet" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DateTransaction" Type="DateTime" Precision="0" />
+          <Property Name="Montant" Type="Double" />
+          <Property Name="SOLDE" Type="Double" />
+          <Property Name="Rubrique" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRegistre" Type="Int32" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="TypeTransaction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReservationDashBoard">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Client" Type="String" MaxLength="401" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="NbreAdult" Type="Int32" />
+          <Property Name="NbreEnfant" Type="Int32" />
+          <Property Name="TransactionNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalHT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Reduction" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TVA" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRegistre" Type="Int32" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="prix" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Quantite" Type="Double" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReductionDT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReductionAuto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTransaction" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EtatDT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isCheckIn" Type="Boolean" />
+          <Property Name="isCheckOut" Type="Boolean" />
+          <Property Name="ReservationDate" Type="DateTime" Precision="0" />
+          <Property Name="CancelDate" Type="DateTime" Precision="0" />
+          <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ChambreDisponibilite">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="NbreAdult" Type="Int32" />
+          <Property Name="NbreEnfant" Type="Int32" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disponibilite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdReservation" Type="Int32" />
+          <Property Name="idHotel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ChambreMaintenance">
+          <Key>
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="Debut" Type="DateTime" Precision="3" />
+          <Property Name="Fin" Type="DateTime" Precision="3" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Type_de_Chambre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Raison" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RaisonType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="Hotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ChambreNuitRapport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Client" Type="String" MaxLength="401" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="NbreAdult" Type="Int32" />
+          <Property Name="TransactionNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalHT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Reduction" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TVA" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRegistre" Type="Int32" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="Type_de_Prix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prix" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Hotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ChambreReserver">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="idChambre" Type="Int32" />
+          <Property Name="idReservationType" Type="Int32" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="idPromotion" Type="Int32" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCheckOutVC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ListePrixChambre">
+          <Key>
+            <PropertyRef Name="idPrixChambres" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="idTypePrix" />
+            <PropertyRef Name="idReservationType" />
+            <PropertyRef Name="idHotel" />
+          </Key>
+          <Property Name="idPrixChambres" Type="Int32" Nullable="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypePrix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prix" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="idTypePrix" Type="Int32" Nullable="false" />
+          <Property Name="idReservationType" Type="Int32" Nullable="false" />
+          <Property Name="idHotel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListeReservation">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+            <PropertyRef Name="Passage" />
+            <PropertyRef Name="Nuit" />
+            <PropertyRef Name="Sejour" />
+            <PropertyRef Name="Maintenance" />
+            <PropertyRef Name="Annuler" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Client" Type="String" MaxLength="401" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="NbreAdult" Type="Int32" />
+          <Property Name="NbreEnfant" Type="Int32" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Passage" Type="Int32" Nullable="false" />
+          <Property Name="Nuit" Type="Int32" Nullable="false" />
+          <Property Name="Sejour" Type="Int32" Nullable="false" />
+          <Property Name="Maintenance" Type="Int32" Nullable="false" />
+          <Property Name="Annuler" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRegistre" Type="Int32" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="Hotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReservationDate" Type="DateTime" Precision="0" />
+          <Property Name="CancelDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ListeStatChambre">
+          <Key>
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Passage" Type="Int32" />
+          <Property Name="Nuit" Type="Int32" />
+          <Property Name="Sejour" Type="Int32" />
+          <Property Name="Maintenance" Type="Int32" />
+          <Property Name="Annuler" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RecuReservations">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chambre" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TransactionNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTransaction" Type="DateTime" Precision="0" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeChambres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chambre" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="NbreAdult" Type="Int32" />
+          <Property Name="Noms" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Prenoms" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Sexe" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Addresse" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationalités" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Villes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Communes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quartiers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Reduction" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NomHotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalHT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TVA" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="RecuVente">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NbreNuit" Type="Int32" />
+          <Property Name="TotalTTC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPaye" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalReste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReservationCheckIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="idChambre" Type="Int32" />
+          <Property Name="idReservationType" Type="Int32" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="idPromotion" Type="Int32" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCheckInVC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReservationCheckOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="idChambre" Type="Int32" />
+          <Property Name="idReservationType" Type="Int32" />
+          <Property Name="DateArrive" Type="DateTime" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckIn" Type="DateTime" Precision="3" />
+          <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+          <Property Name="idPromotion" Type="Int32" />
+          <Property Name="EtatOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idHotel" Type="Int32" />
+          <Property Name="TypeOperation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReservationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCheckOutVC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3587,6 +4535,313 @@
               <ScalarProperty Name="IdPermission" ColumnName="IdPermission" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ListDepense">
+            <EntityTypeMapping TypeName="GESHOTELModel.ListDepense">
+              <MappingFragment StoreEntitySet="ListDepense">
+                <ScalarProperty Name="TypeTransaction" ColumnName="TypeTransaction" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="idRegistre" ColumnName="idRegistre" />
+                <ScalarProperty Name="Rubrique" ColumnName="Rubrique" />
+                <ScalarProperty Name="SOLDE" ColumnName="SOLDE" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+                <ScalarProperty Name="Objet" ColumnName="Objet" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationDashBoard">
+            <EntityTypeMapping TypeName="GESHOTELModel.ReservationDashBoard">
+              <MappingFragment StoreEntitySet="ReservationDashBoard">
+                <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="isCheckOut" ColumnName="isCheckOut" />
+                <ScalarProperty Name="isCheckIn" ColumnName="isCheckIn" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="EtatDT" ColumnName="EtatDT" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+                <ScalarProperty Name="Categorie" ColumnName="Categorie" />
+                <ScalarProperty Name="ReductionAuto" ColumnName="ReductionAuto" />
+                <ScalarProperty Name="ReductionDT" ColumnName="ReductionDT" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="idRegistre" ColumnName="idRegistre" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="TVA" ColumnName="TVA" />
+                <ScalarProperty Name="Reduction" ColumnName="Reduction" />
+                <ScalarProperty Name="TotalHT" ColumnName="TotalHT" />
+                <ScalarProperty Name="TransactionNumero" ColumnName="TransactionNumero" />
+                <ScalarProperty Name="NbreEnfant" ColumnName="NbreEnfant" />
+                <ScalarProperty Name="NbreAdult" ColumnName="NbreAdult" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChambreDisponibilite">
+            <EntityTypeMapping TypeName="GESHOTELModel.ChambreDisponibilite">
+              <MappingFragment StoreEntitySet="ChambreDisponibilite">
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
+                <ScalarProperty Name="Disponibilite" ColumnName="Disponibilite" />
+                <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="NbreEnfant" ColumnName="NbreEnfant" />
+                <ScalarProperty Name="NbreAdult" ColumnName="NbreAdult" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChambreMaintenance">
+            <EntityTypeMapping TypeName="GESHOTELModel.ChambreMaintenance">
+              <MappingFragment StoreEntitySet="ChambreMaintenance">
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="RaisonType" ColumnName="RaisonType" />
+                <ScalarProperty Name="Raison" ColumnName="Raison" />
+                <ScalarProperty Name="Type_de_Chambre" ColumnName="Type de Chambre" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Debut" ColumnName="Debut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChambreNuitRapport">
+            <EntityTypeMapping TypeName="GESHOTELModel.ChambreNuitRapport">
+              <MappingFragment StoreEntitySet="ChambreNuitRapport">
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="Type_de_Prix" ColumnName="Type de Prix" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="idRegistre" ColumnName="idRegistre" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="TVA" ColumnName="TVA" />
+                <ScalarProperty Name="Reduction" ColumnName="Reduction" />
+                <ScalarProperty Name="TotalHT" ColumnName="TotalHT" />
+                <ScalarProperty Name="TransactionNumero" ColumnName="TransactionNumero" />
+                <ScalarProperty Name="NbreAdult" ColumnName="NbreAdult" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChambreReserver">
+            <EntityTypeMapping TypeName="GESHOTELModel.ChambreReserver">
+              <MappingFragment StoreEntitySet="ChambreReserver">
+                <ScalarProperty Name="DateCheckOutVC" ColumnName="DateCheckOutVC" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="idReservationType" ColumnName="idReservationType" />
+                <ScalarProperty Name="idChambre" ColumnName="idChambre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListePrixChambre">
+            <EntityTypeMapping TypeName="GESHOTELModel.ListePrixChambre">
+              <MappingFragment StoreEntitySet="ListePrixChambre">
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="idReservationType" ColumnName="idReservationType" />
+                <ScalarProperty Name="idTypePrix" ColumnName="idTypePrix" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="TypePrix" ColumnName="TypePrix" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="idPrixChambres" ColumnName="idPrixChambres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListeReservation">
+            <EntityTypeMapping TypeName="GESHOTELModel.ListeReservation">
+              <MappingFragment StoreEntitySet="ListeReservation">
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="idRegistre" ColumnName="idRegistre" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Annuler" ColumnName="Annuler" />
+                <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+                <ScalarProperty Name="Sejour" ColumnName="Sejour" />
+                <ScalarProperty Name="Nuit" ColumnName="Nuit" />
+                <ScalarProperty Name="Passage" ColumnName="Passage" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="NbreEnfant" ColumnName="NbreEnfant" />
+                <ScalarProperty Name="NbreAdult" ColumnName="NbreAdult" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListeStatChambre">
+            <EntityTypeMapping TypeName="GESHOTELModel.ListeStatChambre">
+              <MappingFragment StoreEntitySet="ListeStatChambre">
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Annuler" ColumnName="Annuler" />
+                <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+                <ScalarProperty Name="Sejour" ColumnName="Sejour" />
+                <ScalarProperty Name="Nuit" ColumnName="Nuit" />
+                <ScalarProperty Name="Passage" ColumnName="Passage" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecuReservations">
+            <EntityTypeMapping TypeName="GESHOTELModel.RecuReservations">
+              <MappingFragment StoreEntitySet="RecuReservations">
+                <ScalarProperty Name="TVA" ColumnName="TVA" />
+                <ScalarProperty Name="TotalHT" ColumnName="TotalHT" />
+                <ScalarProperty Name="NomHotel" ColumnName="NomHotel" />
+                <ScalarProperty Name="Reduction" ColumnName="Reduction" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Quartiers" ColumnName="Quartiers" />
+                <ScalarProperty Name="Communes" ColumnName="Communes" />
+                <ScalarProperty Name="Villes" ColumnName="Villes" />
+                <ScalarProperty Name="Nationalités" ColumnName="Nationalités" />
+                <ScalarProperty Name="Pays" ColumnName="Pays" />
+                <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="Prenoms" ColumnName="Prenoms" />
+                <ScalarProperty Name="Noms" ColumnName="Noms" />
+                <ScalarProperty Name="NbreAdult" ColumnName="NbreAdult" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Chambre" ColumnName="Chambre" />
+                <ScalarProperty Name="TypeChambres" ColumnName="TypeChambres" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+                <ScalarProperty Name="TransactionNumero" ColumnName="TransactionNumero" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecuVente">
+            <EntityTypeMapping TypeName="GESHOTELModel.RecuVente">
+              <MappingFragment StoreEntitySet="RecuVente">
+                <ScalarProperty Name="TransactionNumero" ColumnName="TransactionNumero" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="TotalReste" ColumnName="TotalReste" />
+                <ScalarProperty Name="TotalPaye" ColumnName="TotalPaye" />
+                <ScalarProperty Name="TotalTTC" ColumnName="TotalTTC" />
+                <ScalarProperty Name="NbreNuit" ColumnName="NbreNuit" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationCheckIn">
+            <EntityTypeMapping TypeName="GESHOTELModel.ReservationCheckIn">
+              <MappingFragment StoreEntitySet="ReservationCheckIn">
+                <ScalarProperty Name="DateCheckInVC" ColumnName="DateCheckInVC" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="idReservationType" ColumnName="idReservationType" />
+                <ScalarProperty Name="idChambre" ColumnName="idChambre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationCheckOut">
+            <EntityTypeMapping TypeName="GESHOTELModel.ReservationCheckOut">
+              <MappingFragment StoreEntitySet="ReservationCheckOut">
+                <ScalarProperty Name="DateCheckOutVC" ColumnName="DateCheckOutVC" />
+                <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+                <ScalarProperty Name="TypeOperation" ColumnName="TypeOperation" />
+                <ScalarProperty Name="idHotel" ColumnName="idHotel" />
+                <ScalarProperty Name="Etat" ColumnName="Etat" />
+                <ScalarProperty Name="EtatOperation" ColumnName="EtatOperation" />
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+                <ScalarProperty Name="idReservationType" ColumnName="idReservationType" />
+                <ScalarProperty Name="idChambre" ColumnName="idChambre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

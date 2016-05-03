@@ -241,6 +241,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="COMMON\ViewModelBase.cs" />
     <Compile Include="Models\Amenities.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -263,6 +264,18 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ChambreDisponibilite.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChambreMaintenance.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChambreNuitRapport.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChambreReserver.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Chambres.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -296,6 +309,52 @@
     <Compile Include="Models\Fournisseurs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListDepense.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListePrixChambre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListeReservation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListeStatChambre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecuReservations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecuVente.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReservationCheckIn.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReservationCheckOut.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReservationDashBoard.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ClotureJournee.xaml.cs">
+      <DependentUpon>ClotureJournee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ClotureJourneeFrm.xaml.cs">
+      <DependentUpon>ClotureJourneeFrm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ArriveesDataGridView.xaml.cs">
+      <DependentUpon>ArriveesDataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\PassageUC.xaml.cs">
+      <DependentUpon>PassageUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ReservationPanel.xaml.cs">
+      <DependentUpon>ReservationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\StayViews.xaml.cs">
+      <DependentUpon>StayViews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\GlobalFO.cs" />
     <Compile Include="Models\HotelInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -686,13 +745,27 @@
     <Compile Include="Modules\FrontOffice\Reservations\ReservationInsert.xaml.cs">
       <DependentUpon>ReservationInsert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\RoomView.xaml.cs">
+      <DependentUpon>RoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\StayInsert.xaml.cs">
+      <DependentUpon>StayInsert.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\FrontOffice\Reservations\TransactionEdit.xaml.cs">
       <DependentUpon>TransactionEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ChambreResource.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ClientsViewModel.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ColorToBrushConverter.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\Commands\DelegateCommand.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\CustomAppointment.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\EditorTemplateRule.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\EntityObjectToInt.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\MyEditorTemplateSelector.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\OverviewsDashBoard.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ReservationPanelViewModel.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\RoomViewModel.cs" />
+    <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ScheduleViewModel.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\Types.cs" />
     <Compile Include="Modules\FrontOffice\Reservations\ViewModels\ViewModel.cs" />
     <Compile Include="Rapports\Viewers\ListeRapportView.xaml.cs">
@@ -928,6 +1001,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ClotureJournee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ClotureJourneeFrm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ArriveesDataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Modules\FrontOffice\Reservations\DataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -936,11 +1021,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Modules\FrontOffice\Reservations\PassageUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Modules\FrontOffice\Reservations\PassageWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Modules\FrontOffice\Reservations\ReservationInsert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\ReservationPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\RoomView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\StayInsert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\FrontOffice\Reservations\StayViews.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

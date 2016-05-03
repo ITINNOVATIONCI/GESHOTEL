@@ -1,7 +1,7 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="GESHOTEL.FrontOffice.AssigneChambre"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="GESHOTEL.ReservationsModules.AssigneChambre"
         Title="Changer de Chambre" Height="184" Width="437" Loaded="Window_Loaded_1" >
     <Window.Resources>
         <DataTemplate x:Key="chambreAutoComplete">

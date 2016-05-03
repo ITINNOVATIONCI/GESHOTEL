@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 
-namespace GESHOTEL.FrontOffice
+namespace GESHOTEL.ReservationsModules
 {
     /// <summary>
     /// Interaction logic for PassageWin.xaml

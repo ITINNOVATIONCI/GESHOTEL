@@ -72,5 +72,18 @@ namespace GESHOTEL.Models
         public virtual DbSet<Villes> Villes { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
         public virtual DbSet<Utilisateurs> Utilisateurs { get; set; }
+        public virtual DbSet<ListDepense> ListDepense { get; set; }
+        public virtual DbSet<ReservationDashBoard> ReservationDashBoard { get; set; }
+        public virtual DbSet<ChambreDisponibilite> ChambreDisponibilite { get; set; }
+        public virtual DbSet<ChambreMaintenance> ChambreMaintenance { get; set; }
+        public virtual DbSet<ChambreNuitRapport> ChambreNuitRapport { get; set; }
+        public virtual DbSet<ChambreReserver> ChambreReserver { get; set; }
+        public virtual DbSet<ListePrixChambre> ListePrixChambre { get; set; }
+        public virtual DbSet<ListeReservation> ListeReservation { get; set; }
+        public virtual DbSet<ListeStatChambre> ListeStatChambre { get; set; }
+        public virtual DbSet<RecuReservations> RecuReservations { get; set; }
+        public virtual DbSet<RecuVente> RecuVente { get; set; }
+        public virtual DbSet<ReservationCheckIn> ReservationCheckIn { get; set; }
+        public virtual DbSet<ReservationCheckOut> ReservationCheckOut { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GESHOTEL.FrontOffice.ReservationInsert"
+﻿<UserControl x:Class="GESHOTEL.ReservationsModules.ReservationInsert"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -6,7 +6,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:Models="clr-namespace:GESHOTEL.Models"
         mc:Ignorable="d"
-        Loaded="Window_Loaded_1" Unloaded="UserControl_Unloaded_1" KeyDown="UserControl_KeyDown" FontFamily="Perpetua Titling MT" d:designWidth="1136.323" d:designHeight="650">
+        Loaded="Window_Loaded_1" Unloaded="UserControl_Unloaded_1" KeyDown="UserControl_KeyDown" FontFamily="Perpetua Titling MT">
     <UserControl.Resources>
         <CollectionViewSource x:Key="paysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Pays}, CreateList=True}"/>
         <CollectionViewSource x:Key="villesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Villes}, CreateList=True}"/>
